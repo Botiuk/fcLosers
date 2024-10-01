@@ -37,13 +37,19 @@ gem 'rails-i18n', '7.0.9'
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '4.9.4'
-
 # Translations for the devise gem
 gem 'devise-i18n', '1.12.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.9.2', platforms: %i[mri windows], require: 'debug/prelude'
+
+  # Testing framework
+  gem 'rspec-rails', '7.0.1'
+  # Fixtures replacement with a straightforward definition syntax
+  gem 'factory_bot_rails', '6.4.3'
+  # Library for generating fake data
+  gem 'faker', '3.4.2'
 end
 
 group :development do
@@ -55,5 +61,10 @@ group :development do
   # Automatic Rails code style checking tool.
   gem 'rubocop-rails', '2.26.2', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
-  gem 'rubocop-performance', '1.22.1', require: false
+  gem 'rubocop-performance', '1.22.1', require: false  
+  # Code style checking for RSpec files
+  gem 'rubocop-rspec', '3.0.5', require: false
+  gem 'rubocop-rspec_rails', '2.30.0', require: false
+  # Code style checking for factory_bot files
+  gem 'rubocop-factory_bot', '2.26.1', require: false
 end
