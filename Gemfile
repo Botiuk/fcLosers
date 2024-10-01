@@ -6,7 +6,7 @@ source 'https://rubygems.org'
 gem 'rails', '7.2.1'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
-gem 'propshaft', '1.0.1'
+gem 'propshaft', '1.1.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '1.5.8'
@@ -31,6 +31,9 @@ gem 'tzinfo-data', '1.2024.2', platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '1.18.4', require: false
+
+# A set of common locale data and translations to internationalize and/or localize your Rails applications
+gem 'rails-i18n', '7.0.9'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
