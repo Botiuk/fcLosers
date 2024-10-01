@@ -35,6 +35,12 @@ gem 'bootsnap', '1.18.4', require: false
 # A set of common locale data and translations to internationalize and/or localize your Rails applications
 gem 'rails-i18n', '7.0.9'
 
+# Flexible authentication solution for Rails with Warden
+gem 'devise', '4.9.4'
+
+# Translations for the devise gem
+gem 'devise-i18n', '1.12.1'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.9.2', platforms: %i[mri windows], require: 'debug/prelude'
