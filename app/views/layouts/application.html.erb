@@ -18,7 +18,17 @@
   </head>
 
   <body>
-    <%= render 'shared/flash_messages' %>
-    <%= yield %>
+    <header>
+      <%= render 'shared/header' %>
+    </header>
+
+    <main>
+      <%= render 'shared/flash_messages' %>
+      <%= yield %>
+    </main>
+
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>

@@ -2,6 +2,9 @@ uk:
   appname_html: "ФК &quot;Невдахи&quot; (Тернопіль)"
   author: "Svitlana Botiuk"
 
+  navigation:
+    news: "Новини"
+
   main:
     index:
       welcome_html: "Вітаємо на офіційній сторінці ФК &quot;Невдахи&quot; (Тернопіль)!"
