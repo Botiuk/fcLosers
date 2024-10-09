@@ -45,6 +45,9 @@ gem 'image_processing', '1.13.0'
 # Client library for easily using the Cloudinary service
 gem 'cloudinary', '2.2.0'
 
+# Agnostic pagination in plain ruby
+gem 'pagy', '9.1.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.9.2', platforms: %i[mri windows], require: 'debug/prelude'
