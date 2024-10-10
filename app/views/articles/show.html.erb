@@ -1,0 +1,46 @@
+<% if @article.cover.present? %>
+    <div class="">
+        <img class="" src="<%= cloudinary_url(@article.cover.key, height: 200, crop: :scale) %>" style="width:20%;">
+    </div>
+<% end %>
+
+<div class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50"><h4><%= @article.title %></h4></div>
+
+<div class="text-sm">
+    <% if @article.published_at.present? %>
+        <%= I18n.l(@article.published_at, format: :long) %>
+        <% if press_service_signed_in? && @article.published_at > DateTime.now %>
+            <div class="" style="display:inline-block;">
+                <%= t('.scheduled') %>
+            </div>
+        <% end %>
+    <% else %>
+        <% if press_service_signed_in? %>
+            <div class="">
+                <%= t('.draft') %>
+            </div>
+        <% end %>
+    <% end %>
+</div>
+
+<div class="grid grid-cols-1 mb-2 mt-2">
+    <div>
+        <% if @article.content.present? %>
+            <div class="text-justify indent-4">
+                <%= @article.content %>
+            </div>
+        <% else %>
+            <%= t('.content_absent') %>
+        <% end %>
+    </div>
+</div>
+
+<div class="grid grid-cols-1">
+    <div>
+        <%= link_to t('button.all.articles'), articles_path, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        <% if press_service_signed_in? %>
+            <%= link_to t('button.edit'), edit_article_path(@article), class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+            <%= button_to t('button.delete'), @article, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+        <% end %>
+    </div>
+</div>

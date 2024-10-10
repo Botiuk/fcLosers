@@ -1,0 +1,51 @@
+<%= form_with(model: article) do |form| %>
+    <form class="w-full max-w-lg">
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full px-3">
+                <%= form.label :title, t('.title'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.text_field :title,  placeholder: t('.placeholder.title'), autofocus: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :article_type, t('.article_type'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.select :article_type, Article.article_types.keys.map{ |key| [Article.human_enum_name(:article_type, key), key] }, {:prompt => t('.prompt'), :selected => form.object.article_type}, {:class => "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :published_at, t('.published_at'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.datetime_local_field :published_at, value: form.object.published_at || nil, min: form.object.published_at || DateTime.now, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3 text-justify text-red-500"><%= t('.article_instruction') %></div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <%= form.label :cover, t('.cover'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <% if article.cover.present? %>
+                    <img class="w-40 my-2" src="<%= cloudinary_url(article.cover.key, height: 200, crop: :scale) %>" style="width:20%;">
+                <% end %>
+                <%= form.file_field :cover, direct_upload: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <%= form.label :content, t('.content'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.rich_text_area :content %>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <%= form.button nil, class: "bg-green hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" do %>
+            <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </form>
+<% end %>

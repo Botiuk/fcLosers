@@ -24,15 +24,66 @@ uk:
     attributes:
       article:
         title: "Поле 'Заголовок"
-        article_type: "Поле 'Тип ресурсу'"
+        article_type: "Поле 'Тип новини'"
         article_types:
           games: "Матчі"
           club_life: "Життя клубу"
           press: "Преса"
 
+  notice:
+    create:
+      article: "Новину успішно створено"
+    update:
+      article: "Новину успішно оновлено"
+    destroy:
+      article: "Новину успішно видалено"
+
   navigation:
     articles: "Новини"
+  
+  button:
+    add:
+      article: "Додати новину"
+    all:
+      articles: "Всі новини"
+    edit: "Редагувати"
+    show: "Детальніше"
+    delete: "Видалити"
+    delete_confirm: "Точно видалити?"
+    delete_confirm_dependent: "Точно видалити? Буде видалено все, що пов'язано."
+    submit: "Підтвердити"
 
   main:
     index:
       welcome_html: "Вітаємо на офіційній сторінці ФК &quot;Невдахи&quot; (Тернопіль)!"
+
+  articles:
+    index:
+      title: "Всі новини"
+      title_match: "Новини категорії 'Матч'"
+      title_club_life: "Новини категорії 'Життя клубу'"
+      title_press: "Новини категорії 'Про нас пишуть'"
+      articles_empty: "Поки новин немає"
+    article:
+      cover_absent: "обкладинка відсутня"
+      draft: "Чернетка"
+      scheduled: "Заплановано"
+    new:
+      title: "Нова новина"
+    form:
+      title: "Заголовок новини:"
+      published_at: "Дата публікації:*"
+      article_instruction: "* Дату публікації залишити порожньою, якщо новина в статусі чернетки, поставити майбутню, якщо заплановано до публікації пізніше і поточну, якщо новину потрібно зразу ж опублікувати"
+      cover: "Обкладинка новини:"
+      content: "Текст новини:"
+      placeholder:
+        title: "Введіть назву новини"
+      article_type: "Тип новини:"
+      prompt: "-- виберіть зі списку --"
+    edit:
+      title: "Редагувати новину"
+    show:
+      cover_absent: "обкладинка відсутня"
+      content_absent: "Текст новини відсутній"
+      draft: "Чернетка"
+      scheduled: "Заплановано"

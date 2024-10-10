@@ -1,0 +1,20 @@
+<div class="grid grid-cols-2 gap-10 mb-2">
+    <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
+    <% if press_service_signed_in? %>
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.article'), new_article_path, :method => :post, class: "" %>
+        </div>
+    <% end %>
+</div>
+
+<% if @articles.present? %>
+    <div class="grid grid-cols-3 gap-4 mb-3">
+        <% @articles.each do |article| %>
+            <%= render article %>
+        <% end %>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.articles_empty') %></p>
+<% end %>
+
+<%= render 'shared/pagy' %>
