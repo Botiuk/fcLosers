@@ -3,20 +3,20 @@
 require 'rails_helper'
 
 RSpec.describe 'Mains' do
-  describe "non registered user management" do
-    it "can GET index" do
+  describe 'non registered user management' do
+    it 'can GET index' do
       get root_path
       expect(response).to be_successful
     end
   end
 
-  describe "press_service management" do
-    before :each do
+  describe 'press_service management' do
+    before do
       @press_service = create(:press_service)
-      login_as(@press_service, :scope => :press_service)
+      login_as(@press_service, scope: :press_service)
     end
 
-    it "can GET index" do
+    it 'can GET index' do
       get root_path
       expect(response).to be_successful
     end

@@ -9,14 +9,20 @@ class ArticlesController < ApplicationController
       @pagy, @articles = pagy(Article.order(published_at: :desc), limit: 9)
     else
       @pagy, @articles = pagy(
-        Article.where.not(published_at: nil).where.not('published_at > ?', DateTime.now).order(published_at: :desc), limit: 9
+        Article.where.not(published_at: nil).where.not('published_at > ?',
+                                                       DateTime.now).order(published_at: :desc), limit: 9
       )
     end
   rescue Pagy::OverflowError
     redirect_to articles_url(page: 1)
   end
 
-  def show; end
+  def show
+    return if press_service_signed_in?
+    return unless @article.published_at.nil? || @article.published_at > DateTime.now
+
+    redirect_to articles_url
+  end
 
   def new
     @article = Article.new
