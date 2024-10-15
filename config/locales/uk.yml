@@ -23,7 +23,7 @@ uk:
   activerecord:
     attributes:
       article:
-        title: "Поле 'Заголовок"
+        title: "Поле 'Заголовок'"
         article_type: "Поле 'Тип новини'"
         article_types:
           games: "Матчі"
@@ -77,7 +77,8 @@ uk:
       cover: "Обкладинка новини:"
       content: "Текст новини:"
       placeholder:
-        title: "Введіть назву новини"
+        title: "Введіть заголовок новини"
+        content: "Введіть текст новини"
       article_type: "Тип новини:"
       prompt: "-- виберіть зі списку --"
     edit:
