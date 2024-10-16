@@ -27,7 +27,8 @@ when 'development'
     byte_size: 151_321,
     checksum: 'wSps1y9oB3nGIibHYWAX7A=='
   )
-  (1..15).each do |article_id|
+  article_ids = Article.ids
+  article_ids.each do |article_id|
     ActiveStorage::Attachment.create!(
       record_type: 'Article',
       record_id: article_id,
@@ -38,6 +39,44 @@ when 'development'
       record_type: 'Article',
       record_id: article_id,
       name: 'content',
+      body: Faker::Lorem.paragraph_by_chars
+    )
+  end
+
+  50.times do
+    Player.create(
+      name: Faker::Name.first_name,
+      surname: Faker::Name.last_name,
+      date_of_birth: Faker::Date.between(from: 40.years.ago, to: 16.years.ago),
+      which_team: Player.which_teams.keys.sample,
+      position: Player.positions.keys.sample,
+      player_number: Faker::Number.between(from: 1, to: 99),
+      height: Faker::Number.between(from: 1.60, to: 2.15),
+      weight: Faker::Number.between(from: 55.0, to: 90.0),
+      leg: Player.legs.keys.sample
+    )
+  end
+  ActiveStorage::Blob.create!(
+    key: 'ochx8crdnsnw5k7lv3tj71507m7t',
+    filename: 'empty_photo.jpg',
+    content_type: 'image/jpeg',
+    metadata: '{"identified":true,"width":380,"height":380,"analyzed":true}',
+    service_name: 'cloudinary',
+    byte_size: 5704,
+    checksum: 'Yp8xTVxnrsK16TZ6wJaPbw=='
+  )
+  players_ids = Player.ids
+  players_ids.each do |player_id|
+    ActiveStorage::Attachment.create!(
+      record_type: 'Player',
+      record_id: player_id,
+      name: 'player_photo',
+      blob_id: 2
+    )
+    ActionText::RichText.create!(
+      record_type: 'Player',
+      record_id: player_id,
+      name: 'player_biography',
       body: Faker::Lorem.paragraph_by_chars
     )
   end
