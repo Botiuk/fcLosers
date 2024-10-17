@@ -10,16 +10,22 @@ class Player < ApplicationRecord
   enum :position, { goalkeeper: 0, defender: 1, midfielder: 2, forward: 3 }, prefix: true
   enum :leg, { right: 0, left: 1, both: 2 }, prefix: true
 
-  validates :name, :surname, :which_team, :position, :height, :weight, :leg, presence: true
+  validates :surname, :name, :which_team, :position, :height, :weight, :leg, presence: true
   validates :date_of_birth, presence: true,
                             comparison: { less_than_or_equal_to: (Time.zone.today - 12.years), message: I18n.t('errors.messages.player_older_than') }
   validates :player_number, presence: true,
                             uniqueness: { scope: :which_team, message: I18n.t('errors.messages.player_uniq_number') }
 
+  scope :players_ordered, -> { order(:surname, :name, :player_number) }
+
+  def self.team_players_with_position(team, player_position)
+    Player.where(which_team: team, position: player_position).order(:player_number)
+  end
+
   private
 
   def titleize_name_surname
-    self.name = name.downcase.titleize if name.present?
-    self.surname = surname.downcase.titleize if surname.present?
+    self.name = name.split.map(&:capitalize).join(' ') if name.present? && name.sub('-', '').eql?(name)
+    self.surname = surname.split.map(&:capitalize).join(' ') if surname.present? && surname.sub('-', '').eql?(surname)
   end
 end

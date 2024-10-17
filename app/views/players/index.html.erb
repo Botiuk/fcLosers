@@ -1,0 +1,85 @@
+<div class="grid grid-cols-2 gap-10 mb-2">
+    <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
+    <% if press_service_signed_in? %>
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.player'), new_player_path, :method => :post, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        </div>
+    <% end %>
+</div>
+
+<% if @players.present? %>
+    <div class="px-3 py-4 flex justify-center">
+        <table class="w-full text-md bg-white shadow-md rounded mb-4">
+            <tbody>
+                <tr class="border-b">
+                    <th class="text-left p-3 px-5"><%= t('.surname') %></th>
+                    <th class="text-left p-3 px-5"><%= t('.name') %></th>
+                    <th class="text-left p-3 px-5"><%= t('.which_team') %></th>
+                    <th class="text-left p-3 px-5"><%= t('.player_number') %></th>
+                    <th colspan="3"></th>
+                </tr>
+                <% @players.each do |player| %>
+                    <tr class="border-b">
+                        <td class="p-3 px-5"><%= player.surname %></td>
+                        <td class="p-3 px-5"><%= player.name %></td>
+                        <td class="p-3 px-5 text-center"><%= Player.human_enum_name(:which_team, player.which_team) %></td>
+                        <td class="p-3 px-5 text-center"><%= player.player_number %></td>
+                        <td class="p-3 px-5"><%= link_to t('button.show'), player, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %></td>
+                        <td class="p-3 px-5"><%= link_to t('button.edit'), edit_player_path(player), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %></td>
+                        <td class="p-3 px-5"><%= button_to t('button.delete'), player, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% elsif @goalkeepers.present? || @defenders.present? || @midfielders.present? || @forwards.present? %>
+    <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+        <%= t('.goalkeepers') %>
+    </div>
+    <% if @goalkeepers.present? %>
+        <div class="grid grid-cols-3">
+            <% @goalkeepers.each do |player| %>
+                <%= render player %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+        <%= t('.defenders') %>
+    </div>
+    <% if @defenders.present? %>
+        <div class="grid grid-cols-3">
+            <% @defenders.each do |player| %>
+                <%= render player %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+        <%= t('.midfielders') %>
+    </div>
+    <% if @midfielders.present? %>
+        <div class="grid grid-cols-3">
+            <% @midfielders.each do |player| %>
+                <%= render player %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+        <%= t('.forwards') %>
+    </div>
+    <% if @forwards.present? %>
+        <div class="grid grid-cols-3">
+            <% @forwards.each do |player| %>
+                <%= render player %>
+            <% end %>
+        </div>
+    <% end %>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.players_empty') %></p>
+<% end %>
+
+<% if @pagy.present? %>
+    <%= render 'shared/pagy' %>
+<% end %>

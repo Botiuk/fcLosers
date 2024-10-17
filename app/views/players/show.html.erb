@@ -1,0 +1,42 @@
+<div class="flex flex-wrap -mx-3">
+    <div class="w-full md:w-1/2 px-3">
+        <% if @player.player_photo.present? %>
+            <img class="" src="<%= cloudinary_url(@player.player_photo.key, height: 200, crop: :scale) %>" style="width:50%;">
+        <% end %>
+    </div>
+
+    <div class="w-full md:w-1/2 px-3 text-xl">
+        <h4><%= t('.surname') %>: <%= @player.surname %></h4>
+        <h4><%= t('.name') %>: <%= @player.name %></h4>
+        <h4><%= t('.player_number') %>: <%= @player.player_number %></h4>
+        <h4><%= t('.date_of_birth') %>: <%= I18n.l(@player.date_of_birth, format: :long) %></h4>
+        <h4><%= t('.position') %>: <%= Player.human_enum_name(:position, @player.position) %></h4>
+        <h4><%= t('.leg') %>: <%= Player.human_enum_name(:leg, @player.leg) %></h4>
+        <h4><%= t('.height') %>: <%= @player.height.round(2) %></h4>
+        <h4><%= t('.weight') %>: <%= @player.weight.round(1) %></h4>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 mb-2 mt-2">
+    <h4><%= t('.player_biography') %>:</h4>
+    <div>
+        <% if @player.player_biography.present? %>
+            <div class="text-justify indent-4">
+                <%= @player.player_biography %>
+            </div>
+        <% else %>
+            <%= t('.player_biography_absent') %>
+        <% end %>
+    </div>
+</div>
+
+<div class="grid grid-cols-1">
+    <div>
+        <% if press_service_signed_in? %>
+            <%= link_to t('button.edit'), edit_player_path(@player), class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+            <%= button_to t('button.delete'), @player, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+        <% else %>
+            <%= link_to t('button.back'), :back, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        <% end %>
+    </div>
+</div>
