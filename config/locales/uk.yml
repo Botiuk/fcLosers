@@ -27,6 +27,9 @@ uk:
       first_letter: "має починатися з великої літери"
       player_older_than: " не може бути такою, що гравець молодше 12 років"
       player_uniq_number: "не унікальний. В цій команді вже є гравець з таким"
+    coach_validations:
+      main: "У цій команді посада головного тренера зайнята"
+      temporary: "У цій команді посада в.о. головного тренера зайнята"
 
   activerecord:
     attributes:
@@ -60,6 +63,29 @@ uk:
           both: "Обидві"
         date_of_birth: "Дата народження"
         player_number: "Номер гравця"
+      coach:
+        name: "Поле 'Ім'я'"
+        middle_name: "Поле 'По батькові'"
+        surname: "Поле 'Прізвище'"
+        which_team: "Поле 'Яка команда'"
+        which_teams:
+          first: "Перша"
+          second: "Дубль"
+          u_19: "U-19"
+        position: "Поле 'Посада'"
+        positions:
+          main_coach: "Головний тренер"
+          temporary_main_coach: "В.о. головного тренера"
+          coach_helper: "Помічник головного тренера"
+          coach: "Тренер"
+          goalkeeper_coach: "Тренер воротарів"
+          physical_coach: "Тренер по фізичній підготовці"
+          coach_analytic: "Тренер-аналітик"
+          doctor: "Лікар"
+          masseur: "Масажист"
+          administrator: "Адміністратор"
+          press: "Прес-аташе"
+        date_of_birth: "Дата народження"
 
   notice:
     create:
