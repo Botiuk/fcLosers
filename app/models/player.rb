@@ -21,11 +21,4 @@ class Player < ApplicationRecord
   def self.team_players_with_position(team, player_position)
     Player.where(which_team: team, position: player_position).order(:player_number)
   end
-
-  private
-
-  def titleize_name_surname
-    self.name = name.split.map(&:capitalize).join(' ') if name.present? && name.sub('-', '').eql?(name)
-    self.surname = surname.split.map(&:capitalize).join(' ') if surname.present? && surname.sub('-', '').eql?(surname)
-  end
 end
