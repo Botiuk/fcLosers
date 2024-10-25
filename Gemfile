@@ -55,7 +55,7 @@ group :development, :test do
   # Testing framework
   gem 'rspec-rails', '7.0.1'
   # Fixtures replacement with a straightforward definition syntax
-  gem 'factory_bot_rails', '6.4.3'
+  gem 'factory_bot_rails', '6.4.4'
   # Library for generating fake data
   gem 'faker', '3.4.2'
 end
