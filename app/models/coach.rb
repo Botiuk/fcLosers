@@ -21,7 +21,12 @@ class Coach < ApplicationRecord
   private
 
   def titleize_middle_name
-    self.middle_name = middle_name.split.map(&:capitalize).join(' ') if middle_name.present? && middle_name.sub('-',
-                                                                                                                '').eql?(middle_name)
+    return if middle_name.blank?
+
+    self.middle_name = if middle_name.sub('-', '').eql?(middle_name)
+                         middle_name.split.map(&:capitalize).join(' ')
+                       else
+                         middle_name.tr('-', ' ').split.map(&:capitalize).join('-')
+                       end
   end
 end

@@ -9,7 +9,19 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def titleize_name_surname
-    self.name = name.split.map(&:capitalize).join(' ') if name.present? && name.sub('-', '').eql?(name)
-    self.surname = surname.split.map(&:capitalize).join(' ') if surname.present? && surname.sub('-', '').eql?(surname)
+    if name.present?
+      self.name = if name.sub('-', '').eql?(name)
+                    name.split.map(&:capitalize).join(' ')
+                  else
+                    name.tr('-', ' ').split.map(&:capitalize).join('-')
+                  end
+    end
+    return if surname.blank?
+
+    self.surname = if surname.sub('-', '').eql?(surname)
+                     surname.split.map(&:capitalize).join(' ')
+                   else
+                     surname.tr('-', ' ').split.map(&:capitalize).join('-')
+                   end
   end
 end
