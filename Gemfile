@@ -9,7 +9,7 @@ gem 'rails', '7.2.1'
 gem 'propshaft', '1.1.0'
 
 # Use postgresql as the database for Active Record
-gem 'pg', '1.5.8'
+gem 'pg', '1.5.9'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem 'puma', '6.4.3'
@@ -21,7 +21,7 @@ gem 'jsbundling-rails', '1.3.1'
 gem 'cssbundling-rails', '1.4.1'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails', '2.0.10'
+gem 'turbo-rails', '2.0.11'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails', '1.3.4'
@@ -55,23 +55,23 @@ group :development, :test do
   # Testing framework
   gem 'rspec-rails', '7.0.1'
   # Fixtures replacement with a straightforward definition syntax
-  gem 'factory_bot_rails', '6.4.3'
+  gem 'factory_bot_rails', '6.4.4'
   # Library for generating fake data
-  gem 'faker', '3.4.2'
+  gem 'faker', '3.5.1'
 end
 
 group :development do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman', '6.2.1', require: false
+  gem 'brakeman', '6.2.2', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
-  gem 'rubocop', '1.66.1', require: false
+  gem 'rubocop', '1.67.0', require: false
   # Automatic Rails code style checking tool.
-  gem 'rubocop-rails', '2.26.2', require: false
+  gem 'rubocop-rails', '2.27.0', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
   gem 'rubocop-performance', '1.22.1', require: false
   # Code style checking for RSpec files
-  gem 'rubocop-rspec', '3.0.5', require: false
+  gem 'rubocop-rspec', '3.2.0', require: false
   gem 'rubocop-rspec_rails', '2.30.0', require: false
   # Code style checking for factory_bot files
   gem 'rubocop-factory_bot', '2.26.1', require: false
