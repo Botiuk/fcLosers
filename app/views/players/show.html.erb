@@ -12,8 +12,8 @@
         <h4><%= t('.date_of_birth') %>: <%= I18n.l(@player.date_of_birth, format: :long) %></h4>
         <h4><%= t('.position') %>: <%= Player.human_enum_name(:position, @player.position) %></h4>
         <h4><%= t('.leg') %>: <%= Player.human_enum_name(:leg, @player.leg) %></h4>
-        <h4><%= t('.height') %>: <%= @player.height.round(2) %></h4>
-        <h4><%= t('.weight') %>: <%= @player.weight.round(1) %></h4>
+        <h4><%= t('.height') %>: <%= @player.height %></h4>
+        <h4><%= t('.weight') %>: <%= @player.weight %></h4>
     </div>
 </div>
 

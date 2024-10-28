@@ -8,8 +8,8 @@ FactoryBot.define do
     which_team { Player.which_teams.keys.sample }
     position { Player.positions.keys.sample }
     player_number { Faker::Number.between(from: 1, to: 99) }
-    height { Faker::Number.between(from: 1.60, to: 2.15) }
-    weight { Faker::Number.between(from: 55.0, to: 90.0) }
+    height { Faker::Number.between(from: 1.60, to: 2.15).round(2) }
+    weight { Faker::Number.between(from: 55.0, to: 90.0).round(1) }
     leg { Player.legs.keys.sample }
   end
 end
