@@ -48,15 +48,16 @@ RSpec.describe Coach do
     expect(coach).to be_valid
   end
 
-  it 'is not valid if a main_coach present' do
+  it 'is not create if a main_coach present' do
     coach_one = build(:coach, position: 'main_coach')
     coach_two = create(:coach, which_team: coach_one.which_team, position: 'main_coach')
-    expect(coach_two).not_to be_valid
+    expect(coach_two).not_to be_valid(:create)
   end
 
-  it 'is not valid if a temporary_main_coach present' do
+  it 'is not create if a temporary_main_coach present' do
     coach_one = build(:coach, position: 'temporary_main_coach')
     coach_two = create(:coach, which_team: coach_one.which_team, position: 'temporary_main_coach')
-    expect(coach_two).not_to be_valid
+    expect(coach_two).not_to be_valid(:create)
   end
+
 end
