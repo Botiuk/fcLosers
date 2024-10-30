@@ -16,6 +16,7 @@ class Coach < ApplicationRecord
   validates :date_of_birth, presence: true,
                             comparison: { less_than_or_equal_to: (Time.zone.today - 12.years), message: I18n.t('errors.messages.player_older_than') }
   validates_with CoachValidator, on: :create
+  validates_with ChangeCoachValidator, on: :update
 
   scope :coaches_ordered, -> { order(:position, :surname, :name, :middle_name) }
 
