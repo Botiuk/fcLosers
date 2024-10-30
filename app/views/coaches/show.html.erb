@@ -1,0 +1,39 @@
+<div class="flex flex-wrap -mx-3">
+    <div class="w-full md:w-1/2 px-3">
+        <% if @coach.coach_photo.present? %>
+            <img class="" src="<%= cloudinary_url(@coach.coach_photo.key, height: 200, crop: :scale) %>" style="width:50%;">
+        <% end %>
+    </div>
+
+    <div class="w-full md:w-1/2 px-3 text-xl">
+        <h4><%= t('.surname') %>: <%= @coach.surname %></h4>
+        <h4><%= t('.name') %>: <%= @coach.name %></h4>
+        <h4><%= t('.middle_name') %>: <%= @coach.middle_name %></h4>
+        <h4><%= t('.position') %>: <%= Coach.human_enum_name(:position, @coach.position) %></h4>
+        <h4><%= t('.date_of_birth') %>: <%= I18n.l(@coach.date_of_birth, format: :long) %></h4>        
+    </div>
+</div>
+
+<div class="grid grid-cols-1 mb-2 mt-2">
+    <h4><%= t('.coach_biography') %>:</h4>
+    <div>
+        <% if @coach.coach_biography.present? %>
+            <div class="text-justify indent-4">
+                <%= @coach.coach_biography %>
+            </div>
+        <% else %>
+            <%= t('.coach_biography_absent') %>
+        <% end %>
+    </div>
+</div>
+
+<div class="grid grid-cols-1">
+    <div>
+        <% if press_service_signed_in? %>
+            <%= link_to t('button.edit'), edit_coach_path(@coach), class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+            <%= button_to t('button.delete'), @coach, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+        <% else %>
+            <%= link_to t('button.back'), :back, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        <% end %>
+    </div>
+</div>

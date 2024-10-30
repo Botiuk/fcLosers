@@ -28,7 +28,7 @@ uk:
       player_older_than: " не може бути такою, що гравець молодше 12 років"
       player_uniq_number: "не унікальний. В цій команді вже є гравець з таким"
     coach_validations:
-      main: "У цій команді посада головного тренера зайнята"
+      main_uniq: "У цій команді посада головного тренера зайнята"
       temporary: "У цій команді посада в.о. головного тренера зайнята"
 
   activerecord:
@@ -85,27 +85,33 @@ uk:
           masseur: "Масажист"
           administrator: "Адміністратор"
           press: "Прес-аташе"
+          consultant: "Консультант"
         date_of_birth: "Дата народження"
 
   notice:
     create:
       article: "Новину успішно створено"
       player: "Гравця успішно створено. Вітаємо в команді!"
+      coach: "Тренера чи працівника успішно створено. Вітаємо в команді!"
     update:
       article: "Новину успішно оновлено"
       player: "Гравця успішно оновлено"
+      coach: "Тренера чи працівника успішно оновлено"
     destroy:
       article: "Новину успішно видалено"
       player: "Граця успішно видалено. Па-па, невдаха :-Р"
+      coach: "Тренера чи працівника успішно видалено. Па-па, невдаха :-Р"
 
   navigation:
     articles: "Новини"
     players: "Гравці"
+    coaches: "Тренери і персонал"
   
   button:
     add:
       article: "Додати новину"
       player: "Додати гравця"
+      coach: "Додати тренера"
     all:
       articles: "Всі новини"
     back: "Назад"
@@ -204,3 +210,42 @@ uk:
       leg: "Основна нога"
       player_biography: "Біографія"
       player_biography_absent: "Біографія гравця відсутня"
+
+  coaches:
+    index:
+      title: "Тренери і персонал"
+      coaches_empty: "Даних про тренерів і персонал не має"
+      name: "Ім'я"
+      middle_name: "По батькові"
+      surname: "Прізвище"
+      which_team: "Яка команда"
+      position: "Посада"
+    coach:
+      coach_photo_absent: "Фото відсутнє"
+    new:
+      title: "Створити тренера чи працівника"
+    form:
+      surname: "Прізвище:"
+      name: "Ім'я:"
+      middle_name: "По батькові:"
+      position: "Посада:"
+      which_team: "Яка команда:"
+      date_of_birth: "Дата народження:"
+      coach_photo: "Фото:"
+      coach_biography: "Біографія:"
+      placeholder:
+        surname: "Введіть прізвище"
+        name: "Введіть ім'я"
+        middle_name: "Введіть по батькові"
+        coach_biography: "Введіть біографію"
+      prompt: "-- виберіть зі списку --"
+    edit:
+      title: "Редагувати тренера чи працівника"
+    show:
+      surname: "Прізвище"
+      name: "Ім'я"
+      middle_name: "По батькові"      
+      date_of_birth: "Дата народження"
+      position: "Посада"
+      coach_biography: "Біографія"
+      coach_biography_absent: "Біографія відсутня"

@@ -1,0 +1,67 @@
+<%= form_with(model: coach) do |form| %>
+    <form class="w-full max-w-lg">
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :surname, t('.surname'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.text_field :surname, placeholder: t('.placeholder.surname'), autofocus: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">                
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :name, t('.name'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.text_field :name, placeholder: t('.placeholder.name'), class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :middle_name, t('.middle_name'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.text_field :middle_name, placeholder: t('.placeholder.middle_name'), class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :which_team, t('.which_team'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.select :which_team, Coach.which_teams.keys.map{ |key| [Coach.human_enum_name(:which_team, key), key] }, {:prompt => t('.prompt'), :selected => form.object.which_team}, {:class => "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :position, t('.position'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.select :position, Coach.positions.keys.map{ |key| [Coach.human_enum_name(:position, key), key] }, {:prompt => t('.prompt'), :selected => form.object.position}, {:class => "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :date_of_birth, t('.date_of_birth'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.date_field :date_of_birth, value: form.object.date_of_birth, max: (DateTime.now - 12.years), class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">
+                <%= form.label :coach_photo, t('.coach_photo'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <% if coach.coach_photo.present? %>
+                    <img class="w-40 my-2" src="<%= cloudinary_url(coach.coach_photo.key, height: 200, crop: :scale) %>" style="width:20%;">
+                <% end %>
+                <%= form.file_field :coach_photo, direct_upload: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3 mb-6">
+            <div class="w-full px-3">
+                <%= form.label :coach_biography, t('.coach_biography'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.rich_text_area :coach_biography, placeholder: t('.placeholder.coach_biography'), class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between">
+            <%= form.button nil, class: "bg-green hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" do %>
+            <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </form>
+<% end %>

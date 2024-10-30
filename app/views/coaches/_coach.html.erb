@@ -1,0 +1,22 @@
+<div id="<%= dom_id coach %>" class="p-4">
+    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+        <%= link_to coach, class: "" do %>
+            <% if coach.coach_photo.present? %>
+                <img class="rounded-t-lg" src="<%= cloudinary_url(coach.coach_photo.key, height: 200, crop: :scale) %>" style="width:100%;">
+            <% else %>
+                <div class=""><br><br><br><%= t('.coach_photo_absent') %><br><br><br><br></div>
+            <% end %>
+
+            <div class="p-4">
+                <div class="text-xl text-center text-emerald-800">
+                    <%= Coach.human_enum_name(:position, coach.position) %><br>
+                </div>
+                <div class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                    <%= coach.surname %><br>
+                    <%= coach.name %><br>
+                    <%= coach.middle_name %><br>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
