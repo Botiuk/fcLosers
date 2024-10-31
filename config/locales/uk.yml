@@ -87,6 +87,9 @@ uk:
           press: "Прес-аташе"
           consultant: "Консультант"
         date_of_birth: "Дата народження"
+      team:
+        name: "Поле 'Назва'"
+        represent: "Поле 'Звідки'"
 
   notice:
     create:

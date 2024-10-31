@@ -108,6 +108,14 @@ when 'development'
     )
   end
 
+  50.times do
+    Team.create(
+      team_type: [Faker::Alphanumeric.alphanumeric(number: 2, min_alpha: 2).upcase, nil].sample,
+      name: Faker::Sports::Football.team,
+      represent: Faker::Address.city
+    )
+  end
+
 when 'production'
 
   press_service = PressService.where(email: 'fcLosers@gmail.com').first_or_initialize
