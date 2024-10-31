@@ -15,8 +15,8 @@ class Coach < ApplicationRecord
   validates :surname, :name, :middle_name, :which_team, :position, presence: true
   validates :date_of_birth, presence: true,
                             comparison: { less_than_or_equal_to: (Time.zone.today - 12.years), message: I18n.t('errors.messages.player_older_than') }
-  validates_with CoachValidator, on: :create
-  validates_with ChangeCoachValidator, on: :update
+  validates :position, uniqueness: { scope: :which_team, message: I18n.t('errors.messages.main_coach_uniq') },
+                       if: :main_coach?
 
   scope :coaches_ordered, -> { order(:position, :surname, :name, :middle_name) }
 
@@ -30,5 +30,9 @@ class Coach < ApplicationRecord
                        else
                          middle_name.tr('-', ' ').split.map(&:capitalize).join('-')
                        end
+  end
+
+  def main_coach?
+    position == 'main_coach' || position == 'temporary_main_coach'
   end
 end

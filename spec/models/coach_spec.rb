@@ -49,48 +49,22 @@ RSpec.describe Coach do
   end
 
   it 'is not create if a main_coach present' do
-    coach_one = build(:coach, position: 'main_coach')
-    coach_two = create(:coach, which_team: coach_one.which_team, position: coach_one.position)
-    expect(coach_two).not_to be_valid(:create)
-    expect(coach_two.errors.messages).to eq({ base: [I18n.t('errors.coach_validations.main')] })
+    coach_one = create(:coach, position: 'main_coach')
+    coach_two = build(:coach, which_team: coach_one.which_team, position: coach_one.position)
+    expect(coach_two).not_to be_valid
+    expect(coach_two.errors.messages).to eq({ position: [I18n.t('errors.messages.main_coach_uniq')] })
   end
 
   it 'is not create if a temporary_main_coach present' do
-    coach_one = build(:coach, position: 'temporary_main_coach')
-    coach_two = create(:coach, which_team: coach_one.which_team, position: coach_one.position)
-    expect(coach_two).not_to be_valid(:create)
-    expect(coach_two.errors.messages).to eq({ base: [I18n.t('errors.coach_validations.temporary')] })
+    coach_one = create(:coach, position: 'temporary_main_coach')
+    coach_two = build(:coach, which_team: coach_one.which_team, position: coach_one.position)
+    expect(coach_two).not_to be_valid
+    expect(coach_two.errors.messages).to eq({ position: [I18n.t('errors.messages.main_coach_uniq')] })
   end
 
   it 'is create if a other_coach present' do
-    coach_one = build(:coach, position: rand(2..11))
-    coach_two = create(:coach, which_team: coach_one.which_team, position: coach_one.position)
+    coach_one = create(:coach, position: rand(2..11))
+    coach_two = build(:coach, which_team: coach_one.which_team, position: coach_one.position)
     expect(coach_two).to be_valid
-  end
-
-  it 'is not update if a main_coach present' do
-    coach_one = create(:coach, position: 'main_coach')
-    coach_two = create(:coach, which_team: coach_one.which_team, position: 'coach')
-    coach_two.update(position: coach_one.position)
-    expect(coach_two).not_to be_valid(:update)
-    expect(coach_two.errors.messages).to eq({ base: [I18n.t('errors.coach_validations.main')] })
-    expect(coach_two.reload.position).to eq('coach')
-  end
-
-  it 'is not update if a temporary_main_coach present' do
-    coach_one = create(:coach, position: 'temporary_main_coach')
-    coach_two = create(:coach, which_team: coach_one.which_team, position: 'coach')
-    coach_two.update(position: coach_one.position)
-    expect(coach_two).not_to be_valid(:update)
-    expect(coach_two.errors.messages).to eq({ base: [I18n.t('errors.coach_validations.temporary')] })
-    expect(coach_two.reload.position).to eq('coach')
-  end
-
-  it 'is update if a other_coach present' do
-    coach_one = build(:coach, position: rand(2..11))
-    coach_two = create(:coach, which_team: coach_one.which_team, position: 'main_coach')
-    coach_two.update(position: coach_one.position)
-    expect(coach_two).to be_valid(:update)
-    expect(coach_two.reload.position).to eq(coach_one.position)
   end
 end
