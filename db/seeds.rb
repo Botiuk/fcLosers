@@ -115,6 +115,15 @@ when 'development'
       represent: Faker::Address.city
     )
   end
+  teams_ids = Team.ids
+  teams_ids.each do |team_id|
+    ActiveStorage::Attachment.create!(
+      record_type: 'Team',
+      record_id: team_id,
+      name: 'team_logo',
+      blob_id: 2
+    )
+  end
 
 when 'production'
 
