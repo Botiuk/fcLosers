@@ -1,0 +1,12 @@
+<tr id="<%= dom_id team %>" class="p-4">
+    <td class="p-3 px-5 text-center">
+        <% if team.team_logo.present? %>
+            <img class="rounded-t-lg text-center" src="<%= cloudinary_url(team.team_logo.key, height: 30, crop: :scale) %>" style="width:30%;">
+        <% end %>
+    </td>
+    <td class="p-3 px-5 text-center"><%= team.team_type %> "<%= team.name %>"</td>
+    <td class="p-3 px-5 text-center"><%= team.represent %></td>
+    <td class="p-3 px-5 text-center">
+        <%= link_to t('button.edit'), edit_team_path(team), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    </td>
+</tr>

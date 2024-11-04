@@ -1,0 +1,28 @@
+<div class="grid grid-cols-2 gap-10 mb-2">
+    <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
+    <div class="text-end my-auto">
+        <%= link_to t('button.add.team'), new_team_path, :method => :post, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    </div>
+</div>
+
+<% if @teams.present? %>
+    <div class="px-3 py-4 flex justify-center">
+        <table class="w-full text-md bg-white shadow-md rounded mb-4">
+            <tbody>
+                <tr class="border-b">
+                    <th class="text-left p-3 px-5"><%= t('.team_logo') %></th>
+                    <th class="text-left p-3 px-5"><%= t('.name') %></th>
+                    <th class="text-left p-3 px-5"><%= t('.represent') %></th>
+                    <th class="text-left p-3 px-5"></th>
+                </tr>
+                <% @teams.each do |team| %>
+                    <%= render team %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.teams_empty') %></p>
+<% end %>
+
+<%= render 'shared/pagy' %>

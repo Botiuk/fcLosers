@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   root 'main#index'
 
   resources :articles, :players, :coaches
+  resources :teams, except: %i[show destroy]
 end

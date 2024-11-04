@@ -19,7 +19,11 @@
           <li class="nav-item">
             <%= link_to t('navigation.coaches'), coaches_path, class: "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" %>
           </li>
-          
+          <% if press_service_signed_in? %>
+            <li class="nav-item">
+              <%= link_to t('navigation.teams'), teams_path, class: "px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75" %>
+            </li>
+          <% end %>          
       </ul>
     </div>
   </div>
