@@ -1,0 +1,14 @@
+<div class="grid grid-cols-2 gap-10 mb-2">
+    <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %> "<%= @tournament.name %>"</div>
+    <div class="text-end my-auto">
+    </div>
+</div>
+<div class="flex flex-wrap -mx-3">
+    <h4><%= I18n.l(@tournament.start_date, format: :long) %> - <%= @tournament.end_date %></h4>
+</div>
+
+<div class="grid grid-cols-1">
+    <div>
+        <%= link_to t('button.edit'), edit_tournament_path(@tournament), class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    </div>
+</div>
