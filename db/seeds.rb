@@ -125,6 +125,15 @@ when 'development'
     )
   end
 
+  10.times do
+    random_date = Faker::Date.between(from: 5.years.ago, to: 1.year.ago)
+    Tournament.create(
+      start_date: random_date,
+      end_date: [random_date + rand(2..12).month, nil].sample,
+      name: Faker::Sports::Football.competition
+    )
+  end
+
 when 'production'
 
   press_service = PressService.where(email: 'fcLosers@gmail.com').first_or_initialize

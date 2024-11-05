@@ -88,6 +88,10 @@ uk:
       team:
         name: "Поле 'Назва'"
         represent: "Поле 'Звідки'"
+      tournament:
+        name: "Поле 'Назва турніру'"
+        start_date: "Поле 'Дата початку'"
+        end_date: "Поле 'Дата завершення'"
 
   notice:
     create:
