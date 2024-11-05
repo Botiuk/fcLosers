@@ -8,14 +8,17 @@ class ApplicationRecord < ActiveRecord::Base
     I18n.t("activerecord.attributes.#{model_name.i18n_key}.#{enum_i18n_key}.#{enum_value}")
   end
 
-  def titleize_name_surname
-    if name.present?
-      self.name = if name.sub('-', '').eql?(name)
-                    name.split.map(&:capitalize).join(' ')
-                  else
-                    name.tr('-', ' ').split.map(&:capitalize).join('-')
-                  end
-    end
+  def titleize_name
+    return if name.blank?
+
+    self.name = if name.sub('-', '').eql?(name)
+                  name.split.map(&:capitalize).join(' ')
+                else
+                  name.tr('-', ' ').split.map(&:capitalize).join('-')
+                end
+  end
+
+  def titleize_surname
     return if surname.blank?
 
     self.surname = if surname.sub('-', '').eql?(surname)

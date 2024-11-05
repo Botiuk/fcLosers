@@ -1,3 +1,5 @@
+inherit_from: .rubocop_todo.yml
+
 require:
   - rubocop-rails
   - rubocop-performance
@@ -12,3 +14,10 @@ AllCops:
 # to add it to every class and module.
 Style/Documentation:
   Enabled: false
+  
+Layout/EndOfLine:
+  Enabled: False
+
+RSpec/MultipleExpectations:
+  Enabled: false
+  

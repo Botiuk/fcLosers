@@ -45,7 +45,7 @@ uk:
         which_teams:
           first: "Перша"
           second: "Дубль"
-          u_19: "U-19"
+          u19: "U-19"
         position: "Поле 'Амплуа гравця'"
         positions:
           goalkeeper: "Воротар"
@@ -69,7 +69,7 @@ uk:
         which_teams:
           first: "Перша"
           second: "Дубль"
-          u_19: "U-19"
+          u19: "U-19"
         position: "Поле 'Посада'"
         positions:
           main_coach: "Головний тренер"
@@ -169,7 +169,7 @@ uk:
       title: "Гравці"
       title_first: ""
       title_second: ""
-      title_u_19: ""
+      title_u19: ""
       players_empty: "Гравців не має"
       goalkeepers: "Воротарі"
       defenders: "Захисники"

@@ -1,0 +1,17 @@
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/20241007102726_create_active_storage_tables.active_storage.rb'
+    - 'db/migrate/20241016050120_create_players.rb'
+
+Metrics/AbcSize:
+  Exclude:
+    - 'db/migrate/20241007102726_create_active_storage_tables.active_storage.rb'
+
+Layout/LineLength:
+  Exclude:
+    - 'config/initializers/devise.rb'
+
+Rails/UniqueValidationWithoutIndex:
+  Exclude:
+    - 'app/models/player.rb'
+    - 'app/models/team.rb'

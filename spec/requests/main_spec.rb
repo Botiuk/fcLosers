@@ -12,8 +12,8 @@ RSpec.describe 'Mains' do
 
   describe 'press_service management' do
     before do
-      @press_service = create(:press_service)
-      login_as(@press_service, scope: :press_service)
+      press_service = create(:press_service)
+      login_as(press_service, scope: :press_service)
     end
 
     it 'can GET index' do
