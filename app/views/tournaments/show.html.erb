@@ -4,6 +4,7 @@
     </div>
 </div>
 <div class="flex flex-wrap -mx-3">
+    <h4><%= Tournament.human_enum_name(:schema_type, @tournament.schema_type) %></h4>
     <h4><%= I18n.l(@tournament.start_date, format: :long) %> - <%= @tournament.end_date %></h4>
 </div>
 

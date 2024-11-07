@@ -44,6 +44,6 @@ class TournamentsController < ApplicationController
   end
 
   def tournament_params
-    params.require(:tournament).permit(:name, :start_date, :end_date)
+    params.require(:tournament).permit(:name, :schema_type, :start_date, :end_date)
   end
 end

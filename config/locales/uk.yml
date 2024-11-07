@@ -92,6 +92,12 @@ uk:
         name: "Поле 'Назва турніру'"
         start_date: "Поле 'Дата початку'"
         end_date: "Поле 'Дата завершення'"
+        schema_type: "Поле 'Схема проведення'"
+        schema_types:
+          championship: "Чемпіонат"
+          cup: "Кубок"
+          mixed: "Змішана"
+          friendly: "Дружній"
 
   notice:
     create:
@@ -288,6 +294,7 @@ uk:
     index:
       title: "Турніри"
       name: "Назва турніру"
+      schema_type: "Схема проведення"
       start_date: "Дата початку"
       end_date: "Дата завершення"
       tournaments_empty: "Даних про турніри не має"
@@ -297,9 +304,11 @@ uk:
       title: "Редагувати турнір"
     form:
       name: "Назва турніру:"
+      schema_type: "Схема проведення:"
       start_date: "Дата початку:"
       end_date: "Дата завершення:"
       placeholder:
         name: "введіть назву турніру"
+      prompt: "-- виберіть зі списку --"
     show:
       title: "Детальніше про турнір"

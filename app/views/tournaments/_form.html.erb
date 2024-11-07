@@ -11,6 +11,16 @@
 
         <div class="flex flex-wrap -mx-3">
             <div class="w-full md:w-1/2 px-3">
+                <%= form.label :schema_type, t('.schema_type'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.select :schema_type, Tournament.schema_types.keys.map{ |key| [Tournament.human_enum_name(:schema_type, key), key] }, {:prompt => t('.prompt'), :selected => form.object.schema_type}, {:class => "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+            </div>
+
+            <div class="w-full md:w-1/2 px-3">
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3">
                 <%= form.label :start_date, t('.start_date'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
                 <%= form.date_field :start_date, value: form.object.start_date, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
             </div>

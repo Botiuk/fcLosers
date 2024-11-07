@@ -14,6 +14,11 @@ RSpec.describe Tournament do
       expect(tournament).not_to be_valid
     end
 
+    it 'is not valid without a schema_type' do
+      tournament = build(:tournament, schema_type: nil)
+      expect(tournament).not_to be_valid
+    end
+
     it 'is not valid without a start_date' do
       tournament = build(:tournament, start_date: nil)
       expect(tournament).not_to be_valid
