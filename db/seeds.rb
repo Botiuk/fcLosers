@@ -108,6 +108,12 @@ when 'development'
     )
   end
 
+  Team.create(
+    team_type: 'ФК',
+    name: 'Невдахи',
+    represent: 'Тернопіль'
+  )
+
   50.times do
     Team.create(
       team_type: [Faker::Alphanumeric.alphanumeric(number: 2, min_alpha: 2).upcase, nil].sample,
@@ -142,4 +148,9 @@ when 'production'
     password_confirmation: ENV.fetch('SEEDS_PASS', nil)
   )
 
+  Team.where(id: 1).first_or_initialize do |team|
+    team.team_type = 'ФК'
+    team.name = 'Невдахи'
+    team.represent = 'Тернопіль'
+  end
 end
