@@ -98,6 +98,9 @@ uk:
           cup: "Кубок"
           mixed: "Змішана"
           friendly: "Дружній"
+      tournament_team:
+        tournament_id: "Поле 'Турнір'"
+        team_id: "Поле 'Команда'"
 
   notice:
     create:

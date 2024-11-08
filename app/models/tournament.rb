@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Tournament < ApplicationRecord
+  has_many :tournament_teams, dependent: nil
   enum :schema_type, { championship: 0, cup: 1, mixed: 2, friendly: 3 }, prefix: true
 
   validates :name, :schema_type, :start_date, presence: true

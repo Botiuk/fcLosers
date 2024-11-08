@@ -141,6 +141,15 @@ when 'development'
     )
   end
 
+  tournament_ids = Tournament.ids
+  team_ids = Team.ids
+  100.times do
+    TournamentTeam.create(
+      tournament_id: tournament_ids.sample,
+      team_id: team_ids.sample
+    )
+  end
+
 when 'production'
 
   press_service = PressService.where(email: 'fcLosers@gmail.com').first_or_initialize
