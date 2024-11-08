@@ -17,5 +17,6 @@ Rails.application.routes.draw do
 
   resources :articles, :players, :coaches
   resources :teams, except: %i[show destroy]
-  resources :tournaments, except: %i[destroy]
+  resources :tournaments, except: :destroy
+  resources :tournament_teams, only: %i[new create destroy]
 end

@@ -10,7 +10,9 @@ class TournamentsController < ApplicationController
     redirect_to tournaments_url(page: 1)
   end
 
-  def show; end
+  def show
+    @tournament_teams = TournamentTeam.includes(:team).where(tournament_id: @tournament.id).order_by_team
+  end
 
   def new
     @tournament = Tournament.new
