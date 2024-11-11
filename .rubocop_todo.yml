@@ -16,3 +16,4 @@ Rails/UniqueValidationWithoutIndex:
     - 'app/models/player.rb'
     - 'app/models/team.rb'
     - 'app/models/tournament_team.rb'
+    - 'app/models/stadium.rb'

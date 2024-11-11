@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_08_071304) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_08_071304) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_press_services_on_email", unique: true
     t.index ["reset_password_token"], name: "index_press_services_on_reset_password_token", unique: true
+  end
+
+  create_table "stadia", force: :cascade do |t|
+    t.string "country"
+    t.string "region"
+    t.string "district"
+    t.integer "loctype"
+    t.string "location_name"
+    t.string "address"
+    t.string "stadium_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "teams", force: :cascade do |t|
