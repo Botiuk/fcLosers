@@ -3,7 +3,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem 'rails', '7.2.1'
+gem 'rails', '7.2.1.2'
 
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem 'propshaft', '1.1.0'
@@ -46,14 +46,14 @@ gem 'image_processing', '1.13.0'
 gem 'cloudinary', '2.2.0'
 
 # Agnostic pagination in plain ruby
-gem 'pagy', '9.1.0'
+gem 'pagy', '9.2.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.9.2', platforms: %i[mri windows], require: 'debug/prelude'
 
   # Testing framework
-  gem 'rspec-rails', '7.0.1'
+  gem 'rspec-rails', '7.1.0'
   # Fixtures replacement with a straightforward definition syntax
   gem 'factory_bot_rails', '6.4.4'
   # Library for generating fake data
@@ -65,7 +65,7 @@ group :development do
   gem 'brakeman', '6.2.2', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
-  gem 'rubocop', '1.67.0', require: false
+  gem 'rubocop', '1.68.0', require: false
   # Automatic Rails code style checking tool.
   gem 'rubocop-rails', '2.27.0', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
