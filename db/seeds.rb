@@ -154,7 +154,7 @@ when 'development'
     Stadium.create(
       country: Faker::Address.country,
       region: Faker::Address.state,
-      district: Faker::Address.country_code_long.downcase.capitalize,
+      district: Faker::Address.state,
       loctype: Stadium.loctypes.keys.sample,
       location_name: Faker::Address.city,
       address: Faker::Address.street_address,

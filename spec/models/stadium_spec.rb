@@ -57,8 +57,9 @@ RSpec.describe Stadium do
   end
 
   it 'is valid with same stadium_name and location_name, other loctype' do
-    stadium_one = create(:stadium)
-    stadium_two = build(:stadium, stadium_name: stadium_one.stadium_name, location_name: stadium_one.location_name)
-    expect(stadium_two).not_to be_valid
+    stadium_one = create(:stadium, loctype: 0)
+    stadium_two = build(:stadium, stadium_name: stadium_one.stadium_name, location_name: stadium_one.location_name,
+                                  loctype: [1, 2].sample)
+    expect(stadium_two).to be_valid
   end
 end
