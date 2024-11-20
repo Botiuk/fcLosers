@@ -61,28 +61,29 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
   end
 
   create_table "coaches", force: :cascade do |t|
-    t.string "name"
-    t.string "middle_name"
-    t.string "surname"
-    t.date "date_of_birth"
-    t.integer "which_team"
-    t.integer "position"
+    t.string "name", null: false
+    t.string "middle_name", null: false
+    t.string "surname", null: false
+    t.date "date_of_birth", null: false
+    t.integer "which_team", null: false
+    t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade do |t|
-    t.string "name"
-    t.string "surname"
-    t.date "date_of_birth"
-    t.integer "which_team"
-    t.integer "position"
-    t.integer "player_number"
-    t.float "height"
-    t.float "weight"
-    t.integer "leg"
+    t.string "name", null: false
+    t.string "surname", null: false
+    t.date "date_of_birth", null: false
+    t.integer "which_team", null: false
+    t.integer "position", null: false
+    t.integer "player_number", null: false
+    t.float "height", null: false
+    t.float "weight", null: false
+    t.integer "leg", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["player_number", "which_team"], name: "index_players_on_player_number_and_which_team", unique: true
   end
 
   create_table "press_services", force: :cascade do |t|
@@ -101,20 +102,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
     t.string "country"
     t.string "region"
     t.string "district"
-    t.integer "loctype"
-    t.string "location_name"
+    t.integer "loctype", null: false
+    t.string "location_name", null: false
     t.string "address"
-    t.string "stadium_name"
+    t.string "stadium_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["stadium_name", "loctype", "location_name"], name: "index_stadia_on_stadium_name_and_loctype_and_location_name", unique: true
   end
 
   create_table "teams", force: :cascade do |t|
     t.string "team_type"
-    t.string "name"
-    t.string "represent"
+    t.string "name", null: false
+    t.string "represent", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name", "team_type", "represent"], name: "index_teams_on_name_and_team_type_and_represent", unique: true
   end
 
   create_table "tournament_teams", force: :cascade do |t|
@@ -122,6 +125,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
     t.bigint "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["team_id", "tournament_id"], name: "index_tournament_teams_on_team_id_and_tournament_id", unique: true
     t.index ["team_id"], name: "index_tournament_teams_on_team_id"
     t.index ["tournament_id"], name: "index_tournament_teams_on_tournament_id"
   end

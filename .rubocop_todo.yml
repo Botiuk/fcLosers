@@ -2,6 +2,7 @@ Metrics/MethodLength:
   Exclude:
     - 'db/migrate/20241007102726_create_active_storage_tables.active_storage.rb'
     - 'db/migrate/20241016050120_create_players.rb'
+    - 'db/migrate/20241111084134_create_stadia.rb'
 
 Metrics/AbcSize:
   Exclude:
@@ -10,10 +11,3 @@ Metrics/AbcSize:
 Layout/LineLength:
   Exclude:
     - 'config/initializers/devise.rb'
-
-Rails/UniqueValidationWithoutIndex:
-  Exclude:
-    - 'app/models/player.rb'
-    - 'app/models/team.rb'
-    - 'app/models/tournament_team.rb'
-    - 'app/models/stadium.rb'
