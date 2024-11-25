@@ -108,7 +108,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
     t.string "stadium_name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["stadium_name", "loctype", "location_name"], name: "index_stadia_on_stadium_name_and_loctype_and_location_name", unique: true
+    t.index "lower((stadium_name)::text), loctype, location_name", name: "index_stadia_on_lower_stadium_name_loctype_location_name", unique: true
   end
 
   create_table "teams", force: :cascade do |t|
@@ -117,7 +117,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
     t.string "represent", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name", "team_type", "represent"], name: "index_teams_on_name_and_team_type_and_represent", unique: true
+    t.index "lower((name)::text), team_type, represent", name: "index_teams_on_lower_name_team_type_represent", unique: true
   end
 
   create_table "tournament_teams", force: :cascade do |t|

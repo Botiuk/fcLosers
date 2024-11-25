@@ -9,6 +9,6 @@ class CreateTeams < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
-    add_index :teams, %i[name team_type represent], unique: true
+    add_index :teams, 'lower(name), "team_type", "represent"', unique: true
   end
 end

@@ -13,6 +13,6 @@ class CreateStadia < ActiveRecord::Migration[7.2]
 
       t.timestamps
     end
-    add_index :stadia, %i[stadium_name loctype location_name], unique: true
+    add_index :stadia, 'lower(stadium_name), "loctype", "location_name"', unique: true
   end
 end
