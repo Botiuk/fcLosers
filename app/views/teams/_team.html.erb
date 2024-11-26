@@ -1,4 +1,4 @@
-<tr id="<%= dom_id team %>" class="p-4">
+<tr id="<%= dom_id team %>" class="border p-5">
     <td class="p-3 px-5 text-center">
         <% if team.team_logo.present? %>
             <img class="rounded-t-lg text-center" src="<%= cloudinary_url(team.team_logo.key, height: 30, crop: :scale) %>" style="width:30%;">

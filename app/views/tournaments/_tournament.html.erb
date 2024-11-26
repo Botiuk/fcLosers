@@ -1,4 +1,4 @@
-<tr id="<%= dom_id tournament %>" class="border-b p-5">
+<tr id="<%= dom_id tournament %>" class="border p-5">
     <td class="p-3 px-5 text-center"><%= tournament.name %></td>
     <td class="p-3 px-5 text-center"><%= Tournament.human_enum_name(:schema_type, tournament.schema_type) %></td>
     <td class="p-3 px-5 text-center"><%= I18n.l(tournament.start_date, format: :long) %></td>

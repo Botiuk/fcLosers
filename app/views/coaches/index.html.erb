@@ -11,7 +11,7 @@
     <div class="px-3 py-4 flex justify-center">
         <table class="w-full text-md bg-white shadow-md rounded mb-4">
             <tbody>
-                <tr class="border-b">
+                <tr class="border">
                     <th class="text-left p-3 px-5"><%= t('.surname') %></th>
                     <th class="text-left p-3 px-5"><%= t('.name') %></th>
                     <th class="text-left p-3 px-5"><%= t('.middle_name') %></th>
@@ -20,7 +20,7 @@
                     <th colspan="3"></th>
                 </tr>
                 <% @coaches.each do |coach| %>
-                    <tr class="border-b">
+                    <tr class="border">
                         <td class="p-3 px-5"><%= coach.surname %></td>
                         <td class="p-3 px-5"><%= coach.name %></td>
                         <td class="p-3 px-5 text-center"><%= coach.middle_name %></td>
