@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_27_051718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,25 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
     t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "tournament_id", null: false
+    t.integer "game_type", null: false
+    t.string "stage"
+    t.bigint "stadium_id", null: false
+    t.date "game_date"
+    t.time "start_time"
+    t.bigint "home_team_id", null: false
+    t.integer "home_goal"
+    t.bigint "visitor_team_id", null: false
+    t.integer "visitor_goal"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_team_id"], name: "index_games_on_home_team_id"
+    t.index ["stadium_id"], name: "index_games_on_stadium_id"
+    t.index ["tournament_id"], name: "index_games_on_tournament_id"
+    t.index ["visitor_team_id"], name: "index_games_on_visitor_team_id"
   end
 
   create_table "players", force: :cascade do |t|
@@ -141,6 +160,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_11_084134) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "games", "stadia"
+  add_foreign_key "games", "teams", column: "home_team_id"
+  add_foreign_key "games", "teams", column: "visitor_team_id"
+  add_foreign_key "games", "tournaments"
   add_foreign_key "tournament_teams", "teams"
   add_foreign_key "tournament_teams", "tournaments"
 end

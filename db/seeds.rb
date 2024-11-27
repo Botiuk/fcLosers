@@ -162,6 +162,24 @@ when 'development'
     )
   end
 
+  tournament_ids = Tournament.ids
+  stadium_ids = Stadium.ids
+  team_ids = Team.ids
+  50.times do
+    Game.create(
+      tournament_id: tournament_ids.sample,
+      game_type: Game.game_types.keys.sample,
+      stage: Faker::Alphanumeric.alpha(number: 3),
+      stadium_id: stadium_ids.sample,
+      game_date: Faker::Date.between(from: 1.year.ago, to: 1.year.since),
+      start_time: [Time.zone.now, nil].sample,
+      home_team_id: team_ids.sample,
+      home_goal: Faker::Number.number(digits: 1),
+      visitor_team_id: team_ids.sample,
+      visitor_goal: Faker::Number.number(digits: 1)
+    )
+  end
+
 when 'production'
 
   press_service = PressService.where(email: 'fcLosers@gmail.com').first_or_initialize

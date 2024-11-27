@@ -4,6 +4,15 @@ class Team < ApplicationRecord
   has_many :tournament_teams, dependent: nil
   has_one_attached :team_logo
 
+  has_many :home_team_games, class_name: 'Game',
+                             foreign_key: 'home_team_id',
+                             dependent: nil,
+                             inverse_of: :team
+  has_many :visitor_team_games, class_name: 'Game',
+                                foreign_key: 'visitor_team_id',
+                                dependent: nil,
+                                inverse_of: :team
+
   validates :name, :represent, presence: true
   validates :name, uniqueness: { case_sensitive: false, scope: %i[team_type represent] }
 

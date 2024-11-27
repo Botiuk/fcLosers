@@ -29,6 +29,8 @@ uk:
       player_uniq_number: "не унікальний. В цій команді вже є гравець з таким"
       main_coach_uniq: "не унікальне. В цій команді вже є головний чи в.о. головного"
       tournament_team_uniq: "уже додана в цей турнір"
+    game_validator:
+      score: "Рахунок може бути або повністю пустим, або повністю заповненим"
 
   activerecord:
     attributes:
@@ -111,6 +113,20 @@ uk:
           village: "с."
         location_name: "Поле 'Назва населеного пункту'"
         stadium_name: " Поле 'Назва стадіону'"
+      game:
+        home_team: "Поле 'Господарі'"
+        home_goal: "Поле 'Голи господарів'"
+        visitor_team: "Поле 'Гості'"
+        visitor_goal: "Поле 'Голи гостей'"
+        tournament: "Поле 'Турнір'"
+        stadium: "Поле 'Стадіон'"
+        game_date: "Поле 'Дата матчу'"
+        start_time: "Поле 'Час початку матчу'"
+        game_type: "Поле 'Тип матчу'"
+        game_types:
+          group: "група"
+          play_off: "на виліт"
+          friendly: "дружній"
 
   notice:
     create:
