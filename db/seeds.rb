@@ -164,19 +164,31 @@ when 'development'
 
   tournament_ids = Tournament.ids
   stadium_ids = Stadium.ids
-  team_ids = Team.ids
-  50.times do
-    Game.create(
-      tournament_id: tournament_ids.sample,
-      game_type: Game.game_types.keys.sample,
-      stage: Faker::Alphanumeric.alpha(number: 3),
-      stadium_id: stadium_ids.sample,
-      game_date: Faker::Date.between(from: 1.year.ago, to: 1.year.since),
-      start_time: [Time.zone.now, nil].sample,
-      home_team_id: team_ids.sample,
-      home_goal: Faker::Number.number(digits: 1),
-      visitor_team_id: team_ids.sample,
-      visitor_goal: Faker::Number.number(digits: 1)
+  tournament_ids.each do |tournament_id|
+    team_ids = TournamentTeam.where(tournament_id: tournament_id).pluck(:team_id)
+    15.times do
+      Game.create(
+        tournament_id: tournament_id,
+        game_type: Game.game_types.keys.sample,
+        stage: [Faker::Alphanumeric.alpha(number: 3), Faker::Number.number(digits: 1), nil].sample,
+        stadium_id: stadium_ids.sample,
+        game_date: Faker::Date.between(from: 1.year.ago, to: 1.year.since),
+        start_time: [Time.zone.now, nil].sample,
+        home_team_id: team_ids.sample,
+        home_goal: Faker::Number.number(digits: 1),
+        visitor_team_id: team_ids.sample,
+        visitor_goal: Faker::Number.number(digits: 1)
+      )
+    end
+  end
+
+  game_ids = Game.ids
+  game_ids.each do |game_id|
+    ActionText::RichText.create!(
+      record_type: 'Game',
+      record_id: game_id,
+      name: 'game_protocol',
+      body: Faker::Lorem.paragraph_by_chars
     )
   end
 

@@ -4,10 +4,37 @@
         <%= link_to t('button.edit'), edit_tournament_path(@tournament), class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
     </div>
 </div>
-<div class="flex flex-wrap -mx-3">
-    <h4><%= Tournament.human_enum_name(:schema_type, @tournament.schema_type) %></h4>
-    <h4><%= I18n.l(@tournament.start_date, format: :long) %> - <%= @tournament.end_date %></h4>
+
+<div class="grid grid-cols-1 gap-10 mb-2">
+    <h4><%= t('.schema_type') %>: <%= Tournament.human_enum_name(:schema_type, @tournament.schema_type) %></h4>
 </div>
+<div class="grid grid-cols-1 gap-10 mb-2">
+    <% if @tournament.end_date.present? %>
+        <h4><%= t('.period') %>: <%= I18n.l(@tournament.start_date, format: :long) %> - <%= I18n.l(@tournament.end_date, format: :long) %></h4>
+    <% else %>
+        <h4><%= t('.period') %>: <%= I18n.l(@tournament.start_date, format: :long) %> - ...</h4>
+    <% end %>
+</div>
+
+<div class="grid grid-cols-2 gap-10 mb-2">
+    <div class="text-start text-xl font-bold leading-none"><%= t('.games') %></div>
+    <div class="text-end my-auto">
+        <%= link_to t('button.add.game'), new_game_path(tournament_id: @tournament.id), :method => :post, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    </div>
+</div>
+<% if @games.present? %>
+    <div class="px-3 py-4 flex justify-center">
+        <table class="w-full text-md bg-white shadow-md rounded mb-4">
+            <tbody>
+                <% @games.each do |game| %>
+                    <%= render 'games/game', game: game %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.geams_empty') %></p>
+<% end %>
 
 <div class="grid grid-cols-2 gap-10 mb-2">
     <div class="text-start text-xl font-bold leading-none"><%= t('.tournament_teams') %></div>

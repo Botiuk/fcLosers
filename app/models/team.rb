@@ -23,4 +23,13 @@ class Team < ApplicationRecord
     end
     teams
   end
+
+  def self.tournament_teams_formhelper(tournament_id)
+    tournament_team_ids = TournamentTeam.where(tournament_id: tournament_id).pluck(:team_id)
+    teams = Team.where(id: tournament_team_ids).order(:name, :represent).pluck(:name, :id)
+    teams.map do |element|
+      element[0] = Team.where(id: element[1]).pluck(:team_type, :name, :represent).join(' ')
+    end
+    teams
+  end
 end

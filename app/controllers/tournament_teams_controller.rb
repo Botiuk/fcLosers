@@ -3,7 +3,7 @@
 class TournamentTeamsController < ApplicationController
   before_action :authenticate_press_service!
   before_action :set_tournament_team, only: :destroy
-  before_action :tournament_team_formhelper, only: %i[new create]
+  before_action :team_formhelper, only: %i[new create]
 
   def new
     if params[:tournament_id].present?
@@ -42,7 +42,7 @@ class TournamentTeamsController < ApplicationController
     params.require(:tournament_team).permit(:tournament_id, :team_id)
   end
 
-  def tournament_team_formhelper
+  def team_formhelper
     @teams = Team.formhelper
   end
 end

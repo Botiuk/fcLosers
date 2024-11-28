@@ -1,0 +1,100 @@
+<div class="text-center text-3xl font-bold"><%= t('.title') %></div>
+
+<div class="px-3 py-4 flex justify-center">
+    <table class="w-full text-md bg-white shadow-md rounded mb-4 border">
+        <tbody>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <%= @game.tournament.name %>
+                </td>
+            </tr>
+            <% if @game.stage.present? %>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <% if @game.stage.scan(/[^0-9]/).empty? %>
+                            <%= t('.tour') %> <%= @game.stage %>
+                        <% elsif @game.stage.scan(/\//).present? %>
+                            <%= @game.stage %> <%= t('.playoff') %>
+                        <% else %>
+                            <%= @game.stage %>
+                        <% end %>
+                    </td>
+                </tr>
+            <% end %>
+            <% if press_service_signed_in? %>
+                <tr>
+                    <td colspan="5" class="text-center">
+                        <%= Game.human_enum_name(:game_type, @game.game_type) %>
+                    </td>
+                </tr>
+            <% end %>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <% if @game.start_time.present? %>
+                        <%= I18n.l(@game.game_date, format: :long) %> | <%= I18n.l(@game.start_time) %>
+                    <% elsif @game.game_date.present? %>
+                        <%= I18n.l(@game.game_date, format: :long) %> | -
+                    <% else %>
+                        - | -
+                    <% end %>
+                </td>
+            </tr>
+            <tr class="p-5">                
+                <td class="p-3 px-5">
+                    <% if @game.home_team.team_logo.present? %>
+                        <img class="rounded-t-lg text-center" src="<%= cloudinary_url(@game.home_team.team_logo.key, height: 30, crop: :scale) %>" style="width:50%;">
+                    <% end %>
+                </td>
+                <td class="p-3 px-5 text-end">
+                    <%= @game.home_team.team_type %> "<%= @game.home_team.name %>"
+                </td>
+                <td class="p-3 px-5 text-center">
+                    <% if @game.home_goal.present? %>
+                        <%= @game.home_goal %> : <%= @game.visitor_goal %>
+                    <% else %>
+                        - : -
+                    <% end %>
+                </td>
+                <td class="p-3 px-5 text-start">
+                    <%= @game.visitor_team.team_type %> "<%= @game.visitor_team.name %>"
+                </td>
+                <td class="p-3 px-5">
+                    <% if @game.visitor_team.team_logo.present? %>
+                        <img class="rounded-t-lg text-center" src="<%= cloudinary_url(@game.visitor_team.team_logo.key, height: 30, crop: :scale) %>" style="width:50%;">
+                    <% end %>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <%= @game.stadium.stadium_name %>, <%= Stadium.human_enum_name(:loctype, @game.stadium.loctype) %> <%= @game.stadium.location_name %> <br>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="grid grid-cols-1 mb-2 mt-2">
+    <h4 class="text-center text-xl font-bold"><%= t('.game_protocol') %>:</h4>
+    <div>
+        <% if @game.game_protocol.present? %>
+            <div class="text-justify indent-4">
+                <%= @game.game_protocol %>
+            </div>
+        <% else %>
+            <div class="text-center">
+                <%= t('.game_protocol_absent') %>
+            </div>            
+        <% end %>
+    </div>
+</div>
+
+<div class="grid grid-cols-1">
+    <div>
+        <% if press_service_signed_in? %>
+            <%= link_to t('button.edit'), edit_game_path(@game), class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+            <%= button_to t('button.delete'), @game, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+        <% else %>
+            <%= link_to t('button.back'), :back, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        <% end %>
+    </div>
+</div>

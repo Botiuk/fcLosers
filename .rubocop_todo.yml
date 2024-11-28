@@ -12,3 +12,7 @@ Metrics/AbcSize:
 Layout/LineLength:
   Exclude:
     - 'config/initializers/devise.rb'
+
+RSpec/ExampleLength:
+  Exclude:
+    - 'spec/requests/games_spec.rb'

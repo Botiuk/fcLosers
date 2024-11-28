@@ -1,0 +1,49 @@
+<tr id="<%= dom_id game %>" class="border p-5">
+    <td class="p-3 px-5 text-start">
+        <% if game.stage.present? %>
+            <% if game.stage.scan(/[^0-9]/).empty? %>
+                <%= t('.tour') %> <%= game.stage %>
+            <% elsif game.stage.scan(/\//).present? %>
+                <%= game.stage %> <%= t('.playoff') %>
+            <% else %>
+                <%= game.stage %>
+            <% end %>
+        <% end %>
+    </td>
+    <td class="p-3 px-5 text-start">
+        <% if game.start_time.present? %>
+            <%= I18n.l(game.game_date) %> | <%= I18n.l(game.start_time) %>
+        <% elsif game.game_date.present? %>
+            <%= I18n.l(game.game_date) %> | -
+        <% else %>
+            - | -
+        <% end %>
+    </td>
+    <td class="p-3 px-5 text-end">
+        <% if game.home_team.team_logo.present? %>
+            <img class="rounded-t-lg text-center" src="<%= cloudinary_url(game.home_team.team_logo.key, height: 30, crop: :scale) %>" style="width:50%;">
+        <% end %>
+    </td>
+    <td class="p-3 px-5 text-end">
+        <%= game.home_team.team_type %> "<%= game.home_team.name %>"
+    </td>
+    <td class="p-3 px-5 text-center">
+        <% if game.home_goal.present? %>
+            <%= game.home_goal %> : <%= game.visitor_goal %>
+        <% else %>
+            - : -
+        <% end %>
+    </td>
+    <td class="p-3 px-5 text-start">
+        <%= game.visitor_team.team_type %> "<%= game.visitor_team.name %>"
+    </td>
+    <td class="p-3 px-5 text-start">
+        <% if game.visitor_team.team_logo.present? %>
+            <img class="rounded-t-lg text-center" src="<%= cloudinary_url(game.visitor_team.team_logo.key, height: 30, crop: :scale) %>" style="width:50%;">
+        <% end %>
+    </td>
+    <td class="p-3 px-5 text-center">
+        <%= link_to t('button.show'), game, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        <%= button_to t('button.delete'), game, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+    </td>
+</tr>

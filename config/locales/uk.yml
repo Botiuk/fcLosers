@@ -4,9 +4,7 @@ uk:
 
   time:
     formats:
-      default: "%a %d.%m.%Y, %H:%M"
-      long: "%H:%M, %e.%m.%Y"
-      short: "%e %b, %H:%M"
+      default: "%H:%M"
 
   date:
     formats:
@@ -136,7 +134,8 @@ uk:
       team: "Команду успішно додано"
       tournament: "Турнір успішно створено"
       tournament_team: "Команду до турніру успішно додано"
-      stadium: "Стадіон успішно додано"
+      stadium: "Стадіон успішно створено"
+      game: "Гру успішно створено"
     update:
       article: "Новину успішно оновлено"
       player: "Гравця успішно оновлено"
@@ -144,11 +143,13 @@ uk:
       team: "Команду успішно оновлено"
       tournament: "Турнір успішно оновлено"
       stadium: "Стадіон успішно оновлено"
+      game: "Гру успішно оновлено"
     destroy:
       article: "Новину успішно видалено"
       player: "Граця успішно видалено. Па-па, невдаха :-Р"
       coach: "Тренера чи працівника успішно видалено. Па-па, невдаха :-Р"
       tournament_team: "Команду з турніру успішно видалено"
+      game: "Гру успішно видалено"
 
   navigation:
     articles: "Новини"
@@ -167,6 +168,7 @@ uk:
       tournament: "Додати турнір"
       tournament_team: "Додати команду у турнір"
       stadium: "Додати стадіон"
+      game: "Додати матч"
     all:
       articles: "Всі новини"
     back: "Назад"
@@ -348,8 +350,12 @@ uk:
       prompt: "-- виберіть зі списку --"
     show:
       title: "Детальніше про турнір"
+      schema_type: "Схема проведення"
+      period: "Період проведення"
       tournament_teams: "Команди-учасники турніру"
       tournament_teams_empty: "Даних про комад-учасників не має"
+      games: "Матчі турніру"
+      games_empty: "Даних про матчі турніру немає"
 
   tournament_teams:
     new:
@@ -385,3 +391,36 @@ uk:
         country: "введіть країну"
       prompt: "-"
       instruction: "* Поле можна залишити пустим"
+  
+  games:
+    game:
+      tour: "Тур"
+      playoff: "фіналу"
+    form:
+      game_date: "Дата матчу:"
+      start_time: "Початок матчу:"
+      stadium: "Стадіон:"
+      home_team: "Господарі:"
+      visitor_team: "Гості:"
+      score: "Рахунок:"
+      stage: "Тур або етап змагань:"
+      game_protocol: "Протокол матчу:"
+      game_type: "Тип матчу:"
+      placeholder:
+        stage: "Введіть тур або етап (якщо є)"
+        game_protocol: "Введіть протокол матчу"
+      prompt:
+       stadium: "-- виберіть місце матчу --"
+       home_team: "-- виберіть команду-господаря --"
+       visitor_team: "-- виберіть гостьову команду --"
+       game_type: "-- виберіть тип матчу --"
+    new:
+      title: "Новий матч у турнірі"
+    edit:
+      title: "Редагувати матч у турнірі"
+    show:
+      title: "Детальніше про матч"
+      game_protocol: "Протокол матчу"
+      game_protocol_absent: "Протокол матчу відсутній"
+      tour: "Тур"
+      playoff: "фіналу"

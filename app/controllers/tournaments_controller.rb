@@ -12,6 +12,8 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament_teams = TournamentTeam.includes(:team).where(tournament_id: @tournament.id).order_by_team
+    @games = Game.includes(:home_team, :visitor_team).where(tournament_id: @tournament.id).order(:game_type, :stage,
+                                                                                                 :game_date)
   end
 
   def new
