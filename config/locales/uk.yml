@@ -11,6 +11,33 @@ uk:
       default: "%d.%m.%Y"
       long: "%e %B %Y"
       short: "%e %b"
+    abbr_day_names:
+    - Нд
+    - Пн
+    - Вт
+    - Ср
+    - Чт
+    - Пт
+    - Сб
+    month_names:
+    -
+    - січень
+    - лютий
+    - березень
+    - квітень
+    - травень
+    - червень
+    - липень
+    - серпень
+    - вересень
+    - жовтень
+    - листопад
+    - грудень
+
+  simple_calendar:
+    previous: "<<"
+    next: ">>"
+    today: "Сьогодні"
 
   forms:
     messages:
@@ -158,6 +185,7 @@ uk:
     teams: "Команди"
     tournaments: "Турніри"
     stadia: "Стадіони"
+    calendar: "Календар"
   
   button:
     add:
@@ -424,3 +452,5 @@ uk:
       game_protocol_absent: "Протокол матчу відсутній"
       tour: "Тур"
       playoff: "фіналу"
+    calendar:
+      title: "Календар"

@@ -1,0 +1,26 @@
+<div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
+
+<%= month_calendar(attribute: :game_date, events: @games) do |date, games| %>
+  <%= date.day %>
+  <% games.each do |game| %>
+    <div>
+        <%= link_to game do %>
+            <% if game.home_team_id == 1 %>
+                <div class="">
+                    <% if game.visitor_team.team_logo.present? %>
+                        <img class="rounded-t-lg text-center" src="<%= cloudinary_url(game.visitor_team.team_logo.key, height: 30, crop: :scale) %>" style="width:30%;">
+                    <% end %>
+                    <%= game.visitor_team.name %>
+                </div>
+            <% else %>
+                <div class="">
+                    <% if game.home_team.team_logo.present? %>
+                        <img class="rounded-t-lg text-center" src="<%= cloudinary_url(game.home_team.team_logo.key, height: 30, crop: :scale) %>" style="width:30%;">
+                    <% end %>
+                    <%= game.home_team.name %>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+  <% end %>
+<% end %>

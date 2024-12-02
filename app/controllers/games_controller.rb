@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GamesController < ApplicationController
-  before_action :authenticate_press_service!, except: :show
+  before_action :authenticate_press_service!, except: %i[show calendar]
   before_action :set_game, only: %i[edit update show destroy]
   before_action :stadium_formhelper, only: %i[new create edit update]
 
@@ -47,6 +47,12 @@ class GamesController < ApplicationController
     tournament = Tournament.find(@game.tournament_id)
     @game.destroy
     redirect_to tournament_url(tournament), notice: t('notice.destroy.game')
+  end
+
+  def calendar
+    @games = Game.includes(:home_team, :visitor_team).where('home_team_id = ? AND game_date > ?', 1, 1.year.ago)
+                 .or(Game.includes(:home_team, :visitor_team)
+                         .where('visitor_team_id = ? AND game_date > ?', 1, 1.year.ago)).order(:game_date)
   end
 
   private

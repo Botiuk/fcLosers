@@ -46,5 +46,8 @@ module FcLosers
 
     # Default locale
     config.i18n.default_locale = :uk
+
+    # Beginning Of Week
+    config.beginning_of_week = :monday
   end
 end

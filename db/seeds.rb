@@ -142,11 +142,17 @@ when 'development'
   end
 
   tournament_ids = Tournament.ids
-  team_ids = Team.ids
+  team_ids = Team.ids - [1]
   100.times do
     TournamentTeam.create(
       tournament_id: tournament_ids.sample,
       team_id: team_ids.sample
+    )
+  end
+  tournament_ids.each do |tournament_id|
+    TournamentTeam.create(
+      tournament_id: tournament_id,
+      team_id: 1
     )
   end
 

@@ -22,6 +22,11 @@ RSpec.describe 'Games' do
       expect(response).to redirect_to(new_press_service_session_path)
       expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
     end
+
+    it 'can GET calendar' do
+      get calendar_path
+      expect(response).to be_successful
+    end
   end
 
   describe 'press_service management' do
@@ -77,6 +82,11 @@ RSpec.describe 'Games' do
       delete game_path(game)
       expect(response).to redirect_to(tournament_url(tournament))
       expect(flash[:notice]).to include(I18n.t('notice.destroy.game'))
+    end
+
+    it 'can GET calendar' do
+      get calendar_path
+      expect(response).to be_successful
     end
   end
 end

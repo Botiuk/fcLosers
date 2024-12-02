@@ -1,5 +1,6 @@
 @import 'actiontext.css';
 @import 'pagy.tailwind.css';
+@import 'simple_calendar.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

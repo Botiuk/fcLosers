@@ -12,7 +12,7 @@ gem 'propshaft', '1.1.0'
 gem 'pg', '1.5.9'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '6.4.3'
+gem 'puma', '6.5.0'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails', '1.3.1'
@@ -48,6 +48,9 @@ gem 'cloudinary', '2.2.0'
 # Agnostic pagination in plain ruby
 gem 'pagy', '9.2.2'
 
+# A simple Rails calendar
+gem 'simple_calendar', '3.0.4'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.9.2', platforms: %i[mri windows], require: 'debug/prelude'
@@ -65,11 +68,11 @@ group :development do
   gem 'brakeman', '6.2.2', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
-  gem 'rubocop', '1.68.0', require: false
+  gem 'rubocop', '1.69.0', require: false
   # Automatic Rails code style checking tool.
   gem 'rubocop-rails', '2.27.0', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
-  gem 'rubocop-performance', '1.22.1', require: false
+  gem 'rubocop-performance', '1.23.0', require: false
   # Code style checking for RSpec files
   gem 'rubocop-rspec', '3.2.0', require: false
   gem 'rubocop-rspec_rails', '2.30.0', require: false

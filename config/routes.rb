@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'main#index'
+  get 'calendar', to: 'games#calendar'
 
   resources :articles, :players, :coaches
   resources :teams, except: %i[show destroy]
