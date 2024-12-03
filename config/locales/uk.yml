@@ -186,6 +186,8 @@ uk:
     tournaments: "Турніри"
     stadia: "Стадіони"
     calendar: "Календар"
+    our_team: "Команда"
+    administration: "Адміністрування"
   
   button:
     add:
@@ -214,7 +216,7 @@ uk:
   articles:
     index:
       title: "Всі новини"
-      title_match: "Новини категорії 'Матч'"
+      title_match: "Новини категорії 'Матчі'"
       title_club_life: "Новини категорії 'Життя клубу'"
       title_press: "Новини категорії 'Про нас пишуть'"
       articles_empty: "Поки новин немає"
