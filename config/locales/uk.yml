@@ -180,6 +180,10 @@ uk:
 
   navigation:
     articles: "Новини"
+    articles_all: "Всі новини"
+    articles_match: "Матчі"
+    articles_club_life: "Життя клубу"
+    articles_press: "Преса"
     players: "Гравці"
     coaches: "Тренери і персонал"
     teams: "Команди"
@@ -215,10 +219,10 @@ uk:
 
   articles:
     index:
-      title: "Всі новини"
-      title_match: "Новини категорії 'Матчі'"
-      title_club_life: "Новини категорії 'Життя клубу'"
-      title_press: "Новини категорії 'Про нас пишуть'"
+      title_all: "Всі новини"
+      title_match_html: "Новини категорії &quot;Матчі&quot;"
+      title_club_life_html: "Новини категорії &quot;Життя клубу&quot;"
+      title_press_html: "Новини категорії &quot;Преса&quot;"
       articles_empty: "Поки новин немає"
     article:
       cover_absent: "обкладинка відсутня"

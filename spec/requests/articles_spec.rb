@@ -9,6 +9,11 @@ RSpec.describe 'Articles' do
       expect(response).to be_successful
     end
 
+    it 'can GET index with params' do
+      get articles_path(article_type: 'press')
+      expect(response).to be_successful
+    end
+
     it 'can GET show' do
       article = create(:article)
       get article_path(article)
@@ -49,6 +54,11 @@ RSpec.describe 'Articles' do
 
     it 'can GET index' do
       get articles_path
+      expect(response).to be_successful
+    end
+
+    it 'can GET index with params' do
+      get articles_path(article_type: 'games')
       expect(response).to be_successful
     end
 

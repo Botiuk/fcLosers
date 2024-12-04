@@ -12,20 +12,21 @@
                     <%= article.title.truncate(55) %>
                 </div>
                 <div class="text-sm">
+                    <%= Article.human_enum_name(:article_type, article.article_type) %> |
                     <% if article.published_at.present? %>
                         <%= I18n.l(article.published_at, format: :long) %>
                         <% if press_service_signed_in? && article.published_at > DateTime.now %>
                             <div class="" style="display:inline-block;">
-                                <%= t('.scheduled') %>
+                                 | <%= t('.scheduled') %>
                             </div>
                         <% end %>
                     <% else %>
                         <% if press_service_signed_in? %>
                             <div class="">
-                                <%= t('.draft') %>
+                                 | <%= t('.draft') %>
                             </div>
                         <% end %>
-                    <% end %>
+                    <% end %>                     
                 </div>
                 <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200"><%= article.content.to_plain_text.truncate(128) %></p>
             </div>

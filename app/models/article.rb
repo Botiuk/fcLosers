@@ -11,4 +11,6 @@ class Article < ApplicationRecord
   validates_each :title do |record, attr, value|
     record.errors.add(attr, I18n.t('errors.messages.first_letter')) if /\A[[:lower:]]/.match?(value)
   end
+
+  scope :articles_ordered, -> { order(published_at: :desc) }
 end
