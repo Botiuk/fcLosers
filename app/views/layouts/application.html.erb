@@ -20,17 +20,13 @@
   </head>
 
   <body>
-    <header>
-      <%= render 'shared/header' %>
-    </header>
+    <%= render 'shared/header' %>
 
     <main class="m-5 p-4">
       <%= render 'shared/flash_messages' %>
       <%= yield %>
     </main>
 
-    <footer>
-      <%= render 'shared/footer' %>
-    </footer>
+    <%= render 'shared/footer' %>
   </body>
 </html>

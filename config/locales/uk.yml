@@ -192,6 +192,10 @@ uk:
     calendar: "Календар"
     our_team: "Команда"
     administration: "Адміністрування"
+    follow_us: "Слідкуй за нами"
+    press_service: "Прес-служба"
+    login: "Вхід"
+    logout: "Вихід"
   
   button:
     add:
