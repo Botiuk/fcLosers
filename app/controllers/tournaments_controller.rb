@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class TournamentsController < ApplicationController
-  before_action :authenticate_press_service!
+  before_action :authenticate_press_service!, except: %i[cup championship]
   before_action :set_tournament, only: %i[edit update show]
 
   def index
@@ -36,6 +36,24 @@ class TournamentsController < ApplicationController
       redirect_to tournament_url(@tournament), notice: t('notice.update.tournament')
     else
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def cup
+    @cup = Tournament.where(schema_type: 'national_cup').last
+    if @cup.present?
+      @cup_matches = Game.where(tournament_id: @cup.id).order(:stage, :game_date, :start_time)
+    else
+      redirect_to root_url
+    end
+  end
+
+  def championship
+    @championship = Tournament.where(schema_type: 'national_champ').last
+    if @championship.present?
+      @championship_matches = Game.where(tournament_id: @championship.id).order(:stage, :game_date, :start_time)
+    else
+      redirect_to root_url
     end
   end
 

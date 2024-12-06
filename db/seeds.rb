@@ -132,11 +132,11 @@ when 'development'
   end
 
   10.times do
-    random_date = Faker::Date.between(from: 5.years.ago, to: 1.year.ago)
+    random_date = Faker::Date.between(from: 5.years.ago, to: 1.month.ago)
     Tournament.create(
       start_date: random_date,
       schema_type: Tournament.schema_types.keys.sample,
-      end_date: [random_date + rand(2..12).month, nil].sample,
+      end_date: random_date + rand(2..12).month,
       name: Faker::Sports::Football.competition
     )
   end

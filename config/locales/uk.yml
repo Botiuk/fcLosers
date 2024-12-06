@@ -122,10 +122,9 @@ uk:
         end_date: "Поле 'Дата завершення'"
         schema_type: "Поле 'Схема проведення'"
         schema_types:
-          championship: "Чемпіонат"
-          cup: "Кубок"
-          mixed: "Змішана"
-          friendly: "Дружній"
+          national_champ: "Національний чемпіонат"
+          national_cup: "Національний кубок"
+          friendly: "Дружні матчі"
       tournament_team:
         tournament: "Поле 'Турнір'"
         team: "Поле 'Команда'"
@@ -196,6 +195,9 @@ uk:
     press_service: "Прес-служба"
     login: "Вхід"
     logout: "Вихід"
+    competition: "Змагання"
+    championship: "Чемпіонат"
+    cup: "Кубок"
   
   button:
     add:

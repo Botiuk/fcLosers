@@ -1,0 +1,7 @@
+<div class="text-start text-3xl font-bold leading-none">
+    <% if press_service_signed_in? %>
+        <%= link_to @championship.name, tournament_path(@championship), class: "hover:text-[#007bff] hover:fill-[#007bff]" %>
+    <% else %>
+        <%= @championship.name %>
+    <% end %>
+</div>

@@ -29,6 +29,28 @@ RSpec.describe 'Tournaments' do
       expect(response).to redirect_to(new_press_service_session_path)
       expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
     end
+
+    it 'can GET cup if cup present' do
+      create(:tournament, schema_type: 'national_cup')
+      get cup_path
+      expect(response).to be_successful
+    end
+
+    it 'can GET championship if championship present' do
+      create(:tournament, schema_type: 'national_champ')
+      get championship_path
+      expect(response).to be_successful
+    end
+
+    it 'can GET cup if cup absent' do
+      get cup_path
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'can GET championship if championship absent' do
+      get championship_path
+      expect(response).to redirect_to(root_path)
+    end
   end
 
   describe 'press_service management' do
@@ -72,6 +94,28 @@ RSpec.describe 'Tournaments' do
       tournament = create(:tournament)
       get tournament_path(tournament)
       expect(response).to be_successful
+    end
+
+    it 'can GET cup if cup present' do
+      create(:tournament, schema_type: 'national_cup')
+      get cup_path
+      expect(response).to be_successful
+    end
+
+    it 'can GET championship if championship present' do
+      create(:tournament, schema_type: 'national_champ')
+      get championship_path
+      expect(response).to be_successful
+    end
+
+    it 'can GET cup if cup absent' do
+      get cup_path
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'can GET championship if championship absent' do
+      get championship_path
+      expect(response).to redirect_to(root_path)
     end
   end
 end
