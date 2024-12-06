@@ -1,20 +1,22 @@
 <div class="flex flex-wrap -mx-3">
     <div class="w-full md:w-1/2 px-3">
-        <% if @coach.coach_photo.present? %>
-            <img class="" src="<%= cloudinary_url(@coach.coach_photo.key, height: 200, crop: :scale) %>" style="width:50%;">
-        <% end %>
+        <div class="flex justify-center items-center">
+            <% if @coach.coach_photo.present? %>
+                <img class="rounded-md" src="<%= cloudinary_url(@coach.coach_photo.key, height: 200, crop: :scale) %>" style="width:50%;">
+            <% end %>
+        </div>
     </div>
 
-    <div class="w-full md:w-1/2 px-3 text-xl">
+    <div class="w-full md:w-1/2 px-3 text-xl py-2">
         <h4><%= t('.surname') %>: <%= @coach.surname %></h4>
         <h4><%= t('.name') %>: <%= @coach.name %></h4>
         <h4><%= t('.middle_name') %>: <%= @coach.middle_name %></h4>
         <h4><%= t('.position') %>: <%= Coach.human_enum_name(:position, @coach.position) %></h4>
-        <h4><%= t('.date_of_birth') %>: <%= I18n.l(@coach.date_of_birth, format: :long) %></h4>        
+        <h4><%= t('.date_of_birth') %>: <%= I18n.l(@coach.date_of_birth, format: :long) %></h4>
     </div>
 </div>
 
-<div class="grid grid-cols-1 mb-2 mt-2">
+<div class="grid grid-cols-1 mb-2 mt-2 py-2">
     <h4><%= t('.coach_biography') %>:</h4>
     <div>
         <% if @coach.coach_biography.present? %>

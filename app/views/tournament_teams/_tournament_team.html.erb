@@ -1,8 +1,10 @@
 <tr id="<%= dom_id tournament_team %>" class="border p-5">
     <td class="p-3 px-5 text-center">
-        <% if tournament_team.team.team_logo.present? %>
-            <img class="rounded-t-lg text-center" src="<%= cloudinary_url(tournament_team.team.team_logo.key, height: 30, crop: :scale) %>" style="width:30%;">
-        <% end %>       
+        <div class="flex justify-center items-center">
+            <% if tournament_team.team.team_logo.present? %>
+                <img class="text-center" src="<%= cloudinary_url(tournament_team.team.team_logo.key, height: 100, crop: :scale) %>" style="width:30%;">
+            <% end %>
+        </div>
     </td>
     <td class="p-3 px-5 text-start">
         <%= tournament_team.team.team_type %> "<%= tournament_team.team.name %>" (<%= tournament_team.team.represent %>)

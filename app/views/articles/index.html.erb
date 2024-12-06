@@ -11,7 +11,7 @@
         <% else %>
             <%= t('.title_all') %>
         <% end %>
-    
+
     </div>
     <% if press_service_signed_in? %>
         <div class="text-end my-auto">
@@ -21,7 +21,7 @@
 </div>
 
 <% if @articles.present? %>
-    <div class="grid grid-cols-3 gap-4 mb-3">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
         <% @articles.each do |article| %>
             <%= render article %>
         <% end %>

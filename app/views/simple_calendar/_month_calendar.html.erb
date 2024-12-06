@@ -1,5 +1,5 @@
 <div class="simple-calendar">
-  <div class="calendar-heading text-center text-xl font-bold">    
+  <div class="calendar-heading text-center text-xl font-bold">
     <nav>
       <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
       <time datetime="<%= start_date.strftime('%Y %B') %>" class="calendar-title"><%= (t('date.month_names')[start_date.month]).capitalize %> <%= start_date.year %></time>

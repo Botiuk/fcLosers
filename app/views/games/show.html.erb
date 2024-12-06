@@ -1,7 +1,7 @@
 <div class="text-center text-3xl font-bold"><%= t('.title') %></div>
 
-<div class="px-3 py-4 flex justify-center">
-    <table class="w-full text-md bg-white shadow-md rounded mb-4 border">
+<div class="px-3 py-3 flex justify-center">
+    <table class="w-full bg-white shadow-md rounded border">
         <tbody>
             <tr>
                 <td colspan="5" class="text-center">
@@ -39,11 +39,13 @@
                     <% end %>
                 </td>
             </tr>
-            <tr class="p-5">                
-                <td class="p-3 px-5">
-                    <% if @game.home_team.team_logo.present? %>
-                        <img class="rounded-t-lg text-center" src="<%= cloudinary_url(@game.home_team.team_logo.key, height: 30, crop: :scale) %>" style="width:50%;">
-                    <% end %>
+            <tr class="p-5">
+                <td class="p-3 px-5 hidden lg:block">
+                    <div class="flex justify-center items-center">
+                        <% if @game.home_team.team_logo.present? %>
+                            <img class="rounded-md" src="<%= cloudinary_url(@game.home_team.team_logo.key, height: 100, crop: :scale) %>" style="width:100%;">
+                        <% end %>
+                    </div>
                 </td>
                 <td class="p-3 px-5 text-end">
                     <%= @game.home_team.team_type %> "<%= @game.home_team.name %>"
@@ -58,10 +60,12 @@
                 <td class="p-3 px-5 text-start">
                     <%= @game.visitor_team.team_type %> "<%= @game.visitor_team.name %>"
                 </td>
-                <td class="p-3 px-5">
-                    <% if @game.visitor_team.team_logo.present? %>
-                        <img class="rounded-t-lg text-center" src="<%= cloudinary_url(@game.visitor_team.team_logo.key, height: 30, crop: :scale) %>" style="width:50%;">
-                    <% end %>
+                <td class="p-3 px-5 hidden lg:block">
+                    <div class="flex justify-center items-center">
+                        <% if @game.visitor_team.team_logo.present? %>
+                            <img class="rounded-md" src="<%= cloudinary_url(@game.visitor_team.team_logo.key, height: 100, crop: :scale) %>" style="width:100%;">
+                        <% end %>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -73,7 +77,7 @@
     </table>
 </div>
 
-<div class="grid grid-cols-1 mb-2 mt-2">
+<div class="grid grid-cols-1 mb-2 mt-2 py-2">
     <h4 class="text-center text-xl font-bold"><%= t('.game_protocol') %>:</h4>
     <div>
         <% if @game.game_protocol.present? %>
@@ -83,7 +87,7 @@
         <% else %>
             <div class="text-center">
                 <%= t('.game_protocol_absent') %>
-            </div>            
+            </div>
         <% end %>
     </div>
 </div>
