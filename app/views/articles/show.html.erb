@@ -1,6 +1,6 @@
 <% if @article.cover.present? %>
     <div class="flex justify-center items-center">
-        <img class="rounded-md" src="<%= cloudinary_url(@article.cover.key, height: 200, crop: :scale) %>" style="width:20%;">
+        <img class="rounded-md" src="<%= cloudinary_url(@article.cover.key, height: 200, crop: :scale) %>" style="width:30%;">
     </div>
 <% end %>
 
@@ -38,10 +38,10 @@
 
 <div class="grid grid-cols-1">
     <div>
-        <%= link_to t('button.all.articles'), articles_path, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+        <%= link_to t('button.all.articles'), articles_path, class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow" %>
         <% if press_service_signed_in? %>
-            <%= link_to t('button.edit'), edit_article_path(@article), class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
-            <%= button_to t('button.delete'), @article, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+            <%= link_to t('button.edit'), edit_article_path(@article), class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow" %>
+            <%= button_to t('button.delete'), @article, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
         <% end %>
     </div>
 </div>

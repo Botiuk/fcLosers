@@ -1,14 +1,14 @@
-<tr id="<%= dom_id team %>" class="border p-5">
-    <td class="p-3 px-5 text-center">
+<tr id="<%= dom_id team %>" class="odd:bg-white even:bg-emerald-50 border">
+    <td class="p-3">
         <div class="flex justify-center items-center">
             <% if team.team_logo.present? %>
                 <img class="" src="<%= cloudinary_url(team.team_logo.key, height: 100, crop: :scale) %>" style="width:30%;">
             <% end %>
         </div>
     </td>
-    <td class="p-3 px-5 text-center"><%= team.team_type %> "<%= team.name %>"</td>
-    <td class="p-3 px-5 text-center"><%= team.represent %></td>
-    <td class="p-3 px-5 text-center">
-        <%= link_to t('button.edit'), edit_team_path(team), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    <td class="p-3"><%= team.team_type %> "<%= team.name %>"</td>
+    <td class="p-3"><%= team.represent %></td>
+    <td class="p-3">
+        <%= link_to t('button.edit'), edit_team_path(team), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %>
     </td>
 </tr>

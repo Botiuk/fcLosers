@@ -1,16 +1,16 @@
-<tr id="<%= dom_id tournament %>" class="border p-5">
-    <td class="p-3 px-5 text-center"><%= tournament.name %></td>
-    <td class="p-3 px-5 text-center"><%= Tournament.human_enum_name(:schema_type, tournament.schema_type) %></td>
-    <td class="p-3 px-5 text-center"><%= I18n.l(tournament.start_date, format: :long) %></td>
-    <td class="p-3 px-5 text-center">
+<tr id="<%= dom_id tournament %>" class="odd:bg-white even:bg-emerald-50 border">
+    <td class="p-3"><%= tournament.name %></td>
+    <td class="p-3"><%= Tournament.human_enum_name(:schema_type, tournament.schema_type) %></td>
+    <td class="p-3"><%= I18n.l(tournament.start_date, format: :long) %></td>
+    <td class="p-3">
         <% if tournament.end_date.present? %>
             <%= I18n.l(tournament.end_date, format: :long) %>
         <% end %>
     </td>
-    <td class="p-3 px-5 text-center">
-        <%= link_to t('button.show'), tournament, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    <td class="p-3">
+        <%= link_to t('button.show'), tournament, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %>
     </td>
-    <td class="p-3 px-5 text-center">
-        <%= link_to t('button.edit'), edit_tournament_path(tournament), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    <td class="p-3">
+        <%= link_to t('button.edit'), edit_tournament_path(tournament), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %>
     </td>
 </tr>

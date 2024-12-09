@@ -2,34 +2,34 @@
     <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
     <% if press_service_signed_in? %>
         <div class="text-end my-auto">
-            <%= link_to t('button.add.coach'), new_coach_path, :method => :post, class: "bg-blue hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+            <%= link_to t('button.add.coach'), new_coach_path, :method => :post, class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow" %>
         </div>
     <% end %>
 </div>
 
 <% if press_service_signed_in? && @coaches.present? %>
-    <div class="px-3 py-4 flex justify-center">
-        <table class="w-full text-md bg-white shadow-md rounded mb-4">
+    <div class="py-4 relative overflow-x-auto">
+        <table class="w-full text-sm text-left shadow-md rounded">
             <tbody>
-                <tr class="border">
-                    <th class="text-left p-3 px-5"><%= t('.surname') %></th>
-                    <th class="text-left p-3 px-5"><%= t('.name') %></th>
-                    <th class="text-left p-3 px-5"><%= t('.middle_name') %></th>
-                    <th class="text-left p-3 px-5"><%= t('.position') %></th>
-                    <th class="text-left p-3 px-5"><%= t('.which_team') %></th>
+                <tr class="bg-gray-200 border">
+                    <th class="p-3"><%= t('.surname') %></th>
+                    <th class="p-3"><%= t('.name') %></th>
+                    <th class="p-3"><%= t('.middle_name') %></th>
+                    <th class="p-3 text-center"><%= t('.position') %></th>
+                    <th class="p-3 text-center"><%= t('.which_team') %></th>
                     <th colspan="3"></th>
                 </tr>
                 <% @coaches.each do |coach| %>
-                    <tr class="border">
-                        <td class="p-3 px-5"><%= coach.surname %></td>
-                        <td class="p-3 px-5"><%= coach.name %></td>
-                        <td class="p-3 px-5 text-center"><%= coach.middle_name %></td>
-                        <td class="p-3 px-5 text-center"><%= Coach.human_enum_name(:position, coach.position) %></td>
-                        <td class="p-3 px-5 text-center"><%= Coach.human_enum_name(:which_team, coach.which_team) %></td>
+                    <tr class="odd:bg-white even:bg-emerald-50 border">
+                        <td class="p-3"><%= coach.surname %></td>
+                        <td class="p-3"><%= coach.name %></td>
+                        <td class="p-3"><%= coach.middle_name %></td>
+                        <td class="p-3 text-center"><%= Coach.human_enum_name(:position, coach.position) %></td>
+                        <td class="p-3 text-center"><%= Coach.human_enum_name(:which_team, coach.which_team) %></td>
 
-                        <td class="p-3 px-5"><%= link_to t('button.show'), coach, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %></td>
-                        <td class="p-3 px-5"><%= link_to t('button.edit'), edit_coach_path(coach), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %></td>
-                        <td class="p-3 px-5"><%= button_to t('button.delete'), coach, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %></td>
+                        <td class="p-3"><%= link_to t('button.show'), coach, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %></td>
+                        <td class="p-3"><%= link_to t('button.edit'), edit_coach_path(coach), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %></td>
+                        <td class="p-3"><%= button_to t('button.delete'), coach, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %></td>
                     </tr>
                 <% end %>
             </tbody>

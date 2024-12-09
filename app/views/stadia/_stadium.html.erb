@@ -1,6 +1,6 @@
-<tr id="<%= dom_id stadium %>" class="border p-5">
-    <td class="p-3 px-5 text-center"><%= stadium.stadium_name %></td>
-    <td class="p-3 px-5 text-center">
+<tr id="<%= dom_id stadium %>" class="odd:bg-white even:bg-emerald-50 border">
+    <td class="p-3"><%= stadium.stadium_name %></td>
+    <td class="p-3">
         <%= Stadium.human_enum_name(:loctype, stadium.loctype) %> <%= stadium.location_name %> <br>
         <% if stadium.district.present? %>
             <%= stadium.district %> <br>
@@ -11,11 +11,13 @@
         <% if stadium.country.present? %>
             <%= stadium.country %> <br>
         <% end %>
+    </td>
+    <td class="p-3">
         <% if stadium.address.present? %>
             <%= stadium.address %>
         <% end %>
     </td>
-    <td class="p-3 px-5 text-center">
-        <%= link_to t('button.edit'), edit_stadium_path(stadium), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow" %>
+    <td class="p-3 text-center">
+        <%= link_to t('button.edit'), edit_stadium_path(stadium), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %>
     </td>
 </tr>

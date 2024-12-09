@@ -1,13 +1,11 @@
-<tr id="<%= dom_id tournament_team %>" class="border p-5">
-    <td class="p-3 px-5 text-center">
-        <div class="flex justify-center items-center">
-            <% if tournament_team.team.team_logo.present? %>
-                <img class="text-center" src="<%= cloudinary_url(tournament_team.team.team_logo.key, height: 100, crop: :scale) %>" style="width:30%;">
-            <% end %>
-        </div>
-    </td>
-    <td class="p-3 px-5 text-start">
+<div id="<%= dom_id tournament_team %>" class="p-2">
+    <div class="flex justify-center items-center">
+        <% if tournament_team.team.team_logo.present? %>
+            <img class="rounded-md" src="<%= cloudinary_url(tournament_team.team.team_logo.key, height: 50, crop: :scale) %>" style="width:30%;">
+        <% end %>
+    </div>
+    <div class="text-center">
         <%= tournament_team.team.team_type %> "<%= tournament_team.team.name %>" (<%= tournament_team.team.represent %>)
-        <%= button_to t('button.delete'), tournament_team, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm font-semibold py-2 px-4 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
-    </td>
-</tr>
+        <%= button_to t('button.delete'), tournament_team, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+    </div>
+</div>
