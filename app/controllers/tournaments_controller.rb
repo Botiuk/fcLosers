@@ -12,7 +12,7 @@ class TournamentsController < ApplicationController
 
   def show
     @tournament_teams = TournamentTeam.includes(:team).where(tournament_id: @tournament.id).order_by_team
-    @games = Game.includes(:home_team, :visitor_team).where(tournament_id: @tournament.id).order(:stage, :game_date)
+    @games = Game.includes(:home_team, :visitor_team).where(tournament_id: @tournament.id).order(:game_date, :stage)
   end
 
   def new
@@ -41,7 +41,8 @@ class TournamentsController < ApplicationController
   def cup
     @cup = Tournament.where(schema_type: 'national_cup').last
     if @cup.present?
-      @cup_matches = Game.where(tournament_id: @cup.id).order(:stage, :game_date, :start_time)
+      cup_stages =  ['Фінал', '1/2', '1/4', '1/8', '1/16', '1/32', '1/64', 'Попередній етап']
+      @cup_matches = Game.where(tournament_id: @cup.id).in_order_of(:stage, cup_stages)
     else
       redirect_to root_url
     end
@@ -50,7 +51,7 @@ class TournamentsController < ApplicationController
   def championship
     @championship = Tournament.where(schema_type: 'national_champ').last
     if @championship.present?
-      @championship_matches = Game.where(tournament_id: @championship.id).order(:stage, :game_date, :start_time)
+      @championship_matches = Game.where(tournament_id: @championship.id).order('stage::integer')
     else
       redirect_to root_url
     end

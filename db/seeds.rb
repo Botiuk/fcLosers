@@ -114,6 +114,18 @@ when 'development'
     represent: 'Тернопіль'
   )
 
+  Team.create(
+    team_type: 'ФК',
+    name: 'Невдахи-2',
+    represent: 'Тернопіль'
+  )
+
+  Team.create(
+    team_type: 'ФК',
+    name: 'Невдахи U19',
+    represent: 'Тернопіль'
+  )
+
   50.times do
     Team.create(
       team_type: [Faker::Alphanumeric.alphanumeric(number: 2, min_alpha: 2).upcase, nil].sample,
@@ -168,15 +180,54 @@ when 'development'
     )
   end
 
-  tournament_ids = Tournament.ids
   stadium_ids = Stadium.ids
-  tournament_ids.each do |tournament_id|
+  champ_tournament_ids = Tournament.where(schema_type: 'national_champ').ids
+  champ_tournament_ids.each do |tournament_id|
     team_ids = TournamentTeam.where(tournament_id: tournament_id).pluck(:team_id)
     15.times do
       Game.create(
         tournament_id: tournament_id,
         game_type: Game.game_types.keys.sample,
-        stage: [Faker::Alphanumeric.alpha(number: 3), Faker::Number.number(digits: 1), nil].sample,
+        stage: Faker::Number.non_zero_digit + Faker::Number.digit,
+        stadium_id: stadium_ids.sample,
+        game_date: Faker::Date.between(from: 1.year.ago, to: 1.year.since),
+        start_time: [Time.zone.now, nil].sample,
+        home_team_id: team_ids.sample,
+        home_goal: Faker::Number.number(digits: 1),
+        visitor_team_id: team_ids.sample,
+        visitor_goal: Faker::Number.number(digits: 1)
+      )
+    end
+  end
+
+  cup_tournament_ids = Tournament.where(schema_type: 'national_cup').ids
+  cup_stage = ['1/32', '1/16', '1/8', '1/4', '1/2', 'Фінал']
+  cup_tournament_ids.each do |tournament_id|
+    team_ids = TournamentTeam.where(tournament_id: tournament_id).pluck(:team_id)
+    15.times do
+      Game.create(
+        tournament_id: tournament_id,
+        game_type: Game.game_types.keys.sample,
+        stage: cup_stage.sample,
+        stadium_id: stadium_ids.sample,
+        game_date: Faker::Date.between(from: 1.year.ago, to: 1.year.since),
+        start_time: [Time.zone.now, nil].sample,
+        home_team_id: team_ids.sample,
+        home_goal: Faker::Number.number(digits: 1),
+        visitor_team_id: team_ids.sample,
+        visitor_goal: Faker::Number.number(digits: 1)
+      )
+    end
+  end
+
+  friendly_tournament_ids = Tournament.where(schema_type: 'friendly').ids
+  friendly_tournament_ids.each do |tournament_id|
+    team_ids = TournamentTeam.where(tournament_id: tournament_id).pluck(:team_id)
+    15.times do
+      Game.create(
+        tournament_id: tournament_id,
+        game_type: Game.game_types.keys.sample,
+        stage: nil,
         stadium_id: stadium_ids.sample,
         game_date: Faker::Date.between(from: 1.year.ago, to: 1.year.since),
         start_time: [Time.zone.now, nil].sample,
@@ -209,6 +260,18 @@ when 'production'
   Team.where(id: 1).first_or_initialize do |team|
     team.team_type = 'ФК'
     team.name = 'Невдахи'
+    team.represent = 'Тернопіль'
+  end
+
+  Team.where(id: 2).first_or_initialize do |team|
+    team.team_type = 'ФК'
+    team.name = 'Невдахи-2'
+    team.represent = 'Тернопіль'
+  end
+
+  Team.where(id: 3).first_or_initialize do |team|
+    team.team_type = 'ФК'
+    team.name = 'Невдахи U19'
     team.represent = 'Тернопіль'
   end
 end

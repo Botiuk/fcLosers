@@ -223,6 +223,11 @@ uk:
     index:
       welcome_html: "Вітаємо на офіційній сторінці ФК &quot;Невдахи&quot; (Тернопіль)!"
 
+  shared:
+    stage:
+      tour: "Тур"
+      playoff: "фіналу"
+
   articles:
     index:
       title_all: "Всі новини"
@@ -395,8 +400,10 @@ uk:
       tournament_teams: "Учасники турніру"
       tournament_teams_empty: "Даних про учасників турніру не має"
       games: "Матчі турніру"
-      tour: "Тур"
-      playoff: "фіналу"
+      games_empty: "Даних про матчі турніру немає"
+    cup:
+      games_empty: "Даних про матчі турніру немає"
+    championship:
       games_empty: "Даних про матчі турніру немає"
 
   tournament_teams:
@@ -447,7 +454,7 @@ uk:
       game_protocol: "Протокол матчу:"
       game_type: "Тип матчу:"
       placeholder:
-        stage: "Введіть тур або етап (якщо є)"
+        stage: "Введіть тур цифрою, етап дробом чи буквами"
         game_protocol: "Введіть протокол матчу"
       prompt:
        stadium: "-- виберіть місце матчу --"
@@ -462,7 +469,5 @@ uk:
       title: "Детальніше про матч"
       game_protocol: "Протокол матчу"
       game_protocol_absent: "Протокол матчу відсутній"
-      tour: "Тур"
-      playoff: "фіналу"
     calendar:
       title: "Календар"
