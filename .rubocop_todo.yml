@@ -12,6 +12,7 @@ Metrics/AbcSize:
     - 'db/migrate/20241007102726_create_active_storage_tables.active_storage.rb'
     - 'app/controllers/articles_controller.rb'
     - 'app/controllers/tournaments_controller.rb'
+    - 'app/validators/game_validator.rb'
 
 Metrics/BlockLength:
   Exclude:

@@ -88,6 +88,12 @@ RSpec.describe Game do
     expect(game).to be_valid
   end
 
+  it 'is not valid with the same team as home and visitor' do
+    team = create(:team)
+    game = build(:game, home_team_id: team.id, visitor_team_id: team.id)
+    expect(game).not_to be_valid
+  end
+
   it 'is not valid when home_goal-visitor_goal diferent present or blank' do
     game = build(:game, home_goal: 1, visitor_goal: nil)
     expect(game).not_to be_valid

@@ -56,6 +56,7 @@ uk:
       tournament_team_uniq: "уже додана в цей турнір"
     game_validator:
       score: "Рахунок може бути або повністю пустим, або повністю заповненим"
+      same_team: "Команда не може проводити офіційний матч сама з собою"
 
   activerecord:
     attributes:
