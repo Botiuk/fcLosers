@@ -2,7 +2,7 @@
     <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
     <% if press_service_signed_in? %>
         <div class="text-end my-auto">
-            <%= link_to t('button.add.player'), new_player_path, :method => :post, class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow" %>
+            <%= link_to t('button.add.player'), new_player_path, method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
         </div>
     <% end %>
 </div>
@@ -25,9 +25,9 @@
                         <td class="p-3 text-center"><%= Player.human_enum_name(:which_team, player.which_team) %></td>
                         <td class="p-3 text-center"><%= player.player_number %></td>
 
-                        <td class="p-3"><%= link_to t('button.show'), player, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %></td>
-                        <td class="p-3"><%= link_to t('button.edit'), edit_player_path(player), class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %></td>
-                        <td class="p-3"><%= button_to t('button.delete'), player, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow" %></td>
+                        <td class="p-3"><%= link_to t('button.show'), player, class: "bg-sky-500 hover:bg-sky-600 text-white text-sm p-2 rounded shadow" %></td>
+                        <td class="p-3"><%= link_to t('button.edit'), edit_player_path(player), class: "bg-amber-500 hover:bg-amber-600 text-white p-2 rounded shadow" %></td>
+                        <td class="p-3"><%= button_to t('button.delete'), player, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-red-500 hover:bg-red-600 text-white p-2 rounded shadow" %></td>
                     </tr>
                 <% end %>
             </tbody>

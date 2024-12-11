@@ -6,6 +6,6 @@
     </div>
     <div class="text-center">
         <%= tournament_team.team.team_type %> "<%= tournament_team.team.name %>" (<%= tournament_team.team.represent %>)
-        <%= button_to t('button.delete'), tournament_team, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 text-sm p-2 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+        <%= button_to t('button.delete'), tournament_team, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-red-500 hover:bg-red-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
     </div>
 </div>

@@ -229,6 +229,15 @@ uk:
       tour: "Тур"
       playoff: "фіналу"
 
+  devise:
+    sessions:
+      new:
+        title: "Вхід лише для прес-служби!"
+        login: "Ввійти"
+        email: "Email:"
+        password: "Пароль:"
+        remember_me: "Запам'ятати мене"
+
   articles:
     index:
       title_all: "Всі новини"

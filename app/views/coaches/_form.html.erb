@@ -27,12 +27,12 @@
         <div class="flex flex-wrap -mx-3">
             <div class="w-full md:w-1/2 px-3">
                 <%= form.label :which_team, t('.which_team'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
-                <%= form.select :which_team, Coach.which_teams.keys.map{ |key| [Coach.human_enum_name(:which_team, key), key] }, {:prompt => t('.prompt'), :selected => form.object.which_team}, {:class => "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+                <%= form.select :which_team, Coach.which_teams.keys.map{ |key| [Coach.human_enum_name(:which_team, key), key] }, {prompt: t('.prompt'), selected: form.object.which_team}, {class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
             </div>
 
             <div class="w-full md:w-1/2 px-3">
                 <%= form.label :position, t('.position'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
-                <%= form.select :position, Coach.positions.keys.map{ |key| [Coach.human_enum_name(:position, key), key] }, {:prompt => t('.prompt'), :selected => form.object.position}, {:class => "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
+                <%= form.select :position, Coach.positions.keys.map{ |key| [Coach.human_enum_name(:position, key), key] }, {prompt: t('.prompt'), selected: form.object.position}, {class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"} %>
             </div>
         </div>
 
@@ -58,8 +58,8 @@
             </div>
         </div>
 
-        <div class="flex items-center justify-between">
-            <%= form.button nil, class: "bg-green hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow" do %>
+        <div class="flex items-center justify-between py-2">
+            <%= form.button nil, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" do %>
             <%= t('button.submit') %>
             <% end %>
         </div>

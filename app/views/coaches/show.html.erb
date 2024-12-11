@@ -32,10 +32,10 @@
 <div class="grid grid-cols-1">
     <div>
         <% if press_service_signed_in? %>
-            <%= link_to t('button.edit'), edit_coach_path(@coach), class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow" %>
-            <%= button_to t('button.delete'), @coach, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow", form: {style: 'display:inline-block;'} %>
+            <%= link_to t('button.edit'), edit_coach_path(@coach), class: "bg-amber-500 hover:bg-amber-600 text-white p-2 rounded shadow" %>
+            <%= button_to t('button.delete'), @coach, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-red-500 hover:bg-red-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
         <% else %>
-            <%= link_to t('button.back'), :back, class: "bg-blue hover:bg-gray-100 text-gray-800 p-2 border border-gray-400 rounded shadow" %>
+            <%= link_to t('button.back'), :back, class: "bg-sky-500 hover:bg-sky-600 text-white text-sm p-2 rounded shadow" %>
         <% end %>
     </div>
 </div>
