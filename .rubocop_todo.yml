@@ -5,11 +5,29 @@ Metrics/MethodLength:
     - 'db/migrate/20241111084134_create_stadia.rb'
     - 'db/migrate/20241127051718_create_games.rb'
     - 'app/controllers/articles_controller.rb'
+    - 'app/controllers/tournaments_controller.rb'
 
 Metrics/AbcSize:
   Exclude:
     - 'db/migrate/20241007102726_create_active_storage_tables.active_storage.rb'
     - 'app/controllers/articles_controller.rb'
+    - 'app/controllers/tournaments_controller.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'app/controllers/tournaments_controller.rb'
+
+Metrics/ClassLength:
+  Exclude:
+    - 'app/controllers/tournaments_controller.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'app/controllers/tournaments_controller.rb'
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'app/controllers/tournaments_controller.rb'
 
 Layout/LineLength:
   Exclude:

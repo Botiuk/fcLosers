@@ -52,12 +52,65 @@ class TournamentsController < ApplicationController
     @championship = Tournament.where(schema_type: 'national_champ').last
     if @championship.present?
       @championship_matches = Game.where(tournament_id: @championship.id).order('stage::integer')
+      championship_teams_ids = TournamentTeam.where(tournament_id: @championship.id).pluck(:team_id)
+      @championship_teams = Team.where(id: championship_teams_ids)
+      tournament_table
     else
       redirect_to root_url
     end
   end
 
   private
+
+  def tournament_table
+    @tournament_table_records = []
+    @championship_teams.each do |team|
+      t_played = 0
+      t_win = 0
+      t_draw = 0
+      t_lose = 0
+      t_scored = 0
+      t_missed = 0
+      t_points = 0
+      @championship_matches.each do |game|
+        next unless game.home_goal.present? && game.visitor_goal.present?
+
+        if team.id == game.home_team_id
+          t_played += 1
+          if game.home_goal > game.visitor_goal
+            t_win += 1
+            t_points += 3
+          elsif game.home_goal == game.visitor_goal
+            t_draw += 1
+            t_points += 1
+          else
+            t_lose += 1
+          end
+          t_scored += game.home_goal
+          t_missed += game.visitor_goal
+        end
+
+        next unless team.id == game.visitor_team_id
+
+        t_played += 1
+        if game.visitor_goal > game.home_goal
+          t_win += 1
+          t_points += 3
+        elsif game.visitor_goal == game.home_goal
+          t_draw += 1
+          t_points += 1
+        else
+          t_lose += 1
+        end
+        t_scored += game.visitor_goal
+        t_missed += game.home_goal
+      end
+      @tournament_table_records << { team_id: team.id, played: t_played, win: t_win, draw: t_draw, lose: t_lose,
+                                     scored: t_scored, mised: t_missed, points: t_points }
+    end
+    @tournament_table_records.sort_by! { |record| [record[:points], record[:win], record[:draw], record[:played]] }
+    @tournament_table_records.reverse!
+  end
 
   def set_tournament
     @tournament = Tournament.find(params[:id])

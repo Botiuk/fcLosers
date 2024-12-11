@@ -11,9 +11,9 @@
     <td class="">
         <% if game.home_team.team_logo.present? %>
             <div class="flex justify-center items-center">
-                <img class="rounded-md" src="<%= cloudinary_url(game.home_team.team_logo.key, height: 50, crop: :scale) %>" style="width:100%;">
-            <% end %>
-        </div>
+                <img class="rounded-md" src="<%= cloudinary_url(game.home_team.team_logo.key, height: 50, crop: :scale) %>" style="width:50%;">
+            </div>
+        <% end %>
     </td>
     <td class="p-3 text-end">
         <%= game.home_team.team_type %> "<%= game.home_team.name %>"
@@ -31,7 +31,7 @@
     <td class="">
         <% if game.visitor_team.team_logo.present? %>
             <div class="flex justify-center items-center">
-                <img class="rounded-md" src="<%= cloudinary_url(game.visitor_team.team_logo.key, height: 50, crop: :scale) %>" style="width:100%;">
+                <img class="rounded-md" src="<%= cloudinary_url(game.visitor_team.team_logo.key, height: 50, crop: :scale) %>" style="width:50%;">
             </div>
         <% end %>
     </td>

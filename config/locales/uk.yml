@@ -405,6 +405,14 @@ uk:
       games_empty: "Даних про матчі турніру немає"
     championship:
       games_empty: "Даних про матчі турніру немає"
+      position: "Поз."
+      team: "Команда"
+      played: "І"
+      win: "В"
+      draw: "Н"
+      lose: "П"
+      goals_difference: "М"
+      points: "О"
 
   tournament_teams:
     new:
