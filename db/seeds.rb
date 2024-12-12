@@ -256,6 +256,15 @@ when 'development'
     )
   end
 
+  game_ids = Game.ids
+  video_ids = Video.ids
+  video_ids.each do |video_id|
+    GameVideo.create(
+      game_id: game_ids.sample,
+      video_id: video_id
+    )
+  end
+
 when 'production'
 
   press_service = PressService.where(email: 'fcLosers@gmail.com').first_or_initialize
