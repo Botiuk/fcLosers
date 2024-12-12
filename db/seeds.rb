@@ -249,6 +249,13 @@ when 'development'
     )
   end
 
+  20.times do
+    Video.create(
+      name: Faker::Movie.title,
+      youtube_id: Faker::Alphanumeric.alpha(number: 10)
+    )
+  end
+
 when 'production'
 
   press_service = PressService.where(email: 'fcLosers@gmail.com').first_or_initialize

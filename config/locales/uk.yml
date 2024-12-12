@@ -152,6 +152,9 @@ uk:
           group: "група"
           play_off: "на виліт"
           friendly: "дружній"
+      video:
+        name: "Поле 'Назва'"
+        youtube_id: "Поле 'YouTube ID'"
 
   notice:
     create:
