@@ -1,0 +1,19 @@
+<div id="<%= dom_id video %>">
+    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+        <div class="p-4">
+            <div class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                <%= video.name.truncate(40) %>
+            </div>            
+            <iframe src='https://www.youtube.com/embed/<%= video.youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen  class="w-full aspect-video"></iframe>
+            
+            <div class="grid grid-cols-1">
+                <div class="pt-2 text-center">
+                    <% if press_service_signed_in? %>
+                        <%= link_to t('button.edit'), edit_video_path(video), class: "bg-amber-500 hover:bg-amber-600 text-white p-2 rounded shadow" %>
+                        <%= button_to t('button.delete'), video, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-red-500 hover:bg-red-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

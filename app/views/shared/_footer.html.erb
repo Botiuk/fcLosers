@@ -78,6 +78,12 @@
                 <%= link_to t('navigation.cup'), cup_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
             </li>
 
+            <li class="hidden lg:block">
+                <h6 class="text-base font-bold"><%= t('navigation.media') %></h6>
+                <%= link_to t('navigation.videos'), videos_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <%= link_to t('navigation.photos'), root_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+            </li>
+
             <% if press_service_signed_in? %>
                 <li class="hidden lg:block">
                     <h6 class="text-base font-bold"><%= t('navigation.administration') %></h6>

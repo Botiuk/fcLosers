@@ -54,6 +54,7 @@ uk:
       player_uniq_number: "не унікальний. В цій команді вже є гравець з таким"
       main_coach_uniq: "не унікальне. В цій команді вже є головний чи в.о. головного"
       tournament_team_uniq: "уже додана в цей турнір"
+      uniq_youtube_id: "має бути унікальне. Відео з таким YouTube ID вже є"
     game_validator:
       score: "Рахунок може бути або повністю пустим, або повністю заповненим"
       same_team: "Команда не може проводити офіційний матч сама з собою"
@@ -166,6 +167,7 @@ uk:
       tournament_team: "Учасника турніру успішно додано"
       stadium: "Стадіон успішно створено"
       game: "Гру успішно створено"
+      video: "Відео успішно додано"
     update:
       article: "Новину успішно оновлено"
       player: "Гравця успішно оновлено"
@@ -174,12 +176,14 @@ uk:
       tournament: "Турнір успішно оновлено"
       stadium: "Стадіон успішно оновлено"
       game: "Гру успішно оновлено"
+      video: "Відео успішно оновлено"
     destroy:
       article: "Новину успішно видалено"
       player: "Граця успішно видалено. Па-па, невдаха :-Р"
       coach: "Тренера чи працівника успішно видалено. Па-па, невдаха :-Р"
       tournament_team: "Учасника з турніру успішно видалено"
       game: "Гру успішно видалено"
+      video: "Відео успішно видалено"
 
   navigation:
     articles: "Новини"
@@ -202,6 +206,9 @@ uk:
     competition: "Змагання"
     championship: "Чемпіонат"
     cup: "Кубок"
+    media: "Медіа"
+    videos: "Відеогалерея"
+    photos: "Фотогалерея"
   
   button:
     add:
@@ -213,6 +220,7 @@ uk:
       tournament_team: "Додати учасника"
       stadium: "Додати стадіон"
       game: "Додати матч"
+      video: "Додати відео"
     all:
       articles: "Всі новини"
     back: "Назад"
@@ -492,3 +500,19 @@ uk:
       game_protocol_absent: "Протокол матчу відсутній"
     calendar:
       title: "Календар"
+  
+  videos:
+    index:
+      title: "Відеогалерея"
+      videos_empty: "Поки новин немає"
+    new:
+      title: "Нове відео"
+    form:
+      name: "Назва:"
+      youtube_id: "YouTube ID:*"
+      youtube_id_instruction_html: "* З адреси відео скопіювати частину, що на зразку виділена жирним: https://www.youtube.com/watch?v=<b>X_Hw9P1iZfQ</b>"
+      placeholder:
+        name: "введіть назву"
+        youtube_id: "вставте сюди YouTube ID"
+    edit:
+      title: "Редагувати відео"
