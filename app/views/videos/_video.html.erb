@@ -3,14 +3,30 @@
         <div class="p-4">
             <div class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
                 <%= video.name.truncate(40) %>
-            </div>            
+            </div>
             <iframe src='https://www.youtube.com/embed/<%= video.youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen  class="w-full aspect-video"></iframe>
-            
+
             <div class="grid grid-cols-1">
                 <div class="pt-2 text-center">
+                    <% video_has_game = "" %>
+                    <% if @game_videos.present? %>
+                        <% @game_videos.each do |game_video| %>
+                            <% if game_video.video_id == video.id %>
+                                <% if @game.present? %>
+                                    <%= button_to t('button.delete_from_game'), game_video, method: :delete, data: { turbo_confirm: t('button.delete_confirm_from_game') }, class: "bg-pink-500 hover:bg-pink-600 text-white text-sm p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+                                <% else %>
+                                    <%= link_to t('button.show_game'), game_path(game_video.game_id), class: "bg-sky-500 hover:bg-sky-600 text-white text-sm p-2 rounded shadow" %>
+                                <% end %>
+                                <% video_has_game = "yes" %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
                     <% if press_service_signed_in? %>
-                        <%= link_to t('button.edit'), edit_video_path(video), class: "bg-amber-500 hover:bg-amber-600 text-white p-2 rounded shadow" %>
-                        <%= button_to t('button.delete'), video, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-red-500 hover:bg-red-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+                        <% if video_has_game != "yes" %>
+                            <%= link_to t('button.add.game'), new_game_video_path(video_id: video.id), method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white text-sm p-2 rounded shadow" %>
+                        <% end %>
+                        <%= link_to t('button.edit'), edit_video_path(video), class: "bg-amber-500 hover:bg-amber-600 text-white text-sm p-2 rounded shadow" %>
+                        <%= button_to t('button.delete'), video, method: :delete, data: { turbo_confirm: t('button.delete_confirm_dependent') }, class: "bg-red-500 hover:bg-red-600 text-white text-sm p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
                     <% end %>
                 </div>
             </div>

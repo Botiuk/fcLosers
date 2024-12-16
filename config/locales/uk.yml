@@ -156,9 +156,10 @@ uk:
       video:
         name: "Поле 'Назва'"
         youtube_id: "Поле 'YouTube ID'"
-      match_video:
+      game_video:
         game: "Поле 'Матч'"
         video: "Поле 'Відео'"
+        video_id: "Відео"
 
   notice:
     create:
@@ -171,6 +172,7 @@ uk:
       stadium: "Стадіон успішно створено"
       game: "Гру успішно створено"
       video: "Відео успішно додано"
+      game_video: "Відео з матчу успішно додано"
     update:
       article: "Новину успішно оновлено"
       player: "Гравця успішно оновлено"
@@ -187,6 +189,7 @@ uk:
       tournament_team: "Учасника з турніру успішно видалено"
       game: "Гру успішно видалено"
       video: "Відео успішно видалено"
+      game_video: "Відео з матчу успішно видалено"
 
   navigation:
     articles: "Новини"
@@ -229,9 +232,12 @@ uk:
     back: "Назад"
     edit: "Редагувати"
     show: "Детальніше"
+    show_game: "Матч"
     delete: "Видалити"
+    delete_from_game: "Видалити з матчу"
     delete_confirm: "Точно видалити?"
     delete_confirm_dependent: "Точно видалити? Буде видалено все, що пов'язано."
+    delete_confirm_from_game: "Точно видалити прив'язку до цього матчу?"
     submit: "Підтвердити"
 
   main:
@@ -501,6 +507,8 @@ uk:
       title: "Детальніше про матч"
       game_protocol: "Протокол матчу"
       game_protocol_absent: "Протокол матчу відсутній"
+      game_videos: "Відео з матчу"
+      videos_empty: "Немає відео з матчу"
     calendar:
       title: "Календар"
   
@@ -519,3 +527,16 @@ uk:
         youtube_id: "вставте сюди YouTube ID"
     edit:
       title: "Редагувати відео"
+
+  game_videos:
+    new:
+      title_game: "Нове відео з матчу"
+      title_video: "Додати матч до відео"
+    form:
+      videos_empty: "Неможливо створити нову пару матч-відео, немає жодного незайнятого відео"
+      games_empty: "Неможливо створити нову пару матч-відео, спочатку потрібно створити хоча б один матч"
+      game: "Матч:"
+      video: "Відео:"
+      prompt:
+       game: "-- виберіть матч --"
+       video: "-- виберіть відео --"  

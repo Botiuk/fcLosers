@@ -6,6 +6,7 @@ class VideosController < ApplicationController
 
   def index
     @pagy, @videos = pagy(Video.order(created_at: :desc, name: :desc), limit: 9)
+    @game_videos = GameVideo.all
   rescue Pagy::OverflowError
     redirect_to videos_url(page: 1)
   end

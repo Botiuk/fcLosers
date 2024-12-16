@@ -90,11 +90,29 @@
     </div>
 </div>
 
+<div class="grid grid-cols-2 gap-10 mb-2 p-4">
+    <div class="text-start text-xl font-bold leading-none"><%= t('.game_videos') %></div>
+    <% if press_service_signed_in? %>
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.video'), new_game_video_path(game_id: @game.id), method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
+        </div>
+    <% end %>
+</div>
+<% if @videos.present? %>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">        
+        <% @videos.each do |video| %>
+            <%= render 'videos/video', video: video %>
+        <% end %>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.videos_empty') %></p>
+<% end %>
+
 <div class="grid grid-cols-1">
     <div>
         <% if press_service_signed_in? %>
             <%= link_to t('button.edit'), edit_game_path(@game), class: "bg-amber-500 hover:bg-amber-600 text-white p-2 rounded shadow" %>
-            <%= button_to t('button.delete'), @game, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-red-500 hover:bg-red-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+            <%= button_to t('button.delete'), @game, method: :delete, data: { turbo_confirm: t('button.delete_confirm_dependent') }, class: "bg-red-500 hover:bg-red-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
         <% else %>
             <%= link_to t('button.back'), :back, class: "bg-sky-500 hover:bg-sky-600 text-white text-sm p-2 rounded shadow" %>
         <% end %>

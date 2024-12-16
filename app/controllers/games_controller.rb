@@ -5,7 +5,11 @@ class GamesController < ApplicationController
   before_action :set_game, only: %i[edit update show destroy]
   before_action :stadium_formhelper, only: %i[new create edit update]
 
-  def show; end
+  def show
+    video_from_game_ids = GameVideo.where(game_id: @game.id)
+    @videos = Video.where(id: video_from_game_ids)
+    @game_videos = GameVideo.where(video_id: video_from_game_ids)
+  end
 
   def new
     if params[:tournament_id].present?

@@ -22,4 +22,14 @@ class Game < ApplicationRecord
   def score_or_time_present?
     (home_goal.present? && visitor_goal.present?) || start_time.present?
   end
+
+  def self.formhelper
+    games = Game.order(game_date: :desc).limit(20).pluck(:game_date, :id)
+    games.map do |element|
+      game = Game.includes(:home_team, :visitor_team).where(id: element[1]).first
+      element[0] =
+        "#{I18n.l(game.game_date)} | #{game.home_team.name} - #{game.visitor_team.name}"
+    end
+    games
+  end
 end
