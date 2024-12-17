@@ -6,6 +6,7 @@ Metrics/MethodLength:
     - 'db/migrate/20241127051718_create_games.rb'
     - 'app/controllers/articles_controller.rb'
     - 'app/controllers/tournaments_controller.rb'
+    - 'app/controllers/games_controller.rb'
 
 Metrics/AbcSize:
   Exclude:
@@ -14,6 +15,7 @@ Metrics/AbcSize:
     - 'app/controllers/tournaments_controller.rb'
     - 'app/validators/game_validator.rb'
     - 'app/controllers/game_videos_controller.rb'
+    - 'app/controllers/games_controller.rb'
 
 Metrics/BlockLength:
   Exclude:

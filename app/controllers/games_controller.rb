@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class GamesController < ApplicationController
-  before_action :authenticate_press_service!, except: %i[show calendar]
+  before_action :authenticate_press_service!, except: %i[show calendar archive archive_search]
   before_action :set_game, only: %i[edit update show destroy]
   before_action :stadium_formhelper, only: %i[new create edit update]
 
@@ -57,6 +57,35 @@ class GamesController < ApplicationController
     @games = Game.includes(:home_team, :visitor_team).where('home_team_id = ? AND game_date > ?', 1, 1.year.ago)
                  .or(Game.includes(:home_team, :visitor_team)
                          .where('visitor_team_id = ? AND game_date > ?', 1, 1.year.ago)).order(:game_date)
+  end
+
+  def archive
+    @pagy, @games = pagy(
+      Game.includes(:home_team, :visitor_team).where('home_team_id = ? AND game_date < ?', 1, Time.zone.today)
+          .or(Game.includes(:home_team, :visitor_team)
+                  .where('visitor_team_id = ? AND game_date < ?', 1, Time.zone.today))
+          .order(game_date: :desc), limit: 20
+    )
+  rescue Pagy::OverflowError
+    redirect_to games_archive_url(page: 1)
+  end
+
+  def archive_search
+    if params[:rival_name].blank?
+      redirect_to games_archive_url, alert: t('alert.game.archive_search')
+    else
+      rival_ids = Team.where('lower(name) LIKE ?', "%#{params[:rival_name].downcase}%").ids
+      @pagy, @games = pagy(
+        Game.includes(:home_team, :visitor_team).where(game_date: ...Time.zone.today)
+                                                .where(home_team_id: 1, visitor_team_id: rival_ids)
+            .or(Game.includes(:home_team, :visitor_team).where(game_date: ...Time.zone.today))
+                                                        .where(home_team_id: rival_ids, visitor_team_id: 1)
+            .order(game_date: :desc), limit: 20
+      )
+      @search_params = params[:rival_name]
+    end
+  rescue Pagy::OverflowError
+    redirect_to games_archive_url(page: 1)
   end
 
   private

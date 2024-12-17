@@ -1,0 +1,27 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
+    <div class="text-end my-auto">
+        <%= form_tag(games_archive_search_path, method: :get, class: "flex") do %>
+            <%= text_field_tag(:rival_name, nil, placeholder: t('.search_placeholder'), class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500")  %>
+            <%= button_tag(t('button.search'), type: "submit", name: nil, class: "bg-lime-500 hover:bg-lime-600 text-white ms-2 p-2 rounded shadow") %>
+        <% end %>
+    </div>
+</div>
+
+<% if @games.present? %>
+    <div class="py-4 relative overflow-x-auto">
+        <table class="w-full text-sm text-left shadow-md rounded">
+            <tbody>
+                <% @games.each do |game| %>
+                    <%= render 'games/game', game: game %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.geams_empty') %></p>
+<% end %>
+
+<% if @pagy.present? %>
+    <%= render 'shared/pagy' %>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="grid grid-cols-1 mb-3">
+    <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %> "<%= @search_params %>"</div>
+</div>
+
+<% if @games.present? %>
+    <div class="py-4 relative overflow-x-auto">
+        <table class="w-full text-sm text-left shadow-md rounded">
+            <tbody>
+                <% @games.each do |game| %>
+                    <%= render 'games/game', game: game %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.search_empty') %></p>
+<% end %>
+
+<% if @pagy.present? %>
+    <%= render 'shared/pagy' %>
+<% end %>

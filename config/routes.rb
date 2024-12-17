@@ -17,6 +17,8 @@ Rails.application.routes.draw do
   get 'calendar', to: 'games#calendar'
   get 'cup', to: 'tournaments#cup'
   get 'championship', to: 'tournaments#championship'
+  get 'games_archive', to: 'games#archive'
+  get 'games_archive/search', to: 'games#archive_search'
 
   resources :articles, :players, :coaches
   resources :teams, except: %i[show destroy]

@@ -191,6 +191,10 @@ uk:
       video: "Відео успішно видалено"
       game_video: "Відео з матчу успішно видалено"
 
+  alert:
+    game:
+      archive_search: "Для пошуку матчів, потрібно ввести в поле хоча б одну букву з назви суперника"
+
   navigation:
     articles: "Новини"
     articles_all: "Всі новини"
@@ -212,6 +216,7 @@ uk:
     competition: "Змагання"
     championship: "Чемпіонат"
     cup: "Кубок"
+    games_archive: "Архів наших матчів"
     media: "Медіа"
     videos: "Відеогалерея"
     photos: "Фотогалерея"
@@ -240,6 +245,7 @@ uk:
     delete_confirm_dependent: "Точно видалити? Буде видалено все, що пов'язано."
     delete_confirm_from_game: "Точно видалити прив'язку до цього матчу?"
     submit: "Підтвердити"
+    search: "Пошук"
 
   main:
     index:
@@ -513,6 +519,13 @@ uk:
       videos_empty: "Немає відео з матчу"
     calendar:
       title: "Календар"
+    archive:
+      title: "Архів наших матчів"
+      games_empty: "Немає наших матчів"
+      search_placeholder: "введіть назву суперника"
+    archive_search:
+      title: "Пошук наших матчів за назвою суперника, що містить"
+      search_empty: "Немає даних про наші матчі, назва суперника в яких співпадає з запитом"
   
   videos:
     index:

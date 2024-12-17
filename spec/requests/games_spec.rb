@@ -27,6 +27,22 @@ RSpec.describe 'Games' do
       get calendar_path
       expect(response).to be_successful
     end
+
+    it 'can GET games_archive' do
+      get games_archive_path
+      expect(response).to be_successful
+    end
+
+    it 'GET search' do
+      get games_archive_search_path(rival_name: 'enemy')
+      expect(response).to be_successful
+    end
+
+    it 'GET search with empty params rival_name' do
+      get games_archive_search_path
+      expect(response).to redirect_to(games_archive_url)
+      expect(flash[:alert]).to include(I18n.t('alert.game.archive_search'))
+    end
   end
 
   describe 'press_service management' do
@@ -87,6 +103,22 @@ RSpec.describe 'Games' do
     it 'can GET calendar' do
       get calendar_path
       expect(response).to be_successful
+    end
+
+    it 'can GET games_archive' do
+      get games_archive_path
+      expect(response).to be_successful
+    end
+
+    it 'GET search' do
+      get games_archive_search_path(rival_name: 'enemy')
+      expect(response).to be_successful
+    end
+
+    it 'GET search with empty params rival_name' do
+      get games_archive_search_path
+      expect(response).to redirect_to(games_archive_url)
+      expect(flash[:alert]).to include(I18n.t('alert.game.archive_search'))
     end
   end
 end
