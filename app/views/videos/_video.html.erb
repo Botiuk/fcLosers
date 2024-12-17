@@ -13,7 +13,9 @@
                         <% @game_videos.each do |game_video| %>
                             <% if game_video.video_id == video.id %>
                                 <% if @game.present? %>
-                                    <%= button_to t('button.delete_from_game'), game_video, method: :delete, data: { turbo_confirm: t('button.delete_confirm_from_game') }, class: "bg-pink-500 hover:bg-pink-600 text-white text-sm p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+                                    <% if press_service_signed_in? %>
+                                        <%= button_to t('button.delete_from_game'), game_video, method: :delete, data: { turbo_confirm: t('button.delete_confirm_from_game') }, class: "bg-pink-500 hover:bg-pink-600 text-white text-sm p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+                                    <% end %>
                                 <% else %>
                                     <%= link_to t('button.show_game'), game_path(game_video.game_id), class: "bg-sky-500 hover:bg-sky-600 text-white text-sm p-2 rounded shadow" %>
                                 <% end %>
