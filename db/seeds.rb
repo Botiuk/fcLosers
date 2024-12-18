@@ -265,6 +265,23 @@ when 'development'
     )
   end
 
+  10.times do
+    Album.create(
+      name: Faker::Music.album,
+      album_date: Faker::Date.between(from: 1.year.ago, to: Time.zone.today)
+    )
+  end
+
+  albums_ids = Album.ids
+  albums_ids.each do |album_id|
+    ActiveStorage::Attachment.create!(
+      record_type: 'Album',
+      record_id: album_id,
+      name: 'photos',
+      blob_id: 1
+    )
+  end
+
 when 'production'
 
   press_service = PressService.where(email: 'fcLosers@gmail.com').first_or_initialize

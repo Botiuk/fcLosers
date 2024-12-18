@@ -160,6 +160,8 @@ uk:
         game: "Поле 'Матч'"
         video: "Поле 'Відео'"
         video_id: "Відео"
+      album:
+        name: "Поле 'Назва'"
 
   notice:
     create:
@@ -220,7 +222,7 @@ uk:
     media: "Медіа"
     videos: "Відеогалерея"
     photos: "Фотогалерея"
-  
+
   button:
     add:
       article: "Додати новину"
@@ -296,7 +298,7 @@ uk:
       content_absent: "Текст новини відсутній"
       draft: "Чернетка"
       scheduled: "Заплановано"
-  
+
   players:
     index:
       title: "Гравці"
@@ -383,7 +385,7 @@ uk:
     show:
       surname: "Прізвище"
       name: "Ім'я"
-      middle_name: "По батькові"      
+      middle_name: "По батькові"
       date_of_birth: "Дата народження"
       position: "Посада"
       coach_biography: "Біографія"
@@ -409,7 +411,7 @@ uk:
         team_type: "ФК, СК і т.п."
         name: "введіть назву"
         represent: "введіть звідки команда"
-  
+
   tournaments:
     index:
       title: "Турніри"
@@ -486,7 +488,7 @@ uk:
         country: "введіть країну"
       prompt: "-"
       instruction: "* Поле можна залишити пустим"
-  
+
   games:
     form:
       game_date: "Дата матчу:"
@@ -526,7 +528,7 @@ uk:
     archive_search:
       title: "Пошук наших матчів за назвою суперника, що містить"
       search_empty: "Немає даних про наші матчі, назва суперника в яких співпадає з запитом"
-  
+
   videos:
     index:
       title: "Відеогалерея"
@@ -554,4 +556,4 @@ uk:
       video: "Відео:"
       prompt:
        game: "-- виберіть матч --"
-       video: "-- виберіть відео --"  
+       video: "-- виберіть відео --"
