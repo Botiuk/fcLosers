@@ -1,0 +1,26 @@
+<div id="<%= dom_id album %>" class="p-4">
+    <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
+        <%= link_to album, class: "" do %>            
+            <div class="text-xl truncate font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                <%= album.name.truncate(40) %><br>
+            </div>
+            <div class="text-xs">
+                <%= album.album_date %>
+            </div>
+
+            <% if album.photos.attached? %>
+                <div class="grid grid-cols-3 gap-0">
+                    <% album.photos.first(6).each do |photo| %>
+                        <div class="p-0">
+                            <% if photo.representable? %>
+                                <img class="" src="<%= cloudinary_url(photo.key, height: 150, crop: :scale) %>" style="width:100%;">
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            <% else %>
+                <div class=""><br><br><br><%= t('.photos_absent') %><br><br><br><br></div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

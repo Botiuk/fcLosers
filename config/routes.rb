@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get 'games_archive', to: 'games#archive'
   get 'games_archive/search', to: 'games#archive_search'
 
-  resources :articles, :players, :coaches
+  resources :articles, :players, :coaches, :albums
   resources :teams, except: %i[show destroy]
   resources :tournaments, except: :destroy
   resources :tournament_teams, only: %i[new create destroy]

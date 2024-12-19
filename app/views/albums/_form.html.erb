@@ -1,0 +1,42 @@
+<%= form_with(model: album) do |form| %>
+    <form class="w-full max-w-lg">
+        <%= render 'shared/form_errors_messages', object: form.object %>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full px-3">
+                <%= form.label :name, t('.name'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.text_field :name, placeholder: t('.placeholder.name'), autofocus: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/3 px-3">
+                <%= form.label :album_date, t('.album_date'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <%= form.date_field :album_date, value: form.object.album_date, max: Date.today, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap -mx-3">
+            <div class="w-full px-3">
+                <%= form.label :photos, t('.photos'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                <% if album.photos.attached? %>
+                    <div class="grid grid-cols-3 md:grid-cols-6">
+                        <% @album.photos.each do |photo| %>
+                            <div>
+                                <%= form.hidden_field :photos, multiple: true, value: photo.signed_id %>
+                                <%= cl_image_tag(photo.key, width: 100, crop: :scale) %>
+                            </div>
+                        <% end %>
+                    </div>
+                <% end %>
+                <%= form.file_field :photos, direct_upload: true, multiple: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between py-2">
+            <%= form.button nil, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" do %>
+            <%= t('button.submit') %>
+            <% end %>
+        </div>
+    </form>
+<% end %>

@@ -1,0 +1,22 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-3xl font-bold leading-none">
+        <%= t('.title') %>
+    </div>
+    <% if press_service_signed_in? %>
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.album'), new_album_path, method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
+        </div>
+    <% end %>
+</div>
+
+<% if @albums.present? %>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+        <% @albums.each do |album| %>
+            <%= render album %>
+        <% end %>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.albums_empty') %></p>
+<% end %>
+
+<%= render 'shared/pagy' %>
