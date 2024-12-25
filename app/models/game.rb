@@ -7,6 +7,7 @@ class Game < ApplicationRecord
   belongs_to :visitor_team, class_name: 'Team'
 
   has_many :game_videos, dependent: :destroy
+  has_many :game_albums, dependent: :destroy
 
   has_rich_text :game_protocol
 

@@ -272,13 +272,20 @@ when 'development'
     )
   end
 
-  albums_ids = Album.ids
-  albums_ids.each do |album_id|
+  album_ids = Album.ids
+  album_ids.each do |album_id|
     ActiveStorage::Attachment.create!(
       record_type: 'Album',
       record_id: album_id,
       name: 'photos',
       blob_id: 1
+    )
+  end
+  game_ids = Game.ids
+  album_ids.each do |album_id|
+    GameAlbum.create(
+      game_id: game_ids.sample,
+      album_id: album_id
     )
   end
 

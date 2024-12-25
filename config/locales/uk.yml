@@ -163,6 +163,10 @@ uk:
       album:
         name: "Поле 'Назва'"
         album_date: "Поле 'Дата зйомки'"
+      game_album:
+        game: "Поле 'Матч'"
+        album: "Поле 'Альбом'"
+        album_id: "Альбом"
 
   notice:
     create:

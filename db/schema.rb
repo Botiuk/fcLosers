@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_12_18_064625) do
+ActiveRecord::Schema[7.2].define(version: 2024_12_25_084737) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,15 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_18_064625) do
     t.integer "position", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "game_albums", force: :cascade do |t|
+    t.bigint "game_id", null: false
+    t.bigint "album_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_game_albums_on_album_id", unique: true
+    t.index ["game_id"], name: "index_game_albums_on_game_id"
   end
 
   create_table "game_videos", force: :cascade do |t|
@@ -184,6 +193,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_12_18_064625) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "game_albums", "albums"
+  add_foreign_key "game_albums", "games"
   add_foreign_key "game_videos", "games"
   add_foreign_key "game_videos", "videos"
   add_foreign_key "games", "stadia"
