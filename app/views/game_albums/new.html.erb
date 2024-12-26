@@ -1,0 +1,9 @@
+<div class="text-center text-3xl font-bold">
+    <% if @game.present? %>
+        <%= t('.title_game') %> "<%= @game.home_team.name %> - <%= @game.visitor_team.name %> (<%= I18n.l(@game.game_date) %>)"
+    <% else %>
+        <%= t('.title_album') %> "<%= @album.name %>"
+    <% end %>
+</div>
+
+<%= render "form", game_album: @game_album %>

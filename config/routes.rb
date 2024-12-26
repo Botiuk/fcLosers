@@ -28,4 +28,5 @@ Rails.application.routes.draw do
   resources :games, except: :index
   resources :videos, except: :show
   resources :game_videos, only: %i[new create destroy]
+  resources :game_albums, only: %i[new create destroy]
 end

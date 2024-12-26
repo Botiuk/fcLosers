@@ -10,7 +10,9 @@ class AlbumsController < ApplicationController
     redirect_to albums_url(page: 1)
   end
 
-  def show; end
+  def show
+    @game_albums = GameAlbum.all
+  end
 
   def new
     @album = Album.new

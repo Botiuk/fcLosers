@@ -107,7 +107,7 @@
     <% end %>
 </div>
 <% if @videos.present? %>
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">        
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
         <% @videos.each do |video| %>
             <%= render 'videos/video', video: video %>
         <% end %>
@@ -116,10 +116,52 @@
     <p class="font-semibold text-red-700 text-center"><%= t('.videos_empty') %></p>
 <% end %>
 
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-xl font-bold leading-none"><%= t('.game_albums') %></div>
+    <% if press_service_signed_in? %>
+        <div class="text-end my-auto">
+            <%= link_to t('button.add.album'), new_game_album_path(game_id: @game.id), method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
+        </div>
+    <% end %>
+</div>
+<% if @albums.present? %>
+    <div class="mb-4">
+        <% @albums.each do |album| %>
+            <div class="mb-2 text-xl truncate font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+                <%= link_to album, class: "no-underline hover:underline" do %>
+                    <%= album.name %>
+                <% end %>
+                <% if press_service_signed_in? && @game_albums.present? %>
+                    <% @game_albums.each do |game_album| %>
+                        <% if game_album.album_id == album.id %>
+                            <%= button_to t('button.delete_from_game'), game_album, method: :delete, data: { turbo_confirm: t('button.delete_confirm_from_game') }, class: "bg-pink-500 hover:bg-pink-600 text-white text-sm p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            </div>
+            <% if album.photos.attached? %>
+                <div class="grid grid-cols-3 md:grid-cols-6">
+                    <% album.photos.first(23).each do |photo| %>
+                        <div class="p-0">
+                            <% if photo.representable? %>
+                                <img class="" src="<%= cloudinary_url(photo.key, height: 150, crop: :scale) %>" style="width:100%;">
+                            <% end %>
+                        </div>
+                    <% end %>
+                </div>
+            <% else %>
+                <div class=""><br><br><br><%= t('.photos_absent') %><br><br><br><br></div>
+            <% end %>
+        <% end %>
+    </div>
+<% else %>
+    <p class="font-semibold text-red-700 text-center"><%= t('.albums_empty') %></p>
+<% end %>
+
 <div class="grid grid-cols-1">
     <div>
         <% unless press_service_signed_in? %>
-            <%= link_to t('button.back'), :back, class: "bg-sky-500 hover:bg-sky-600 text-white text-sm p-2 rounded shadow" %>
+            <%= link_to t('button.back'), :back, class: "bg-sky-500 hover:bg-sky-600 text-white p-2 rounded shadow" %>
         <% end %>
     </div>
 </div>

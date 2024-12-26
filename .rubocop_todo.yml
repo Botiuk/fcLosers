@@ -16,6 +16,7 @@ Metrics/AbcSize:
     - 'app/validators/game_validator.rb'
     - 'app/controllers/game_videos_controller.rb'
     - 'app/controllers/games_controller.rb'
+    - 'app/controllers/game_albums_controller.rb'
 
 Metrics/BlockLength:
   Exclude:

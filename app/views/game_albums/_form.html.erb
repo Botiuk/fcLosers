@@ -1,0 +1,55 @@
+<% if @albums.present? && @games.present? %>
+    <%= form_with(model: game_album) do |form| %>
+        <form class="w-full max-w-lg">
+            <%= render 'shared/form_errors_messages', object: form.object %>
+
+            <div class="flex flex-wrap -mx-3">
+                <% if params[:album_id].present? %>
+                    <div class="w-full px-3">
+                        <%= form.label :game_id, t('.game'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                        <%= select(:game_album, :game_id, options_for_select(@games, selected: form.object.game_id), {prompt: t('.prompt.game')}, {class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"}) %>
+                    </div>
+
+                    <div>
+                        <%= form.hidden_field :album_id %>
+                    </div>
+                <% elsif params[:game_id].present? %>
+                    <div class="w-full px-3">
+                        <%= form.label :album_id, t('.album'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                        <%= select(:game_album, :album_id, options_for_select(@albums, selected: form.object.album_id), {prompt: t('.prompt.album')}, {class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"}) %>
+                    </div>
+
+                    <div>
+                        <%= form.hidden_field :game_id %>
+                    </div>
+                <% else %>
+                    <div class="w-full px-3">
+                        <%= form.label :game_id, t('.game'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                        <%= select(:game_album, :game_id, options_for_select(@games, selected: form.object.game_id), {prompt: t('.prompt.game')}, {class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"}) %>
+                    </div>
+
+                    <div class="w-full px-3">
+                        <%= form.label :album_id, t('.album'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
+                        <%= select(:game_album, :album_id, options_for_select(@albums, selected: form.object.album_id), {prompt: t('.prompt.album')}, {class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"}) %>
+                    </div>
+                <% end %>
+            </div>
+
+            <div class="flex items-center justify-between py-2">
+                <%= form.button nil, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" do %>
+                    <%= t('button.submit') %>
+                <% end %>
+            </div>
+        </form>
+    <% end %>
+
+<% elsif @albums.empty? %>
+    <div class="container text-center text-danger">
+        <h6 class="py-2 font-medium text-red-500"><%= t('.albums_empty') %></h6>
+        <%= link_to t('button.add.album'), new_album_path, method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
+    </div>
+<% else %>
+    <div class="container text-center text-danger">
+        <h6 class="py-2 font-medium text-red-500"><%= t('.games_empty') %></h6>
+    </div>
+<% end %>

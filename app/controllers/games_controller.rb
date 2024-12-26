@@ -6,9 +6,12 @@ class GamesController < ApplicationController
   before_action :stadium_formhelper, only: %i[new create edit update]
 
   def show
-    video_from_game_ids = GameVideo.where(game_id: @game.id)
-    @videos = Video.where(id: video_from_game_ids)
-    @game_videos = GameVideo.where(video_id: video_from_game_ids)
+    video_ids = GameVideo.where(game_id: @game.id).pluck(:video_id)
+    @videos = Video.where(id: video_ids)
+    @game_videos = GameVideo.where(video_id: video_ids)
+    album_ids = GameAlbum.where(game_id: @game.id).pluck(:album_id)
+    @albums = Album.where(id: album_ids)
+    @game_albums = GameAlbum.where(album_id: album_ids)
   end
 
   def new
