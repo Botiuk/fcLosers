@@ -127,8 +127,8 @@
 <% if @albums.present? %>
     <div class="mb-4">
         <% @albums.each do |album| %>
-            <div class="mb-2 text-xl truncate font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                <%= link_to album, class: "no-underline hover:underline" do %>
+            <div class="mb-2 text-xl truncate leading-tight text-neutral-800 dark:text-neutral-50">
+                <%= link_to album, class: "font-medium no-underline hover:underline" do %>
                     <%= album.name %>
                 <% end %>
                 <% if press_service_signed_in? && @game_albums.present? %>
@@ -149,8 +149,6 @@
                         </div>
                     <% end %>
                 </div>
-            <% else %>
-                <div class=""><br><br><br><%= t('.photos_absent') %><br><br><br><br></div>
             <% end %>
         <% end %>
     </div>

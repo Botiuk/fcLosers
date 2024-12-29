@@ -17,7 +17,7 @@
 
             <div class="w-full md:w-1/2 px-3">
                 <%= form.label :published_at, t('.published_at'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
-                <%= form.datetime_local_field :published_at, value: form.object.published_at || nil, min: form.object.published_at || DateTime.now, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+                <%= form.datetime_local_field :published_at, value: form.object.published_at || nil, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
             </div>
         </div>
 

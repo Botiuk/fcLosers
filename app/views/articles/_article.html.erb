@@ -4,14 +4,14 @@
             <% if article.cover.present? %>
                 <img class="rounded-t-lg" src="<%= cloudinary_url(article.cover.key, height: 200, crop: :scale) %>" style="width:100%;">
             <% else %>
-                <div class=""><br><br><br><%= t('.cover_absent') %><br><br><br><br></div>
+                <div class="rounded-t-lg bg-slate-500 text-center text-white font-bold"><br><br><br><%= t('.cover_absent') %><br><br><br><br></div>
             <% end %>
 
             <div class="p-4">
                 <div class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-                    <%= article.title.truncate(55) %>
+                    <%= article.title.truncate(42) %>
                 </div>
-                <div class="text-sm">
+                <div class="text-sm text-emerald-500">
                     <%= Article.human_enum_name(:article_type, article.article_type) %> |
                     <% if article.published_at.present? %>
                         <%= I18n.l(article.published_at, format: :long) %>
