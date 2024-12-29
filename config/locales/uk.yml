@@ -5,6 +5,7 @@ uk:
   time:
     formats:
       default: "%H:%M"
+      long: "%H:%M, %e.%m.%Y"
 
   date:
     formats:
