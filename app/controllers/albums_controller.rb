@@ -30,6 +30,9 @@ class AlbumsController < ApplicationController
   end
 
   def update
+    attachments = ActiveStorage::Attachment.where(id: params[:deleted_photo_ids])
+    attachments.map(&:purge)
+
     if @album.update(album_params)
       redirect_to album_url(@album), notice: t('notice.update.album')
     else

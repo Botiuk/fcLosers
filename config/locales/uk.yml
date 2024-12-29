@@ -584,11 +584,14 @@ uk:
       name: "Назва:"
       album_date: "Дата зйомки:"
       photos: "Фотографії:"
+      delete_photo: "Видалити"
       placeholder:
-        name: "введіть назву"      
+        name: "введіть назву"
     edit:
       title: "Редагувати альбом"
-  
+    show:
+      albums_empty: "В альбомі немає фотографій"
+
   game_albums:
     new:
       title_game: "Нове відео з матчу"

@@ -20,11 +20,13 @@
             <div class="w-full px-3">
                 <%= form.label :photos, t('.photos'), class: "block text-xl tracking-wide text-gray-700 font-bold mb-2" %>
                 <% if album.photos.attached? %>
-                    <div class="grid grid-cols-3 md:grid-cols-6">
+                    <div class="grid grid-cols-3 md:grid-cols-9">
                         <% @album.photos.each do |photo| %>
-                            <div>
+                            <div class="mb-2">
                                 <%= form.hidden_field :photos, multiple: true, value: photo.signed_id %>
                                 <%= cl_image_tag(photo.key, width: 100, crop: :scale) %>
+                                <%= check_box_tag "deleted_photo_ids[]", photo.id, class: "me-1 w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" %>
+                                <%= t('.delete_photo') %>
                             </div>
                         <% end %>
                     </div>
@@ -35,7 +37,7 @@
 
         <div class="flex items-center justify-between py-2">
             <%= form.button nil, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" do %>
-            <%= t('button.submit') %>
+                <%= t('button.submit') %>
             <% end %>
         </div>
     </form>
