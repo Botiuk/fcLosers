@@ -75,7 +75,9 @@
 
             <li class="hidden lg:block">
                 <h6 class="text-base font-bold"><%= t('navigation.competition') %></h6>
-                <%= link_to t('navigation.championship'), championship_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <%= link_to t('navigation.championship'), championship_path(schema_type: 'national_champ'), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <%= link_to t('navigation.championship_second'), championship_path(schema_type: 'national_champ_second'), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <%= link_to t('navigation.championship_u19'), championship_path(schema_type: 'national_champ_u19'), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
                 <%= link_to t('navigation.cup'), cup_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
                 <%= link_to t('navigation.games_archive'), games_archive_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
             </li>

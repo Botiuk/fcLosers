@@ -128,6 +128,8 @@ uk:
           national_champ: "Національний чемпіонат"
           national_cup: "Національний кубок"
           friendly: "Дружні матчі"
+          national_champ_second: "Національний чемпіонат. Дубль"
+          national_champ_u19: "Національний чемпіонат U19"
       tournament_team:
         tournament: "Поле 'Турнір'"
         team: "Поле 'Команда'"
@@ -231,6 +233,8 @@ uk:
     logout: "Вихід"
     competition: "Змагання"
     championship: "Чемпіонат"
+    championship_second: "Чемпіонат. Дубль"
+    championship_u19: "Чемпіонат U19"
     cup: "Кубок"
     games_archive: "Архів наших матчів"
     media: "Медіа"

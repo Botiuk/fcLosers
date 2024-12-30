@@ -143,7 +143,7 @@ when 'development'
     )
   end
 
-  15.times do
+  20.times do
     random_date = Faker::Date.between(from: 5.years.ago, to: 1.month.ago)
     Tournament.create(
       start_date: random_date,
@@ -181,7 +181,8 @@ when 'development'
   end
 
   stadium_ids = Stadium.ids
-  champ_tournament_ids = Tournament.where(schema_type: 'national_champ').ids
+  champ_tournament_ids = Tournament.where(schema_type: %w[national_champ national_champ_second
+                                                          national_champ_u19]).ids
   champ_tournament_ids.each do |tournament_id|
     team_ids = TournamentTeam.where(tournament_id: tournament_id).pluck(:team_id)
     50.times do

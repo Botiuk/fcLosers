@@ -39,7 +39,7 @@ class TournamentsController < ApplicationController
   end
 
   def cup
-    @cup = Tournament.where(schema_type: 'national_cup').last
+    @cup = Tournament.where(schema_type: 'national_cup').order(start_date: :desc).first
     if @cup.present?
       cup_stages =  ['Фінал', '1/2', '1/4', '1/8', '1/16', '1/32', '1/64', 'Попередній етап']
       @cup_matches = Game.where(tournament_id: @cup.id).in_order_of(:stage, cup_stages)
@@ -49,7 +49,11 @@ class TournamentsController < ApplicationController
   end
 
   def championship
-    @championship = Tournament.where(schema_type: 'national_champ').last
+    @championship = if params[:schema_type].present?
+                      Tournament.where(schema_type: params[:schema_type]).order(start_date: :desc).first
+                    else
+                      Tournament.where(schema_type: 'national_champ').order(start_date: :desc).first
+                    end
     if @championship.present?
       @championship_matches = Game.where(tournament_id: @championship.id).order('stage::integer')
       championship_teams_ids = TournamentTeam.where(tournament_id: @championship.id).pluck(:team_id)

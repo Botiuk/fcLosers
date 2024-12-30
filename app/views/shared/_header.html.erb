@@ -101,7 +101,13 @@
           </a>
           <ul class='absolute top-5 max-lg:top-8 left-0 z-50 block shadow-lg bg-emerald-500 max-h-0 overflow-hidden min-w-[250px] group-hover:opacity-100 group-hover:max-h-[700px] px-6 group-hover:pb-4 group-hover:pt-6 transition-all duration-500'>
             <li class='border-b py-3'>
-              <%= link_to t('navigation.championship'), championship_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white font-semibold text-[15px] block" %>
+              <%= link_to t('navigation.championship'), championship_path(schema_type: 'national_champ'), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white font-semibold text-[15px] block" %>
+            </li>
+            <li class='border-b py-3'>
+              <%= link_to t('navigation.championship_second'), championship_path(schema_type: 'national_champ_second'), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white font-semibold text-[15px] block" %>
+            </li>
+            <li class='border-b py-3'>
+              <%= link_to t('navigation.championship_u19'), championship_path(schema_type: 'national_champ_u19'), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white font-semibold text-[15px] block" %>
             </li>
             <li class='border-b py-3'>
               <%= link_to t('navigation.cup'), cup_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white font-semibold text-[15px] block" %>
