@@ -215,9 +215,9 @@ uk:
     articles_club_life: "Життя клубу"
     articles_press: "Преса"
     our_team: "Команда"
-    team_first: "Перша"
-    team_second: "Дубль"
-    team_u19: "U19"
+    team_first: "Невдахи"
+    team_second: "Невдахи-2"
+    team_u19: "Невдахи U19"
     players: "Гравці"
     coaches: "Тренери і персонал"
     teams: "Команди"
@@ -539,7 +539,9 @@ uk:
       game_albums: "Фотографії з матчу"
       albums_empty: "Немає фотографій з матчу"
     calendar:
-      title: "Календар"
+      title_first: "Календар першої команди"
+      title_second: "Календар дубля"
+      title_u19: "Календар команди U19"
     archive:
       title: "Архів наших матчів"
       games_empty: "Немає наших матчів"

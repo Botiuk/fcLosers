@@ -74,16 +74,17 @@
             </li>
 
             <li class="hidden lg:block">
-                <h6 class="text-base font-bold">
-                    <%= link_to t('navigation.calendar'), calendar_path, class: "hover:text-[#007bff] text-white text-[15px] block" %>
-                </h6>
-            </li>
-
-            <li class="hidden lg:block">
                 <h6 class="text-base font-bold"><%= t('navigation.competition') %></h6>
                 <%= link_to t('navigation.championship'), championship_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
                 <%= link_to t('navigation.cup'), cup_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
                 <%= link_to t('navigation.games_archive'), games_archive_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+            </li>
+
+            <li class="hidden lg:block">
+                <h6 class="text-base font-bold"><%= t('navigation.calendar') %></h6>
+                <%= link_to t('navigation.team_first'), calendar_path(team: "first"), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <%= link_to t('navigation.team_second'), calendar_path(team: "second"), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <%= link_to t('navigation.team_u19'), calendar_path(team: "u19"), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
             </li>
 
             <li class="hidden lg:block">

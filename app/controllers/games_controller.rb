@@ -57,16 +57,20 @@ class GamesController < ApplicationController
   end
 
   def calendar
-    @games = Game.includes(:home_team, :visitor_team).where('home_team_id = ? AND game_date > ?', 1, 1.year.ago)
-                 .or(Game.includes(:home_team, :visitor_team)
-                         .where('visitor_team_id = ? AND game_date > ?', 1, 1.year.ago)).order(:game_date)
+    if params[:team].present?
+      @team_id = 1 if params[:team] == 'first'
+      @team_id = 2 if params[:team] == 'second'
+      @team_id = 3 if params[:team] == 'u19'
+    else
+      @team_id = 1
+    end
+    calendar_for_team(@team_id)
   end
 
   def archive
     @pagy, @games = pagy(
-      Game.includes(:home_team, :visitor_team).where('home_team_id = ? AND game_date < ?', 1, Time.zone.today)
-          .or(Game.includes(:home_team, :visitor_team)
-                  .where('visitor_team_id = ? AND game_date < ?', 1, Time.zone.today))
+      Game.includes(:home_team, :visitor_team).where(home_team_id: [1, 2, 3], game_date: ...Time.zone.today)
+          .or(Game.includes(:home_team, :visitor_team).where(visitor_team_id: [1, 2, 3], game_date: ...Time.zone.today))
           .order(game_date: :desc), limit: 20
     )
   rescue Pagy::OverflowError
@@ -80,9 +84,9 @@ class GamesController < ApplicationController
       rival_ids = Team.where('lower(name) LIKE ?', "%#{params[:rival_name].downcase}%").ids
       @pagy, @games = pagy(
         Game.includes(:home_team, :visitor_team).where(game_date: ...Time.zone.today)
-                                                .where(home_team_id: 1, visitor_team_id: rival_ids)
-            .or(Game.includes(:home_team, :visitor_team).where(game_date: ...Time.zone.today))
-                                                        .where(home_team_id: rival_ids, visitor_team_id: 1)
+                                                .where(home_team_id: [1, 2, 3], visitor_team_id: rival_ids)
+            .or(Game.includes(:home_team, :visitor_team).where(game_date: ...Time.zone.today)
+                                                        .where(home_team_id: rival_ids, visitor_team_id: [1, 2, 3]))
             .order(game_date: :desc), limit: 20
       )
       @search_params = params[:rival_name]
@@ -106,5 +110,12 @@ class GamesController < ApplicationController
 
   def stadium_formhelper
     @stadia = Stadium.formhelper
+  end
+
+  def calendar_for_team(team_id)
+    @games = Game.includes(:home_team, :visitor_team).where(home_team_id: team_id).where('game_date > ?', 1.year.ago)
+                 .or(Game.includes(:home_team, :visitor_team).where(visitor_team_id: team_id)
+                         .where('game_date > ?', 1.year.ago))
+                 .order(:game_date)
   end
 end

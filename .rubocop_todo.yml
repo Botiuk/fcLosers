@@ -25,6 +25,7 @@ Metrics/BlockLength:
 Metrics/ClassLength:
   Exclude:
     - 'app/controllers/tournaments_controller.rb'
+    - 'app/controllers/games_controller.rb'
 
 Metrics/CyclomaticComplexity:
   Exclude:

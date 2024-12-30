@@ -1,11 +1,23 @@
-<div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
+<div class="text-start text-3xl font-bold leading-none">
+    <% if params[:team].present? %>
+        <% if params[:team] == 'second' %>
+            <%= t('.title_second') %>
+        <% elsif params[:team] == 'u19' %>
+            <%= t('.title_u19') %>
+        <% else %>
+            <%= t('.title_first') %>
+        <% end %>
+    <% else %>
+        <%= t('.title_first') %>
+    <% end %>
+</div>
 
 <%= month_calendar(attribute: :game_date, events: @games) do |date, games| %>
   <%= date.day %>
   <% games.each do |game| %>
     <div class="text-center text-white text-bold">
         <%= link_to game do %>
-            <% if game.home_team_id == 1 %>
+            <% if game.home_team_id == @team_id %>
                 <div class="bg-green-500 m-2 p-2 rounded-md">
                     <div class="flex justify-center items-center">
                         <% if game.visitor_team.team_logo.present? %>
