@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
 class PlayersController < ApplicationController
-  before_action :authenticate_press_service!, except: %i[index show]
+  before_action :authenticate_press_service!, except: :show
   before_action :set_player, only: %i[edit update show destroy]
 
   def index
-    if press_service_signed_in?
-      @pagy, @players = pagy(Player.players_ordered, limit: 20)
-    elsif params[:team].present?
-      team_players(params[:team])
-    else
-      team_players('first')
-    end
+    @pagy, @players = pagy(Player.players_ordered, limit: 20)
   rescue Pagy::OverflowError
     redirect_to players_url(page: 1)
   end
@@ -47,13 +41,6 @@ class PlayersController < ApplicationController
   end
 
   private
-
-  def team_players(team)
-    @goalkeepers = Player.team_players_with_position(team, 'goalkeeper')
-    @defenders = Player.team_players_with_position(team, 'defender')
-    @midfielders = Player.team_players_with_position(team, 'midfielder')
-    @forwards = Player.team_players_with_position(team, 'forward')
-  end
 
   def set_player
     @player = Player.find(params[:id])

@@ -8,6 +8,11 @@ RSpec.describe 'Mains' do
       get root_path
       expect(response).to be_successful
     end
+
+    it 'can GET our_team' do
+      get our_team_path
+      expect(response).to be_successful
+    end
   end
 
   describe 'press_service management' do
@@ -18,6 +23,11 @@ RSpec.describe 'Mains' do
 
     it 'can GET index' do
       get root_path
+      expect(response).to be_successful
+    end
+
+    it 'can GET our_team' do
+      get our_team_path
       expect(response).to be_successful
     end
   end

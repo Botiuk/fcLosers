@@ -214,13 +214,16 @@ uk:
     articles_match: "Матчі"
     articles_club_life: "Життя клубу"
     articles_press: "Преса"
+    our_team: "Команда"
+    team_first: "Перша"
+    team_second: "Дубль"
+    team_u19: "U19"
     players: "Гравці"
     coaches: "Тренери і персонал"
     teams: "Команди"
     tournaments: "Турніри"
     stadia: "Стадіони"
     calendar: "Календар"
-    our_team: "Команда"
     administration: "Адміністрування"
     follow_us: "Слідкуй за нами"
     press_service: "Прес-служба"
@@ -264,6 +267,15 @@ uk:
   main:
     index:
       welcome_html: "Вітаємо на офіційній сторінці ФК &quot;Невдахи&quot; (Тернопіль)!"
+    our_team:
+      title_first: "Перша команда"
+      title_second: "Дубль"
+      title_u19: "Команда U19"
+      coaches: "Тренери і персонал"
+      goalkeepers: "Воротарі"
+      defenders: "Захисники"
+      midfielders: "Півзахисники"
+      forwards: "Нападники"
 
   shared:
     stage:
@@ -314,14 +326,7 @@ uk:
   players:
     index:
       title: "Гравці"
-      title_first: ""
-      title_second: ""
-      title_u19: ""
       players_empty: "Гравців не має"
-      goalkeepers: "Воротарі"
-      defenders: "Захисники"
-      midfielders: "Півзахисники"
-      forwards: "Нападники"
       name: "Ім'я"
       surname: "Прізвище"
       which_team: "Яка команда"

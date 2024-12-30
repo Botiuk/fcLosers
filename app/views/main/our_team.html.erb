@@ -1,0 +1,72 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+    <div class="text-start text-3xl font-bold leading-none">
+        <% if params[:team].present? %>
+            <% if params[:team] == 'second' %>
+                <%= t('.title_second') %>
+            <% elsif params[:team] == 'u19' %>
+                <%= t('.title_u19') %>
+            <% else %>
+                <%= t('.title_first') %>
+            <% end %>
+        <% else %>
+            <%= t('.title_first') %>
+        <% end %>
+    </div>
+</div>
+
+<% if @coaches.present? %>
+    <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+        <%= t('.coaches') %>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
+        <% @coaches.each do |coach| %>
+            <%= render 'coaches/coach', coach: coach %>
+        <% end %>
+    </div>
+<% end %>
+
+<% if @goalkeepers.present? || @defenders.present? || @midfielders.present? || @forwards.present? %>
+    <% if @goalkeepers.present? %>
+        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+            <%= t('.goalkeepers') %>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
+            <% @goalkeepers.each do |goalkeeper| %>
+                <%= render 'players/player', player: goalkeeper %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% if @defenders.present? %>
+        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+            <%= t('.defenders') %>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
+            <% @defenders.each do |defender| %>
+                <%= render 'players/player', player: defender %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% if @midfielders.present? %>
+        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+            <%= t('.midfielders') %>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
+            <% @midfielders.each do |midfielder| %>
+                <%= render 'players/player', player: midfielder %>
+            <% end %>
+        </div>
+    <% end %>
+
+    <% if @forwards.present? %>
+        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
+            <%= t('.forwards') %>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
+            <% @forwards.each do |forward| %>
+                <%= render 'players/player', player: forward %>
+            <% end %>
+        </div>
+    <% end %>
+<% end %>

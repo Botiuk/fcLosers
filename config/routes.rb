@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'championship', to: 'tournaments#championship'
   get 'games_archive', to: 'games#archive'
   get 'games_archive/search', to: 'games#archive_search'
+  get 'our_team', to: 'main#our_team'
 
   resources :articles, :players, :coaches, :albums
   resources :teams, except: %i[show destroy]

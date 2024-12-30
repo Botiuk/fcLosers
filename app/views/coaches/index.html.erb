@@ -1,13 +1,11 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
     <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
-    <% if press_service_signed_in? %>
-        <div class="text-end my-auto">
-            <%= link_to t('button.add.coach'), new_coach_path, method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
-        </div>
-    <% end %>
+    <div class="text-end my-auto">
+        <%= link_to t('button.add.coach'), new_coach_path, method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
+    </div>
 </div>
 
-<% if press_service_signed_in? && @coaches.present? %>
+<% if @coaches.present? %>
     <div class="py-4 relative overflow-x-auto">
         <table class="w-full text-sm text-left shadow-md rounded">
             <tbody>
@@ -34,12 +32,6 @@
                 <% end %>
             </tbody>
         </table>
-    </div>
-<% elsif @coaches.present? %>
-    <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
-        <% @coaches.each do |coach| %>
-            <%= render coach %>
-        <% end %>
     </div>
 <% else %>
     <p class="font-semibold text-red-700 text-center"><%= t('.coaches_empty') %></p>

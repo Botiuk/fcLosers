@@ -1,10 +1,8 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
     <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
-    <% if press_service_signed_in? %>
-        <div class="text-end my-auto">
-            <%= link_to t('button.add.player'), new_player_path, method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
-        </div>
-    <% end %>
+    <div class="text-end my-auto">
+        <%= link_to t('button.add.player'), new_player_path, method: :post, class: "bg-emerald-500 hover:bg-emerald-600 text-white p-2 rounded shadow" %>
+    </div>
 </div>
 
 <% if @players.present? %>
@@ -33,50 +31,6 @@
             </tbody>
         </table>
     </div>
-<% elsif @goalkeepers.present? || @defenders.present? || @midfielders.present? || @forwards.present? %>
-    <% if @goalkeepers.present? %>
-        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
-            <%= t('.goalkeepers') %>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
-            <% @goalkeepers.each do |player| %>
-                <%= render player %>
-            <% end %>
-        </div>
-    <% end %>
-
-    <% if @defenders.present? %>
-        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
-            <%= t('.defenders') %>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
-            <% @defenders.each do |player| %>
-                <%= render player %>
-            <% end %>
-        </div>
-    <% end %>
-
-    <% if @midfielders.present? %>
-        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
-            <%= t('.midfielders') %>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
-            <% @midfielders.each do |player| %>
-                <%= render player %>
-            <% end %>
-        </div>
-    <% end %>
-
-    <% if @forwards.present? %>
-        <div class="text-white text-start text-xl px-4 py-2 border-0 rounded relative mb-4 bg-emerald-500">
-            <%= t('.forwards') %>
-        </div>
-        <div class="grid grid-cols-2 lg:grid-cols-5 md:grid-cols-3">
-            <% @forwards.each do |player| %>
-                <%= render player %>
-            <% end %>
-        </div>
-    <% end %>
 <% else %>
     <p class="font-semibold text-red-700 text-center"><%= t('.players_empty') %></p>
 <% end %>

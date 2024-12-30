@@ -62,8 +62,15 @@
 
             <li class="hidden lg:block">
                 <h6 class="text-base font-bold"><%= t('navigation.our_team') %></h6>
-                <%= link_to t('navigation.players'), players_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
-                <%= link_to t('navigation.coaches'), coaches_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <% if press_service_signed_in? %>
+                    <%= link_to t('navigation.players'), players_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                    <%= link_to t('navigation.coaches'), coaches_path, class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <% else %>
+                    <%= link_to t('navigation.team_first'), our_team_path(team: "first"), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                    <%= link_to t('navigation.team_second'), our_team_path(team: "second"), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                    <%= link_to t('navigation.team_u19'), our_team_path(team: "u19"), class: "hover:text-[#007bff] hover:fill-[#007bff] text-white text-[15px] block" %>
+                <% end %>
+
             </li>
 
             <li class="hidden lg:block">

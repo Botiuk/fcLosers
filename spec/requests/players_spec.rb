@@ -4,9 +4,10 @@ require 'rails_helper'
 
 RSpec.describe 'Players' do
   describe 'non registered user management' do
-    it 'can GET index' do
+    it 'cannot GET index' do
       get players_path
-      expect(response).to be_successful
+      expect(response).to redirect_to(new_press_service_session_path)
+      expect(flash[:alert]).to include I18n.t('devise.failure.unauthenticated')
     end
 
     it 'can GET show' do
