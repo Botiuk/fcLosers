@@ -2,6 +2,7 @@
 
 class GameVideosController < ApplicationController
   before_action :authenticate_press_service!
+  before_action :set_our_teams_ids, only: %i[new create]
   before_action :set_game_video, only: :destroy
   before_action :my_formhelpers, only: %i[new create]
 
@@ -48,7 +49,7 @@ class GameVideosController < ApplicationController
   end
 
   def my_formhelpers
-    @games = Game.formhelper
+    @games = Game.formhelper(@our_ids)
     @videos = Video.formhelper
   end
 end

@@ -2,6 +2,7 @@
 
 class TeamsController < ApplicationController
   before_action :authenticate_press_service!
+  before_action :set_our_teams_ids, only: :index
   before_action :set_team, only: %i[edit update]
 
   def index

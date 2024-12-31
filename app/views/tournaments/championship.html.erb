@@ -23,32 +23,44 @@
                 <% position = 1 %>
                 <% @tournament_table_records.each do |record| %>
                     <% if position == 3 %>
-                        <tr class="odd:bg-white even:bg-emerald-50 border border-b-3 border-b-green-600">
+                        <% if @our_ids.include?(record[:team_id]) %>
+                            <tr class="bg-emerald-300 border border-b-3 border-b-green-600">
+                        <% else %>
+                            <tr class="odd:bg-white even:bg-emerald-50 border border-b-3 border-b-green-600">
+                        <% end %>
                     <% elsif position == (@tournament_table_records.size - 2) %>
-                        <tr class="odd:bg-white even:bg-emerald-50 border border-b-3 border-b-red-600">
+                        <% if @our_ids.include?(record[:team_id]) %>
+                            <tr class="bg-emerald-300 border border-b-3 border-b-red-600">
+                        <% else %>
+                            <tr class="odd:bg-white even:bg-emerald-50 border border-b-3 border-b-red-600">
+                        <% end %>
                     <% else %>
-                        <tr class="odd:bg-white even:bg-emerald-50 border">
+                        <% if @our_ids.include?(record[:team_id]) %>
+                            <tr class="bg-emerald-300 border">
+                        <% else %>
+                            <tr class="odd:bg-white even:bg-emerald-50 border">
+                        <% end %>
                     <% end %>
-                            <td class="p-3"><%= position %></td>
-                            <% @championship_teams.each do |team| %>
-                                <% if record[:team_id] == team.id %>
-                                    <td class="p-3">
-                                        <% if team.team_logo.present? %>
-                                            <div class="flex justify-center items-center">
-                                                <img class="rounded-md" src="<%= cloudinary_url(team.team_logo.key, height: 50, crop: :scale) %>" style="width:30%;">
-                                            </div>
-                                        <% end %>
-                                    </td>
-                                    <td class="p-3 text-left"><%= team.team_type %> "<%= team.name %>" (<%= team.represent %>)</td>
+                                <td class="p-3"><%= position %></td>
+                                <% @championship_teams.each do |team| %>
+                                    <% if record[:team_id] == team.id %>
+                                        <td class="p-3">
+                                            <% if team.team_logo.present? %>
+                                                <div class="flex justify-center items-center">
+                                                    <img class="rounded-md" src="<%= cloudinary_url(team.team_logo.key, height: 50, crop: :scale) %>" style="width:30%;">
+                                                </div>
+                                            <% end %>
+                                        </td>
+                                        <td class="p-3 text-left"><%= team.team_type %> "<%= team.name %>" (<%= team.represent %>)</td>
+                                    <% end %>
                                 <% end %>
-                            <% end %>
-                            <td class="p-3"><%= record[:played] %></td>
-                            <td class="p-3"><%= record[:win] %></td>
-                            <td class="p-3"><%= record[:draw] %></td>
-                            <td class="p-3"><%= record[:lose] %></td>
-                            <td class="p-3 whitespace-nowrap"><%= record[:scored] %>-<%= record[:mised] %></td>
-                            <td class="p-3"><%= record[:points] %></td>
-                        </tr>
+                                <td class="p-3"><%= record[:played] %></td>
+                                <td class="p-3"><%= record[:win] %></td>
+                                <td class="p-3"><%= record[:draw] %></td>
+                                <td class="p-3"><%= record[:lose] %></td>
+                                <td class="p-3 whitespace-nowrap"><%= record[:scored] %>-<%= record[:mised] %></td>
+                                <td class="p-3"><%= record[:points] %></td>
+                            </tr>
                     <% position += 1 %>
                 <% end %>
             </tbody>
@@ -57,12 +69,14 @@
 <% end %>
 
 <% if @championship_matches.present? %>
-    <div class="py-4 relative overflow-x-auto">
+    <div class="relative overflow-x-auto">
         <table class="w-full text-sm text-left shadow-md rounded">
             <tbody>
                 <% stage = '' %>
                 <% @championship_matches.each do |game| %>
                     <% if game.stage.present? && stage != game.stage %>
+                        <tr class="h-5">
+                        </tr>
                         <% stage = game.stage %>
                         <tr class="bg-gray-200 border font-bold">
                             <td colspan="7" class="p-3 text-center">

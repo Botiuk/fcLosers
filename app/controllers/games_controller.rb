@@ -2,6 +2,7 @@
 
 class GamesController < ApplicationController
   before_action :authenticate_press_service!, except: %i[show calendar archive archive_search]
+  before_action :set_our_teams_ids, only: %i[show archive archive_search]
   before_action :set_game, only: %i[edit update show destroy]
   before_action :stadium_formhelper, only: %i[new create edit update]
 
@@ -69,8 +70,8 @@ class GamesController < ApplicationController
 
   def archive
     @pagy, @games = pagy(
-      Game.includes(:home_team, :visitor_team).where(home_team_id: [1, 2, 3], game_date: ...Time.zone.today)
-          .or(Game.includes(:home_team, :visitor_team).where(visitor_team_id: [1, 2, 3], game_date: ...Time.zone.today))
+      Game.includes(:home_team, :visitor_team).where(home_team_id: @our_ids, game_date: ...Time.zone.today)
+          .or(Game.includes(:home_team, :visitor_team).where(visitor_team_id: @our_ids, game_date: ...Time.zone.today))
           .order(game_date: :desc), limit: 20
     )
   rescue Pagy::OverflowError
@@ -84,9 +85,9 @@ class GamesController < ApplicationController
       rival_ids = Team.where('lower(name) LIKE ?', "%#{params[:rival_name].downcase}%").ids
       @pagy, @games = pagy(
         Game.includes(:home_team, :visitor_team).where(game_date: ...Time.zone.today)
-                                                .where(home_team_id: [1, 2, 3], visitor_team_id: rival_ids)
+                                                .where(home_team_id: @our_ids, visitor_team_id: rival_ids)
             .or(Game.includes(:home_team, :visitor_team).where(game_date: ...Time.zone.today)
-                                                        .where(home_team_id: rival_ids, visitor_team_id: [1, 2, 3]))
+                                                        .where(home_team_id: rival_ids, visitor_team_id: @our_ids))
             .order(game_date: :desc), limit: 20
       )
       @search_params = params[:rival_name]

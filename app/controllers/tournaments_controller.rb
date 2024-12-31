@@ -2,6 +2,7 @@
 
 class TournamentsController < ApplicationController
   before_action :authenticate_press_service!, except: %i[cup championship]
+  before_action :set_our_teams_ids, only: %i[show cup championship]
   before_action :set_tournament, only: %i[edit update show]
 
   def index

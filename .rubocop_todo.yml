@@ -17,6 +17,7 @@ Metrics/AbcSize:
     - 'app/controllers/game_videos_controller.rb'
     - 'app/controllers/games_controller.rb'
     - 'app/controllers/game_albums_controller.rb'
+    - 'app/models/game.rb'
 
 Metrics/BlockLength:
   Exclude:

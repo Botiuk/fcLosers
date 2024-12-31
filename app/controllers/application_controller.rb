@@ -5,4 +5,10 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
 
   include Pagy::Backend
+
+  private
+
+  def set_our_teams_ids
+    @our_ids = [1, 2, 3]
+  end
 end

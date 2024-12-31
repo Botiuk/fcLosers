@@ -1,11 +1,15 @@
-<div id="<%= dom_id tournament_team %>" class="p-2">
-    <div class="flex justify-center items-center">
-        <% if tournament_team.team.team_logo.present? %>
-            <img class="rounded-md" src="<%= cloudinary_url(tournament_team.team.team_logo.key, height: 50, crop: :scale) %>" style="width:30%;">
-        <% end %>
+<% if @our_ids.include?(tournament_team.team.id) %>
+    <div id="<%= dom_id tournament_team %>" class="bg-emerald-300 rounded p-2">
+<% else %>
+    <div id="<%= dom_id tournament_team %>" class="p-2">
+<% end %>
+        <div class="flex justify-center items-center">
+            <% if tournament_team.team.team_logo.present? %>
+                <img class="rounded-md" src="<%= cloudinary_url(tournament_team.team.team_logo.key, height: 50, crop: :scale) %>" style="width:30%;">
+            <% end %>
+        </div>
+        <div class="text-center">
+            <%= tournament_team.team.team_type %> "<%= tournament_team.team.name %>" (<%= tournament_team.team.represent %>)
+            <%= button_to t('button.delete_from_tournament'), tournament_team, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-pink-500 hover:bg-pink-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
+        </div>
     </div>
-    <div class="text-center">
-        <%= tournament_team.team.team_type %> "<%= tournament_team.team.name %>" (<%= tournament_team.team.represent %>)
-        <%= button_to t('button.delete_from_tournament'), tournament_team, method: :delete, data: { turbo_confirm: t('button.delete_confirm') }, class: "bg-pink-500 hover:bg-pink-600 text-white p-2 rounded shadow", form: {style: 'display:inline-block;'} %>
-    </div>
-</div>

@@ -1,41 +1,45 @@
-<tr id="<%= dom_id game %>" class="odd:bg-white even:bg-emerald-50 border">
-    <td class="p-3 text-start">
-        <% if game.start_time.present? %>
-            <%= I18n.l(game.game_date) %> | <%= I18n.l(game.start_time) %>
-        <% elsif game.game_date.present? %>
-            <%= I18n.l(game.game_date) %> | -
-        <% else %>
-            - | -
-        <% end %>
-    </td>
-    <td class="">
-        <% if game.home_team.team_logo.present? %>
-            <div class="flex justify-center items-center">
-                <img class="rounded-md" src="<%= cloudinary_url(game.home_team.team_logo.key, height: 50, crop: :scale) %>" style="width:50%;">
-            </div>
-        <% end %>
-    </td>
-    <td class="p-3 text-end">
-        <%= game.home_team.team_type %> "<%= game.home_team.name %>"
-    </td>
-    <td class="p-3 text-center whitespace-nowrap">
-        <% if game.home_goal.present? %>
-            <%= game.home_goal %> : <%= game.visitor_goal %>
-        <% else %>
-            - : -
-        <% end %>
-    </td>
-    <td class="p-3 text-start">
-        <%= game.visitor_team.team_type %> "<%= game.visitor_team.name %>"
-    </td>
-    <td class="">
-        <% if game.visitor_team.team_logo.present? %>
-            <div class="flex justify-center items-center">
-                <img class="rounded-md" src="<%= cloudinary_url(game.visitor_team.team_logo.key, height: 50, crop: :scale) %>" style="width:50%;">
-            </div>
-        <% end %>
-    </td>
-    <td class="p-3 text-center">
-        <%= link_to t('button.show'), game, class: "bg-sky-500 hover:bg-sky-600 text-white p-2 rounded shadow" %>
-    </td>
-</tr>
+<% if (@tournament_teams.present? || @cup.present? || @championship.present?) && (@our_ids.include?(game.home_team.id) || @our_ids.include?(game.visitor_team.id)) %>
+    <tr id="<%= dom_id game %>" class="bg-emerald-300 border">
+<% else %>
+    <tr id="<%= dom_id game %>" class="odd:bg-white even:bg-emerald-50 border">
+<% end %>
+        <td class="p-3 text-start">
+            <% if game.start_time.present? %>
+                <%= I18n.l(game.game_date) %> | <%= I18n.l(game.start_time) %>
+            <% elsif game.game_date.present? %>
+                <%= I18n.l(game.game_date) %> | -
+            <% else %>
+                - | -
+            <% end %>
+        </td>
+        <td class="">
+            <% if game.home_team.team_logo.present? %>
+                <div class="flex justify-center items-center">
+                    <img class="rounded-md" src="<%= cloudinary_url(game.home_team.team_logo.key, height: 50, crop: :scale) %>" style="width:50%;">
+                </div>
+            <% end %>
+        </td>
+        <td class="p-3 text-end">
+            <%= game.home_team.team_type %> "<%= game.home_team.name %>"
+        </td>
+        <td class="p-3 text-center whitespace-nowrap">
+            <% if game.home_goal.present? %>
+                <%= game.home_goal %> : <%= game.visitor_goal %>
+            <% else %>
+                - : -
+            <% end %>
+        </td>
+        <td class="p-3 text-start">
+            <%= game.visitor_team.team_type %> "<%= game.visitor_team.name %>"
+        </td>
+        <td class="">
+            <% if game.visitor_team.team_logo.present? %>
+                <div class="flex justify-center items-center">
+                    <img class="rounded-md" src="<%= cloudinary_url(game.visitor_team.team_logo.key, height: 50, crop: :scale) %>" style="width:50%;">
+                </div>
+            <% end %>
+        </td>
+        <td class="p-3 text-center">
+            <%= link_to t('button.show'), game, class: "bg-sky-500 hover:bg-sky-600 text-white p-2 rounded shadow" %>
+        </td>
+    </tr>

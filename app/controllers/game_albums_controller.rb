@@ -2,6 +2,7 @@
 
 class GameAlbumsController < ApplicationController
   before_action :authenticate_press_service!
+  before_action :set_our_teams_ids, only: %i[new create]
   before_action :set_game_album, only: :destroy
   before_action :my_formhelpers, only: %i[new create]
 
@@ -48,7 +49,7 @@ class GameAlbumsController < ApplicationController
   end
 
   def my_formhelpers
-    @games = Game.formhelper
+    @games = Game.formhelper(@our_ids)
     @albums = Album.formhelper
   end
 end

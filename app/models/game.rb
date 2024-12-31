@@ -24,8 +24,9 @@ class Game < ApplicationRecord
     (home_goal.present? && visitor_goal.present?) || start_time.present?
   end
 
-  def self.formhelper
-    games = Game.order(game_date: :desc).limit(20).pluck(:game_date, :id)
+  def self.formhelper(our_ids)
+    games = Game.where(home_team_id: our_ids).or(Game.where(visitor_team_id: our_ids))
+                .order(game_date: :desc).limit(20).pluck(:game_date, :id)
     games.map do |element|
       game = Game.includes(:home_team, :visitor_team).where(id: element[1]).first
       element[0] =

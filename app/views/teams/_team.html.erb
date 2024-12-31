@@ -1,14 +1,18 @@
-<tr id="<%= dom_id team %>" class="odd:bg-white even:bg-emerald-50 border">
-    <td class="p-3">
-        <div class="flex justify-center items-center">
-            <% if team.team_logo.present? %>
-                <img class="" src="<%= cloudinary_url(team.team_logo.key, height: 100, crop: :scale) %>" style="width:30%;">
-            <% end %>
-        </div>
-    </td>
-    <td class="p-3"><%= team.team_type %> "<%= team.name %>"</td>
-    <td class="p-3"><%= team.represent %></td>
-    <td class="p-3">
-        <%= link_to t('button.edit'), edit_team_path(team), class: "bg-amber-500 hover:bg-amber-600 text-white p-2 rounded shadow" %>
-    </td>
-</tr>
+<% if @our_ids.include?(team.id) %>
+    <tr id="<%= dom_id team %>" class="odd:bg-emerald-300 even:bg-emerald-400 border">
+<% else %>
+    <tr id="<%= dom_id team %>" class="odd:bg-white even:bg-emerald-50 border">
+<% end %>    
+        <td class="p-3">
+            <div class="flex justify-center items-center">
+                <% if team.team_logo.present? %>
+                    <img class="" src="<%= cloudinary_url(team.team_logo.key, height: 100, crop: :scale) %>" style="width:30%;">
+                <% end %>
+            </div>
+        </td>
+        <td class="p-3"><%= team.team_type %> "<%= team.name %>"</td>
+        <td class="p-3"><%= team.represent %></td>
+        <td class="p-3">
+            <%= link_to t('button.edit'), edit_team_path(team), class: "bg-amber-500 hover:bg-amber-600 text-white p-2 rounded shadow" %>
+        </td>
+    </tr>
