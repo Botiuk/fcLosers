@@ -1,24 +1,11 @@
-# README
+# fcLosers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+An online home for a fictional football club called "Losers." It features news about the club, cards of players and coaches, tournament tables, a cup, a calendar, and video and photo galleries.
 
-Things you may want to cover:
+Built with: Rails 7.2.2, Ruby 3.3.5, postgres, bun, Tailwind, Cloudinary, Trix editor, devise, simple_calendar.
 
-* Ruby version
+Test with: RSpec, factory_bot_rails and faker.
 
-* System dependencies
+Code style checking: RuboCop and his special cops.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+My native language is Ukrainian and this is a single language on app. But all interface text was made with I18n and easy to change with translating locale file.
