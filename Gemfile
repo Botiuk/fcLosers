@@ -53,7 +53,7 @@ gem 'simple_calendar', '3.0.4'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem 'debug', '1.9.2', platforms: %i[mri windows], require: 'debug/prelude'
+  gem 'debug', '1.10.0', platforms: %i[mri windows], require: 'debug/prelude'
 
   # Testing framework
   gem 'rspec-rails', '7.1.0'
