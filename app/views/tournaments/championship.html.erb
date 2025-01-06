@@ -21,14 +21,15 @@
                     <th class="p-3"><%= t('.points') %></th>
                 </tr>
                 <% position = 1 %>
+                <% how_many_teams = @tournament_table_records.size %>
                 <% @tournament_table_records.each do |record| %>
-                    <% if position == 3 %>
+                    <% if (position == 3 && @which_champ == 'national_champ') || (position == 2 && @which_champ == 'national_champ_second') || (position == 1 && @which_champ == 'national_champ_u19') %>
                         <% if @our_ids.include?(record[:team_id]) %>
                             <tr class="bg-emerald-300 border border-b-3 border-b-green-600">
                         <% else %>
                             <tr class="odd:bg-white even:bg-emerald-50 border border-b-3 border-b-green-600">
                         <% end %>
-                    <% elsif position == (@tournament_table_records.size - 2) %>
+                    <% elsif ((position == how_many_teams - 2) && @which_champ == 'national_champ') || ((position == how_many_teams - 3) && @which_champ == 'national_champ_second') || ((position == how_many_teams - 1) && @which_champ == 'national_champ_u19') %>
                         <% if @our_ids.include?(record[:team_id]) %>
                             <tr class="bg-emerald-300 border border-b-3 border-b-red-600">
                         <% else %>

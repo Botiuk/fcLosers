@@ -46,7 +46,7 @@ gem 'image_processing', '1.13.0'
 gem 'cloudinary', '2.2.0'
 
 # Agnostic pagination in plain ruby
-gem 'pagy', '9.2.2'
+gem 'pagy', '9.3.3'
 
 # A simple Rails calendar
 gem 'simple_calendar', '3.0.4'
@@ -72,7 +72,7 @@ group :development do
   # Automatic Rails code style checking tool.
   gem 'rubocop-rails', '2.28.0', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
-  gem 'rubocop-performance', '1.23.0', require: false
+  gem 'rubocop-performance', '1.23.1', require: false
   # Code style checking for RSpec files
   gem 'rubocop-rspec', '3.3.0', require: false
   gem 'rubocop-rspec_rails', '2.30.0', require: false

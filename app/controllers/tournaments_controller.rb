@@ -55,6 +55,7 @@ class TournamentsController < ApplicationController
                     else
                       Tournament.where(schema_type: 'national_champ').order(start_date: :desc).first
                     end
+    @which_champ = params[:schema_type]
     if @championship.present?
       @championship_matches = Game.where(tournament_id: @championship.id).order('stage::integer')
       championship_teams_ids = TournamentTeam.where(tournament_id: @championship.id).pluck(:team_id)
