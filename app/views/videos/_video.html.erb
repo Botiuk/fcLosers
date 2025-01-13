@@ -6,7 +6,7 @@
             </div>
             <iframe src='https://www.youtube.com/embed/<%= video.youtube_id %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen  class="w-full aspect-video"></iframe>
 
-            <div class="grid grid-cols-1">
+            <div class="grid grid-cols-1" data-turbo="true">
                 <div class="pt-2 text-center">
                     <% video_has_game = "" %>
                     <% if @game_videos.present? %>

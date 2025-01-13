@@ -19,7 +19,7 @@
     <% end %>
 </div>
 
-<div class="grid grid-cols-1 mt-2">
+<div class="grid grid-cols-1 mt-2" data-turbo="true">
     <div>
         <% unless press_service_signed_in? %>
             <%= link_to t('button.back'), :back, class: "bg-sky-500 hover:bg-sky-600 text-white p-2 rounded shadow" %>

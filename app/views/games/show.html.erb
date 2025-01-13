@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3" data-turbo="true">
     <div class="text-start text-3xl font-bold leading-none"><%= t('.title') %></div>
     <% if press_service_signed_in? %>
         <div class="text-end my-auto">
@@ -128,7 +128,7 @@
     <% if @albums.present? %>
         <div class="mb-4">
             <% @albums.each do |album| %>
-                <div class="mb-2 text-xl truncate leading-tight text-neutral-800 dark:text-neutral-50">
+                <div class="mb-2 text-xl truncate leading-tight text-neutral-800 dark:text-neutral-50" data-turbo="true">
                     <%= link_to album, class: "font-medium no-underline hover:underline" do %>
                         <%= album.name %>
                     <% end %>

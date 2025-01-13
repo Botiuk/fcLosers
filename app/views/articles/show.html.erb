@@ -28,8 +28,8 @@
                 <% end %>
             <% else %>
                 <% if press_service_signed_in? %>
-                    <div class="">
-                        | <%= t('.draft') %>
+                    <div class="" style="display:inline-block;">
+                        <%= t('.draft') %>
                     </div>
                 <% end %>
             <% end %>
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="grid grid-cols-1">
+<div class="grid grid-cols-1" data-turbo="true">
     <div>
         <%= link_to t('button.all.articles'), articles_path, class: "bg-sky-500 hover:bg-sky-600 text-white p-2 rounded shadow" %>
         <% if press_service_signed_in? %>
