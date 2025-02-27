@@ -12,13 +12,13 @@ gem 'propshaft', '1.1.0'
 gem 'pg', '1.5.9'
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem 'puma', '6.5.0'
+gem 'puma', '6.6.0'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem 'jsbundling-rails', '1.3.1'
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem 'cssbundling-rails', '1.4.1'
+gem 'cssbundling-rails', '1.4.2'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem 'turbo-rails', '2.0.11'
@@ -41,9 +41,9 @@ gem 'devise', '4.9.4'
 gem 'devise-i18n', '1.12.1'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem 'image_processing', '1.13.0'
+gem 'image_processing', '1.14.0'
 # Client library for easily using the Cloudinary service
-gem 'cloudinary', '2.2.0'
+gem 'cloudinary', '2.3.0'
 
 # Agnostic pagination in plain ruby
 gem 'pagy', '9.3.3'
@@ -56,7 +56,7 @@ group :development, :test do
   gem 'debug', '1.10.0', platforms: %i[mri windows], require: 'debug/prelude'
 
   # Testing framework
-  gem 'rspec-rails', '7.1.0'
+  gem 'rspec-rails', '7.1.1'
   # Fixtures replacement with a straightforward definition syntax
   gem 'factory_bot_rails', '6.4.4'
   # Library for generating fake data
@@ -68,13 +68,13 @@ group :development do
   gem 'brakeman', '7.0.0', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
-  gem 'rubocop', '1.70.0', require: false
+  gem 'rubocop', '1.73.1', require: false
   # Automatic Rails code style checking tool.
-  gem 'rubocop-rails', '2.28.0', require: false
+  gem 'rubocop-rails', '2.30.2', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
-  gem 'rubocop-performance', '1.23.1', require: false
+  gem 'rubocop-performance', '1.24.0', require: false
   # Code style checking for RSpec files
-  gem 'rubocop-rspec', '3.3.0', require: false
+  gem 'rubocop-rspec', '3.5.0', require: false
   gem 'rubocop-rspec_rails', '2.30.0', require: false
   # Code style checking for factory_bot files
   gem 'rubocop-factory_bot', '2.26.1', require: false

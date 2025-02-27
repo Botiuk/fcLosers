@@ -35,6 +35,6 @@ class Coach < ApplicationRecord
   end
 
   def main_coach?
-    position == 'main_coach' || position == 'temporary_main_coach'
+    %w[main_coach temporary_main_coach].include?(position)
   end
 end
