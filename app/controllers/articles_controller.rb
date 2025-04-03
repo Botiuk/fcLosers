@@ -8,18 +8,20 @@ class ArticlesController < ApplicationController
     @articles_type = params[:article_type]
     if press_service_signed_in?
       if @articles_type.present?
-        @pagy, @articles = pagy(Article.where(article_type: @articles_type).articles_ordered, limit: 9)
+        @pagy, @articles = pagy(Article.where(article_type: @articles_type).with_rich_text_content.articles_ordered,
+                                limit: 9)
       else
-        @pagy, @articles = pagy(Article.articles_ordered, limit: 9)
+        @pagy, @articles = pagy(Article.with_rich_text_content.articles_ordered, limit: 9)
       end
     elsif @articles_type.present?
       @pagy, @articles = pagy(
         Article.where(article_type: @articles_type).where.not(published_at: nil)
-               .where.not('published_at > ?', DateTime.now).articles_ordered, limit: 9
+               .where.not('published_at > ?', DateTime.now).with_rich_text_content.articles_ordered, limit: 9
       )
     else
       @pagy, @articles = pagy(
-        Article.where.not(published_at: nil).where.not('published_at > ?', DateTime.now).articles_ordered, limit: 9
+        Article.where.not(published_at: nil).where.not('published_at > ?', DateTime.now)
+                .with_rich_text_content.articles_ordered, limit: 9
       )
     end
   rescue Pagy::OverflowError

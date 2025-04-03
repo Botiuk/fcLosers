@@ -18,10 +18,10 @@ gem 'puma', '6.6.0'
 gem 'jsbundling-rails', '1.3.1'
 
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem 'cssbundling-rails', '1.4.2'
+gem 'cssbundling-rails', '1.4.3'
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem 'turbo-rails', '2.0.11'
+gem 'turbo-rails', '2.0.13'
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem 'stimulus-rails', '1.3.4'
@@ -38,7 +38,7 @@ gem 'rails-i18n', '7.0.9'
 # Flexible authentication solution for Rails with Warden
 gem 'devise', '4.9.4'
 # Translations for the devise gem
-gem 'devise-i18n', '1.12.1'
+gem 'devise-i18n', '1.13.0'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '1.14.0'
@@ -46,7 +46,7 @@ gem 'image_processing', '1.14.0'
 gem 'cloudinary', '2.3.0'
 
 # Agnostic pagination in plain ruby
-gem 'pagy', '9.3.3'
+gem 'pagy', '9.3.4'
 
 # A simple Rails calendar
 gem 'simple_calendar', '3.1.0'
@@ -68,14 +68,14 @@ group :development do
   gem 'brakeman', '7.0.0', require: false
 
   # RuboCop is a Ruby code style checking and code formatting tool.
-  gem 'rubocop', '1.73.1', require: false
+  gem 'rubocop', '1.75.1', require: false
   # Automatic Rails code style checking tool.
-  gem 'rubocop-rails', '2.30.2', require: false
+  gem 'rubocop-rails', '2.31.0', require: false
   # A collection of RuboCop cops to check for performance optimizations in Ruby code.
-  gem 'rubocop-performance', '1.24.0', require: false
+  gem 'rubocop-performance', '1.25.0', require: false
   # Code style checking for RSpec files
   gem 'rubocop-rspec', '3.5.0', require: false
-  gem 'rubocop-rspec_rails', '2.30.0', require: false
+  gem 'rubocop-rspec_rails', '2.31.0', require: false
   # Code style checking for factory_bot files
-  gem 'rubocop-factory_bot', '2.26.1', require: false
+  gem 'rubocop-factory_bot', '2.27.1', require: false
 end
